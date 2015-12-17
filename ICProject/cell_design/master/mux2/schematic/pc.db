@@ -1,0 +1,14 @@
+#
+master Inv symbol
+I6
+#
+basic gnd symbol
+I9
+#
+basic vdd symbol
+I8
+#
+master nand2 symbol
+I3
+I1
+I0

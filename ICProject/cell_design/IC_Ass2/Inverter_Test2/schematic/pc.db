@@ -1,0 +1,18 @@
+#
+analogLib cap symbol
+C2
+#
+analogLib vdc symbol
+V2
+#
+analogLib vpulse symbol
+V0
+#
+IC_Ass2 Inverter_Test symbol
+I0
+#ISCELL
+analogLib vdd symbol
+I1
+#ISCELL
+analogLib gnd symbol
+I2

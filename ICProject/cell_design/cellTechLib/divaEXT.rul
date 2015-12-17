@@ -1,0 +1,74 @@
+(drcExtractRules 
+    (ivIf 
+	(switch "drc?") then 
+	(checkAllLayers)
+    ) 
+    (diff = (geomOr "diff")) 
+    (ndiff = (geomOr "ndiff")) 
+    (poly1 = (geomOr "poly1")) 
+    (pdiff = (geomOr "pdiff"))
+    (pwell = (geomOr "pwell")) 
+    (metal1 = (geomOr "metal1")) 
+    (cont = (geomOr "cont")) 
+    (nwell = (geomOr "nwell")) 
+    (via = (geomOr "via"))
+    (metal2 = (geomOr "metal2")) 
+    (ivIf 
+	(switch "extract?") then 
+	(ngate = (geomAnd ndiff poly1)) 
+	(pgate = (geomAnd pdiff poly1))
+	(ndiff = (geomAndNot ndiff poly1)) 
+	(pdiff = (geomAndNot pdiff poly1)) 
+	(pwell = (geomBkgnd)) 
+	(ptap = (geomAndNot pdiff nwell)) 
+	(ntap = (geomAnd ndiff nwell))
+	(ivIf 
+	    (switch "pre") then 
+	    (measureResistance metal1 "resistor ivpcell" 0.04 "r"
+		(ignore < 0.1) 
+		(save "metal1Res")
+	    )
+	) 
+	(geomConnect 
+	    (label "text" poly1) 
+	    (label "text" metal1) 
+	    (label "text" metal2) 
+	    (via cont poly1 ndiff pdiff diff
+		metal1
+	    )
+	    (via via metal1 metal2) 
+	    (via ntap nwell ndiff) 
+	    (via ptap pwell pdiff)
+	) 
+	(ivIf 
+	    (switch "lpe") then 
+	    (cap = (measureParasitic area 
+		    (metal1 over nwell not_over poly1) two_net 1e-10
+		)) 
+	    (saveParasitic cap "PLUS" "MINUS" "c"
+		"capacitor ivpcell"
+	    )
+	) 
+	(extractMOS ngate 
+	    (poly1 "G") 
+	    (ndiff "S" "D") 
+	    (pwell "B")
+	    "nfet ivpcell sample" 1.0
+	) 
+	(extractMOS pgate 
+	    (poly1 "G") 
+	    (pdiff "S" "D") 
+	    (nwell "B")
+	    "pfet ivpcell sample" 1.0
+	)
+	(saveRecognition pgate "device") 
+	(saveRecognition ngate "device") 
+	(saveInterconnect nwell poly1 ndiff pdiff
+	    ptap ntap metal1 cont via
+	    metal2
+	) 
+	(copyGraphics 
+	    ("text" "drawing")
+	)
+    )
+)

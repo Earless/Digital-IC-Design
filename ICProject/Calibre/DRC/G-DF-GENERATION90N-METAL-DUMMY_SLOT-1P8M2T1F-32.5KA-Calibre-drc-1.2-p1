@@ -1,0 +1,1383 @@
+/////////////////////////////////////////////////////
+//  UMC 90nm logic 1P8M (11111226) SLOT DRC rule  //
+//  It also be called 1P8M 2T1F process            //
+//  Generated date:  Tue Jun  5 09:21:38 CST 2007  //
+//                                                 //
+/////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//                                                                  //
+//     Title      : Calibre DRC of 90nm Process Dummy and Slot Rules//
+//                  for Metal Layers                                //
+//     DRC Version: 1.2_P1                                          //
+//     Parent Doc : G-03DS-GENERATION90N-METAL-TLR/DUMMY_SLOT       //
+//     Revision   : 1.2_P2                                          //
+//     Written by: S M(DS/DVS), UMC GROUP                           //
+//                                                                  //
+//     Copyrignt (c) United Microelectronics Corporation, 1980-2007 //
+//     All Rights Reserved                                          //
+//                                                                  //
+//                                                                  //
+//     This source file is proprietary information of United        //
+//     Microelectronics Corporation.It may not be distributed,      //        
+//     in whole or in any part without prior written permission.    //
+//                                                                  //
+//     LIMITATION OF LIABILITY:                                     //
+//        United Microelectronics Corp. is not  liable  for  any    //
+//        property damage, personal  injury,  loss  of  profits,    //
+//        interruption of business,  or  for  any other special,    //
+//        consequential or incidental  damages, however  caused,    //
+//        whether for breach of warranty,contract tort(including    //
+//        negligence),strict liability or otherwise.                //
+//                                                                  //
+//     This runset is validated with Calibre 2006.2-23.21           //
+//								    //
+//////////////////////////////////////////////////////////////////////
+// revision  date      who              changes                     //
+//========= ======= ======== =======================================//
+// 1.0-p1   10/14/02 SM.Lee  New create                             //
+// 1.0-p2   12/20/02 SM.Lee  Update the 4.6B.M*,4.6H.M* rules       //
+// 2.0-p1   09/15/03 SM.Lee  Revision 2                             //
+// 2.0-p2   07/30/04 SM.Lee  Update the layers file                 //
+// 2.0-p2   07/30/04 SM.Lee  Update the 4.6N* rules                 //
+// 1.0-P1   05/24/05 Silvio  Update 90nm_layers_v2.6.cal            //
+//                           Update spec name                       //
+//                           Update 6A 6M 6N 6O 6U                  //
+//                           6N ->  X=2~6 for 1X metal              //
+//                           6O ->  X=7~9 for 2X and 4X metal       //
+//                           For rules 6N and 6O TLR is typo,this   //
+//                           has confirmed with TLR writer          //
+// 1.1-P1   11/07/05 Silvio  Update according to 1.1 P1 TLR         //
+// 1.2-P1   06/01/2007 Silvio add 32.5KA rules                      //
+//////////////////////////////////////////////////////////////////////
+// Notice (Important, Read Me First)
+// =================================
+// (1) Please set up RESOLUTION,LAYOUT PATH,LAYOUT PRIMARY 
+//     according to your design before run CALIBRE drc.
+//     Set up DRC UNSLECT CHECK as your requirements
+//     Use DRC SELECT CHECK to check one or two groups only
+// (2) The grid size is 0.005 for L90
+//     The grid size is 0.001 for L80G 
+// (3) This command file includes 25 files
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P4M1T0F-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P5M1T0F-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P6M1T0F-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P6M1T1F-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P6M2T0F-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P7M1T0F-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P7M1T1F-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P7M2T0F-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P7M2T1F-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P8M1T1F-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P8M2T1F-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P8M2T0F-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P9M2T1F-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P8M0T1F-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P7M0T1F-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P6M0T1F-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P5M0T1F-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P4M0T1F-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P6M1T1F-32.5KA-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P7M1T1F-32.5KA-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P7M2T1F-32.5KA-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P8M1T1F-32.5KA-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P8M2T1F-32.5KA-Calibre-drc-1.2-p1
+//     G-DF-GENERATION90N-METAL-DUMMY_SLOT-1P9M2T1F-32.5KA-Calibre-drc-1.2-p1
+//     90nm_layers_v3.8.cal
+//////////////////////////////////////////////////////////////////////
+ 
+// INPUT LAYERS refer to 90nm_layers_v3.8.cal
+
+INCLUDE 90nm_layers_v3.8.cal
+
+//
+// *************************************************************
+// you can comment one or more lines to run these opional checks
+// with basic rule check, or change DRC UNSELECT CHECK ... to 
+// DRC SLELECT CHECK ... to run one or more optional checks only
+// *************************************************************
+//
+
+// DRC UNSELECT CHECK  Recommended_rules
+
+// grid size setup
+// The grid size is 0.005 as default setup.
+// If your design is L80,please comment "#DEFINE L90" line.(//#DEFINE  L90)
+
+#DEFINE  L90
+
+//
+LAYOUT TOP LAYER PASV_RDL ME8 VI7 ME7 VI6 ME6 VI5 ME5 VI4 ME4 VI3 ME3 VI2 ME2 VI1 ME1
+
+//===========================
+//===  Setup Environment  ===
+//===========================
+//
+ 
+LAYOUT DEPTH  ALL
+LAYOUT SYSTEM GDSII
+ 
+UNIT CAPACITANCE FF
+UNIT LENGTH      U
+UNIT RESISTANCE  OHM
+UNIT TIME        US
+ 
+FLAG ACUTE   YES
+FLAG OFFGRID YES
+FLAG SKEW    YES
+
+
+// grid size setup
+ 
+
+#IFDEF  L90 
+
+// for L90G & L90N grid size is 0.005um
+RESOLUTION 5
+PRECISION  1000
+
+#ELSE  
+
+// for L80G grid size is 0.005um
+RESOLUTION 1
+PRECISION  1000
+
+#ENDIF
+
+
+// 
+//================================
+//===  Setup Defaults for DRC  ===
+//================================
+//
+LAYOUT PATH "/Project/drcdeck/QA_PATTERN/OLD_0.090/GENERATION_METAL_DUMMY_SLOT/G_QA_DS_GENERATION90N_METAL_DUMMY_SLOT_V1.0_P1_B1_050524.gds"
+LAYOUT PRIMARY "pass"
+ 
+DRC CHECK TEXT       COMMENTS RFI   
+DRC KEEP EMPTY       NO
+DRC MAXIMUM RESULTS  1000
+DRC MAXIMUM VERTEX   199
+DRC RESULTS DATABASE "./pass.db" ASCII
+DRC SUMMARY REPORT   "./pass.sum"
+DRC TOLERANCE FACTOR .003
+
+//
+//*******************
+//***  DRC Rules  ***
+//*******************
+
+Off_Grid {
+   @ Vertice is drawn off-grid.
+   DRAWN OFFGRID
+}
+
+SkewEdges {
+   @ Safety: Edge violates 45 or 90 degrees
+   DRAWN SKEW
+}
+//    
+// =====================================
+// ===== Metal dummy and slot rules ====
+// =====================================
+//
+
+GROUP Recommended_rules  ?_warning
+
+
+// ===For ME1  1X  metal=== 
+
+M1SLBK.SZ_warning {@ Minimum size of M1SLBK is 50um * 50um(recommended)
+
+     INT  M1SLBK < 50  ABUT>0<90 SINGULAR REGION
+}
+
+M1DMBK.SZ_warning {@ Minimum size of M1DMBK is 50um * 50um(recommended)
+
+     INT M1DMBK < 50  ABUT>0<90 SINGULAR REGION
+}
+
+M1SLBK.S {@ Minimum spacing of M1SLBK spacing is 2.52um
+   
+   EXT M1SLBK < 2.52 ABUT>0<90 SINGULAR REGION
+}
+
+
+// ===For ME2  1X  metal=== 
+
+M2SLBK.SZ_warning {@ Minimum size of M2SLBK is 50um * 50um(recommended)
+
+     INT  M2SLBK < 50  ABUT>0<90 SINGULAR REGION
+}
+
+M2DMBK.SZ_warning {@ Minimum size of M2DMBK is 50um * 50um(recommended)
+
+     INT M2DMBK < 50  ABUT>0<90 SINGULAR REGION
+}
+
+M2SLBK.S {@ Minimum spacing of M2SLBK spacing is 2.52um
+   
+   EXT M2SLBK < 2.52 ABUT>0<90 SINGULAR REGION
+}
+
+
+// ===For ME3  1X  metal=== 
+
+M3SLBK.SZ_warning {@ Minimum size of M3SLBK is 50um * 50um(recommended)
+
+     INT  M3SLBK < 50  ABUT>0<90 SINGULAR REGION
+}
+
+M3DMBK.SZ_warning {@ Minimum size of M3DMBK is 50um * 50um(recommended)
+
+     INT M3DMBK < 50  ABUT>0<90 SINGULAR REGION
+}
+
+M3SLBK.S {@ Minimum spacing of M3SLBK spacing is 2.52um
+   
+   EXT M3SLBK < 2.52 ABUT>0<90 SINGULAR REGION
+}
+
+
+// ===For ME4  1X  metal=== 
+
+M4SLBK.SZ_warning {@ Minimum size of M4SLBK is 50um * 50um(recommended)
+
+     INT  M4SLBK < 50  ABUT>0<90 SINGULAR REGION
+}
+
+M4DMBK.SZ_warning {@ Minimum size of M4DMBK is 50um * 50um(recommended)
+
+     INT M4DMBK < 50  ABUT>0<90 SINGULAR REGION
+}
+
+M4SLBK.S {@ Minimum spacing of M4SLBK spacing is 2.52um
+   
+   EXT M4SLBK < 2.52 ABUT>0<90 SINGULAR REGION
+}
+
+
+// ===For ME5  1X  metal=== 
+
+M5SLBK.SZ_warning {@ Minimum size of M5SLBK is 50um * 50um(recommended)
+
+     INT  M5SLBK < 50  ABUT>0<90 SINGULAR REGION
+}
+
+M5DMBK.SZ_warning {@ Minimum size of M5DMBK is 50um * 50um(recommended)
+
+     INT M5DMBK < 50  ABUT>0<90 SINGULAR REGION
+}
+
+M5SLBK.S {@ Minimum spacing of M5SLBK spacing is 2.52um
+   
+   EXT M5SLBK < 2.52 ABUT>0<90 SINGULAR REGION
+}
+
+
+// ===For ME6  2X  metal===
+
+M6SLBK.SZ_warning {@ Minimum size of M6SLBK is 50um * 50um(recommended)
+
+     INT  M6SLBK < 50  ABUT>0<90 SINGULAR REGION
+}
+
+M6DMBK.SZ_warning {@ Minimum size of M6DMBK is 50um * 50um(recommended)
+
+     INT M6DMBK < 50  ABUT>0<90 SINGULAR REGION
+}
+
+M6SLBK.S {@ Minimum spacing of M6SLBK spacing is 2.52um
+
+   EXT M6SLBK < 2.52 ABUT>0<90 SINGULAR REGION
+}
+
+
+// ===For ME7  2X  metal===
+
+M7SLBK.SZ_warning {@ Minimum size of M7SLBK is 50um * 50um(recommended)
+
+     INT  M7SLBK < 50  ABUT>0<90 SINGULAR REGION
+}
+
+M7DMBK.SZ_warning {@ Minimum size of M7DMBK is 50um * 50um(recommended)
+
+     INT M7DMBK < 50  ABUT>0<90 SINGULAR REGION
+}
+
+M7SLBK.S {@ Minimum spacing of M7SLBK spacing is 2.52um
+
+   EXT M7SLBK < 2.52 ABUT>0<90 SINGULAR REGION
+}
+
+
+// ===For ME8  4X  metal===
+
+M8SLBK.SZ_warning {@ Minimum size of M8SLBK is 50um * 50um(recommended)
+
+     INT  M8SLBK < 50  ABUT>0<90 SINGULAR REGION
+}
+
+M8DMBK.SZ_warning {@ Minimum size of M8DMBK is 50um * 50um(recommended)
+
+     INT M8DMBK < 50  ABUT>0<90 SINGULAR REGION
+}
+
+M8SLBK.S {@ Minimum spacing of M8SLBK spacing is 2.52um
+
+   EXT M8SLBK < 2.52 ABUT>0<90 SINGULAR REGION
+}
+
+
+// ===For ME1  1X  metal dummy===
+
+1XM1DUMY.L_W {@ Exact ME1 DUMMY length and width is 0.6um
+
+   NOT RECTANGLE M1DUMY == 0.6 BY == 0.6
+}
+
+1XM1DUMY.S {@ Minimum spacing of ME1 DUMMY to ME1 DUMMY is 0.3 um
+
+   EXT M1DUMY  < 0.3 ABUT>0<90 SINGULAR REGION
+}
+
+1XM1DUMY_M1.S {@ Minimum spacing of ME1 DUMMY to ME1 is  0.8 um
+
+   EXT M1DUMY ME1    < 0.8 ABUT<90 INSIDE ALSO SINGULAR REGION
+   AND M1DUMY ME1
+}
+
+1XM1DUMY_M1DMBK.S {@ Minimum spacing of ME1 DUMMY to ME1 DUMMY BLOCK is  0.8 um
+
+   EXT M1DUMY M1DMBK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM1DUMY_IND.S {@ Minimum spacing of ME1 DUMMY to IND is  0.8 um
+
+   EXT M1DUMY IND < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM1DUMY_FM.S {@ Minimum spacing of ME1 DUMMY to FUSEMARK is  0.8 um
+
+   EXT M1DUMY FUSEMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM1DUMY_PM.S {@ Minimum spacing of ME1 DUMMY to PADMARK is  0.8 um
+
+   EXT M1DUMY PADMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM1DUMY_SRM.S {@ Minimum spacing of ME1 DUMMY to SEAL_RING_MARK is  0.8 um
+
+   EXT M1DUMY SEALRMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+// 1XM1DUMY_PB.S not
+
+// 1XMnDUMY.P not checked
+
+
+// ===For ME2  1X  metal dummy===
+
+1XM2DUMY.L_W {@ Exact ME2 DUMMY length and width is 0.6um
+
+   NOT RECTANGLE M2DUMY == 0.6 BY == 0.6
+}
+
+1XM2DUMY.S {@ Minimum spacing of ME2 DUMMY to ME2 DUMMY is 0.3 um
+
+   EXT M2DUMY  < 0.3 ABUT>0<90 SINGULAR REGION
+}
+
+1XM2DUMY_M2.S {@ Minimum spacing of ME2 DUMMY to ME2 is  0.8 um
+
+   EXT M2DUMY ME2    < 0.8 ABUT<90 INSIDE ALSO SINGULAR REGION
+   AND M2DUMY ME2
+}
+
+1XM2DUMY_M2DMBK.S {@ Minimum spacing of ME2 DUMMY to ME2 DUMMY BLOCK is  0.8 um
+
+   EXT M2DUMY M2DMBK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM2DUMY_IND.S {@ Minimum spacing of ME2 DUMMY to IND is  0.8 um
+
+   EXT M2DUMY IND < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM2DUMY_FM.S {@ Minimum spacing of ME2 DUMMY to FUSEMARK is  0.8 um
+
+   EXT M2DUMY FUSEMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM2DUMY_PM.S {@ Minimum spacing of ME2 DUMMY to PADMARK is  0.8 um
+
+   EXT M2DUMY PADMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM2DUMY_SRM.S {@ Minimum spacing of ME2 DUMMY to SEAL_RING_MARK is  0.8 um
+
+   EXT M2DUMY SEALRMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+// 1XM2DUMY_PB.S not
+
+// 1XMnDUMY.P not checked
+
+
+// ===For ME3  1X  metal dummy===
+
+1XM3DUMY.L_W {@ Exact ME3 DUMMY length and width is 0.6um
+
+   NOT RECTANGLE M3DUMY == 0.6 BY == 0.6
+}
+
+1XM3DUMY.S {@ Minimum spacing of ME3 DUMMY to ME3 DUMMY is 0.3 um
+
+   EXT M3DUMY  < 0.3 ABUT>0<90 SINGULAR REGION
+}
+
+1XM3DUMY_M3.S {@ Minimum spacing of ME3 DUMMY to ME3 is  0.8 um
+
+   EXT M3DUMY ME3    < 0.8 ABUT<90 INSIDE ALSO SINGULAR REGION
+   AND M3DUMY ME3
+}
+
+1XM3DUMY_M3DMBK.S {@ Minimum spacing of ME3 DUMMY to ME3 DUMMY BLOCK is  0.8 um
+
+   EXT M3DUMY M3DMBK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM3DUMY_IND.S {@ Minimum spacing of ME3 DUMMY to IND is  0.8 um
+
+   EXT M3DUMY IND < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM3DUMY_FM.S {@ Minimum spacing of ME3 DUMMY to FUSEMARK is  0.8 um
+
+   EXT M3DUMY FUSEMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM3DUMY_PM.S {@ Minimum spacing of ME3 DUMMY to PADMARK is  0.8 um
+
+   EXT M3DUMY PADMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM3DUMY_SRM.S {@ Minimum spacing of ME3 DUMMY to SEAL_RING_MARK is  0.8 um
+
+   EXT M3DUMY SEALRMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+// 1XM3DUMY_PB.S not
+
+// 1XMnDUMY.P not checked
+
+
+// ===For ME4  1X  metal dummy===
+
+1XM4DUMY.L_W {@ Exact ME4 DUMMY length and width is 0.6um
+
+   NOT RECTANGLE M4DUMY == 0.6 BY == 0.6
+}
+
+1XM4DUMY.S {@ Minimum spacing of ME4 DUMMY to ME4 DUMMY is 0.3 um
+
+   EXT M4DUMY  < 0.3 ABUT>0<90 SINGULAR REGION
+}
+
+1XM4DUMY_M4.S {@ Minimum spacing of ME4 DUMMY to ME4 is  0.8 um
+
+   EXT M4DUMY ME4    < 0.8 ABUT<90 INSIDE ALSO SINGULAR REGION
+   AND M4DUMY ME4
+}
+
+1XM4DUMY_M4DMBK.S {@ Minimum spacing of ME4 DUMMY to ME4 DUMMY BLOCK is  0.8 um
+
+   EXT M4DUMY M4DMBK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM4DUMY_IND.S {@ Minimum spacing of ME4 DUMMY to IND is  0.8 um
+
+   EXT M4DUMY IND < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM4DUMY_FM.S {@ Minimum spacing of ME4 DUMMY to FUSEMARK is  0.8 um
+
+   EXT M4DUMY FUSEMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM4DUMY_PM.S {@ Minimum spacing of ME4 DUMMY to PADMARK is  0.8 um
+
+   EXT M4DUMY PADMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM4DUMY_SRM.S {@ Minimum spacing of ME4 DUMMY to SEAL_RING_MARK is  0.8 um
+
+   EXT M4DUMY SEALRMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+// 1XM4DUMY_PB.S not
+
+// 1XMnDUMY.P not checked
+
+
+// ===For ME5  1X  metal dummy===
+
+1XM5DUMY.L_W {@ Exact ME5 DUMMY length and width is 0.6um
+
+   NOT RECTANGLE M5DUMY == 0.6 BY == 0.6
+}
+
+1XM5DUMY.S {@ Minimum spacing of ME5 DUMMY to ME5 DUMMY is 0.3 um
+
+   EXT M5DUMY  < 0.3 ABUT>0<90 SINGULAR REGION
+}
+
+1XM5DUMY_M5.S {@ Minimum spacing of ME5 DUMMY to ME5 is  0.8 um
+
+   EXT M5DUMY ME5    < 0.8 ABUT<90 INSIDE ALSO SINGULAR REGION
+   AND M5DUMY ME5
+}
+
+1XM5DUMY_M5DMBK.S {@ Minimum spacing of ME5 DUMMY to ME5 DUMMY BLOCK is  0.8 um
+
+   EXT M5DUMY M5DMBK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM5DUMY_IND.S {@ Minimum spacing of ME5 DUMMY to IND is  0.8 um
+
+   EXT M5DUMY IND < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM5DUMY_FM.S {@ Minimum spacing of ME5 DUMMY to FUSEMARK is  0.8 um
+
+   EXT M5DUMY FUSEMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM5DUMY_PM.S {@ Minimum spacing of ME5 DUMMY to PADMARK is  0.8 um
+
+   EXT M5DUMY PADMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+1XM5DUMY_SRM.S {@ Minimum spacing of ME5 DUMMY to SEAL_RING_MARK is  0.8 um
+
+   EXT M5DUMY SEALRMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+// 1XM5DUMY_PB.S not
+
+// 1XMnDUMY.P not checked
+
+
+// ===For ME6  2X  metal  dummy===
+
+2XM6DUMY.L_W {@ Exact ME6 DUMMY length and width is 1.2um
+
+   NOT RECTANGLE M6DUMY == 1.2 BY == 1.2
+}
+
+2XM6DUMY.S {@ Minimum spacing of ME6 DUMMY to ME6 DUMMY is 0.6 um
+
+   EXT M6DUMY  < 0.6 ABUT>0<90 SINGULAR REGION
+}
+
+2XM6DUMY_M6.S {@ Minimum spacing of ME6 DUMMY to ME6 is  0.8 um
+
+   EXT M6DUMY ME6    < 0.8 ABUT<90 INSIDE ALSO SINGULAR REGION
+   AND M6DUMY ME6
+}
+
+2XM6DUMY_M6DMBK.S {@ Minimum spacing of ME6 DUMMY to ME6 DUMMY BLOCK is  0.8 um
+
+   EXT M6DUMY M6DMBK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+2XM6DUMY_IND.S {@ Minimum spacing of ME6 DUMMY to IND is  0.8 um
+
+   EXT M6DUMY IND < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+2XM6DUMY_FM.S {@ Minimum spacing of ME6 DUMMY to FUSEMARK is  0.8 um
+
+   EXT M6DUMY FUSEMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+2XM6DUMY_PM.S {@ Minimum spacing of ME6 DUMMY to PADMARK is  0.8 um
+
+   EXT M6DUMY PADMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+2XM6DUMY_SRM.S {@ Minimum spacing of ME6 DUMMY to SEAL_RING_MARK is  0.8 um
+
+   EXT M6DUMY SEALRMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+// 2XM6DUMY_PB.S not checked 
+
+
+// 2XMnDUMY.P not checked
+
+
+
+// ===For ME7  2X  metal  dummy===
+
+2XM7DUMY.L_W {@ Exact ME7 DUMMY length and width is 1.2um
+
+   NOT RECTANGLE M7DUMY == 1.2 BY == 1.2
+}
+
+2XM7DUMY.S {@ Minimum spacing of ME7 DUMMY to ME7 DUMMY is 0.6 um
+
+   EXT M7DUMY  < 0.6 ABUT>0<90 SINGULAR REGION
+}
+
+2XM7DUMY_M7.S {@ Minimum spacing of ME7 DUMMY to ME7 is  0.8 um
+
+   EXT M7DUMY ME7    < 0.8 ABUT<90 INSIDE ALSO SINGULAR REGION
+   AND M7DUMY ME7
+}
+
+2XM7DUMY_M7DMBK.S {@ Minimum spacing of ME7 DUMMY to ME7 DUMMY BLOCK is  0.8 um
+
+   EXT M7DUMY M7DMBK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+2XM7DUMY_IND.S {@ Minimum spacing of ME7 DUMMY to IND is  0.8 um
+
+   EXT M7DUMY IND < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+2XM7DUMY_FM.S {@ Minimum spacing of ME7 DUMMY to FUSEMARK is  0.8 um
+
+   EXT M7DUMY FUSEMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+2XM7DUMY_PM.S {@ Minimum spacing of ME7 DUMMY to PADMARK is  0.8 um
+
+   EXT M7DUMY PADMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+2XM7DUMY_SRM.S {@ Minimum spacing of ME7 DUMMY to SEAL_RING_MARK is  0.8 um
+
+   EXT M7DUMY SEALRMARK < 0.8 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+// 2XM7DUMY_PB.S not checked 
+
+
+// 2XMnDUMY.P not checked
+
+
+
+// ===For ME8  32.5KA  metal  dummy===
+
+32.5KAM8DUMY.L_W {@ Exact ME8 DUMMY length and width is 3.6um
+
+   NOT RECTANGLE M8DUMY == 3.6 BY == 3.6
+}
+
+32.5KAM8DUMY.S {@ Minimum spacing of ME8 DUMMY to ME8 DUMMY is 2.0um
+
+   EXT M8DUMY  < 2.0 ABUT>0<90 SINGULAR REGION
+}
+
+32.5KAM8DUMY_M8.S {@ Minimum spacing of ME8 DUMMY to ME8 is  2.4um
+
+   EXT M8DUMY ME8    < 2.4 ABUT<90 INSIDE ALSO SINGULAR REGION
+   AND M8DUMY ME8
+}
+
+32.5KAM8DUMY_M8DMBK.S {@ Minimum spacing of ME8 DUMMY to ME8 DUMMY BLOCK is  2.4um
+
+   EXT M8DUMY M8DMBK < 2.4 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+32.5KAM8DUMY_IND.S {@ Minimum spacing of ME8 DUMMY to IND is  2.4um
+
+   EXT M8DUMY IND < 2.4 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+32.5KAM8DUMY_FM.S {@ Minimum spacing of ME8 DUMMY to FUSEMARK is  2.4um
+
+   EXT M8DUMY FUSEMARK < 2.4 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+32.5KAM8DUMY_PM.S {@ Minimum spacing of ME8 DUMMY to PADMARK is  2.4um
+
+   EXT M8DUMY PADMARK < 2.4 ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+32.5KAM8DUMY_SRM.S {@ Minimum spacing of ME8 DUMMY to SEAL_RING_MARK is  2.4um
+
+   EXT M8DUMY SEALRMARK < 2.4  ABUT<90 SINGULAR OVERLAP REGION  
+}
+
+// 32.5KAM8DUMY_PB.S not checked
+
+
+// 32.5KAMnDUMY.P not checked
+
+
+// ===For ME1  1X  metal  slot===
+
+1XM1SLOT.L_W {@ Exact ME1 SLOT length and width is 0.4um
+ 
+    NOT RECTANGLE M1SLOT == 0.4 BY == 0.4   
+
+}
+
+// 1XMnSLOT.P not  checked
+
+1XM1_1XM1SLOT.EN {@ Minimum ME1 enclosure of ME1 SLOT is 0.4um
+
+   ENC M1SLOT ME1 < 0.4 ABUT<90 SINGULAR OVERLAP OUTSIDE ALSO REGION
+}
+
+1XM1SLOT.S {@ Minimum spacing of ME1 SLOT to ME1 SLOT is 0.4 um
+
+   EXT M1SLOT  < 0.4 ABUT>0<90 SINGULAR REGION
+}
+
+
+M1SLOT.R {@ M1SLOT is not allowed to touch,intersect or cover and contact,contact bar,VI1,VI1 bar
+          @ IND,FUSE_MARK,PAD
+
+          M1SLOT  INTERACT  CONT
+          M1SLOT  INTERACT  CONTBAR
+          M1SLOT  INTERACT  VI1
+          M1SLOT  INTERACT  VI1BAR
+          M1SLOT  INTERACT  IND
+          M1SLOT  INTERACT  FUSEMARK
+          M1SLOT  INTERACT  PADMARK
+          M1SLOT  INTERACT  SEALRMARK
+}
+
+M1SLOT_M1SLBK.S  {@ Minimum spacing of M1SLOT to M1SLBK is 0.16um
+  
+    EXT M1SLOT M1SLBK  < 0.16 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+M1SLOT_CT.S  {@ Minimum spacing of M1SLOT to CONTACT is 0.16um
+  
+    EXT M1SLOT CONT  < 0.16 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+M1SLOT_CB.S  {@ Minimum spacing of M1SLOT to CONTACT BAR is 0.16um
+  
+    EXT M1SLOT CONTBAR  < 0.16 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+M1SLOT_V1.S  {@ Minimum spacing of M1SLOT to VI1 is 0.16um
+  
+    EXT M1SLOT VI1  < 0.16 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+M1SLOT_V1B.S  {@ Minimum spacing of M1SLOT to VI1 BAR is 0.16um
+  
+    EXT M1SLOT VI1BAR  < 0.16 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+M1SLOT_IND.S  {@ Minimum spacing of M1SLOT to IND is 0.16um
+  
+    EXT M1SLOT IND  < 0.16 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+M1SLOT_FM.S  {@ Minimum spacing of M1SLOT to FUSEMARK is 0.16um
+  
+    EXT M1SLOT FUSEMARK  < 0.16 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+M1SLOT_PM.S  {@ Minimum spacing of M1SLOT to PADMARK is 0.16um
+  
+    EXT M1SLOT PADMARK  < 0.16 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+M1SLOT_SRM.S  {@ Minimum spacing of M1SLOT to SEALRMARK is 0.16um
+  
+    EXT M1SLOT SEALRMARK  < 0.16 ABUT<90 SINGULAR OVERLAP REGION
+}
+       
+
+
+// ===For ME2  1X  metal  slot===
+
+1XM2SLOT.L_W {@ Exact ME2 SLOT length and width is 0.4um
+ 
+    NOT RECTANGLE M2SLOT == 0.4 BY == 0.4   
+
+}
+
+// 1XMnSLOT.P not  checked
+
+1XM2_1XM2SLOT.EN {@ Minimum ME2 enclosure of ME2 SLOT is 0.4um
+
+   ENC M2SLOT ME2 < 0.4 ABUT<90 SINGULAR OVERLAP OUTSIDE ALSO REGION
+}
+
+1XM2SLOT.S {@ Minimum spacing of ME2 SLOT to ME2 SLOT is 0.4 um
+
+   EXT M2SLOT  < 0.4 ABUT>0<90 SINGULAR REGION
+}
+
+
+1XM2SLOT.R {@ M2SLOT is not allowed to touch,intersect or cover and VI1,VI1 bar,VI2,VI2 bar
+               @ IND,FUSE_MARK,PAD
+ 
+          M2SLOT  INTERACT  VI1
+          M2SLOT  INTERACT  VI1BAR
+          M2SLOT  INTERACT  VI2
+          M2SLOT  INTERACT  VI2BAR
+          M2SLOT  INTERACT  IND
+          M2SLOT  INTERACT  FUSEMARK
+          M2SLOT  INTERACT  PADMARK
+          M2SLOT  INTERACT  SEALRMARK
+}
+
+1XM2SLOT_M2SLBK.S  {@ Minimum spacing of M2SLOT to M2SLBK is 0.2um
+  
+    EXT M2SLOT M2SLBK  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM2SLOT_V2.S  {@ Minimum spacing of M2SLOT to VI2 is 0.2um
+  
+    EXT M2SLOT VI2  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM2SLOT_V2B.S  {@ Minimum spacing of M2SLOT to VI2 BAR is 0.2um
+  
+    EXT M2SLOT VI2BAR  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM2SLOT_V1.S  {@ Minimum spacing of M2SLOT to VI1 is 0.2um
+  
+    EXT M2SLOT VI1  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM2SLOT_V1B.S  {@ Minimum spacing of M2SLOT to VI1 BAR is 0.2um
+  
+    EXT M2SLOT VI1BAR  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM2SLOT_IND.S  {@ Minimum spacing of M2SLOT to IND is 0.2um
+  
+    EXT M2SLOT IND  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM2SLOT_FM.S  {@ Minimum spacing of M2SLOT to FUSEMARK is 0.2um
+  
+    EXT M2SLOT FUSEMARK  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM2SLOT_PM.S  {@ Minimum spacing of M2SLOT to PADMARK is 0.2um
+  
+    EXT M2SLOT PADMARK  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM2SLOT_SRM.S  {@ Minimum spacing of M2SLOT to SEALRMARK is 0.2um
+  
+    EXT M2SLOT SEALRMARK  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+       
+
+
+// ===For ME3  1X  metal  slot===
+
+1XM3SLOT.L_W {@ Exact ME3 SLOT length and width is 0.4um
+ 
+    NOT RECTANGLE M3SLOT == 0.4 BY == 0.4   
+
+}
+
+// 1XMnSLOT.P not  checked
+
+1XM3_1XM3SLOT.EN {@ Minimum ME3 enclosure of ME3 SLOT is 0.4um
+
+   ENC M3SLOT ME3 < 0.4 ABUT<90 SINGULAR OVERLAP OUTSIDE ALSO REGION
+}
+
+1XM3SLOT.S {@ Minimum spacing of ME3 SLOT to ME3 SLOT is 0.4 um
+
+   EXT M3SLOT  < 0.4 ABUT>0<90 SINGULAR REGION
+}
+
+
+1XM3SLOT.R {@ M3SLOT is not allowed to touch,intersect or cover and VI2,VI2 bar,VI3,VI3 bar
+               @ IND,FUSE_MARK,PAD
+ 
+          M3SLOT  INTERACT  VI2
+          M3SLOT  INTERACT  VI2BAR
+          M3SLOT  INTERACT  VI3
+          M3SLOT  INTERACT  VI3BAR
+          M3SLOT  INTERACT  IND
+          M3SLOT  INTERACT  FUSEMARK
+          M3SLOT  INTERACT  PADMARK
+          M3SLOT  INTERACT  SEALRMARK
+}
+
+1XM3SLOT_M3SLBK.S  {@ Minimum spacing of M3SLOT to M3SLBK is 0.2um
+  
+    EXT M3SLOT M3SLBK  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM3SLOT_V3.S  {@ Minimum spacing of M3SLOT to VI3 is 0.2um
+  
+    EXT M3SLOT VI3  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM3SLOT_V3B.S  {@ Minimum spacing of M3SLOT to VI3 BAR is 0.2um
+  
+    EXT M3SLOT VI3BAR  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM3SLOT_V2.S  {@ Minimum spacing of M3SLOT to VI2 is 0.2um
+  
+    EXT M3SLOT VI2  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM3SLOT_V2B.S  {@ Minimum spacing of M3SLOT to VI2 BAR is 0.2um
+  
+    EXT M3SLOT VI2BAR  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM3SLOT_IND.S  {@ Minimum spacing of M3SLOT to IND is 0.2um
+  
+    EXT M3SLOT IND  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM3SLOT_FM.S  {@ Minimum spacing of M3SLOT to FUSEMARK is 0.2um
+  
+    EXT M3SLOT FUSEMARK  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM3SLOT_PM.S  {@ Minimum spacing of M3SLOT to PADMARK is 0.2um
+  
+    EXT M3SLOT PADMARK  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM3SLOT_SRM.S  {@ Minimum spacing of M3SLOT to SEALRMARK is 0.2um
+  
+    EXT M3SLOT SEALRMARK  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+       
+
+
+// ===For ME4  1X  metal  slot===
+
+1XM4SLOT.L_W {@ Exact ME4 SLOT length and width is 0.4um
+ 
+    NOT RECTANGLE M4SLOT == 0.4 BY == 0.4   
+
+}
+
+// 1XMnSLOT.P not  checked
+
+1XM4_1XM4SLOT.EN {@ Minimum ME4 enclosure of ME4 SLOT is 0.4um
+
+   ENC M4SLOT ME4 < 0.4 ABUT<90 SINGULAR OVERLAP OUTSIDE ALSO REGION
+}
+
+1XM4SLOT.S {@ Minimum spacing of ME4 SLOT to ME4 SLOT is 0.4 um
+
+   EXT M4SLOT  < 0.4 ABUT>0<90 SINGULAR REGION
+}
+
+
+1XM4SLOT.R {@ M4SLOT is not allowed to touch,intersect or cover and VI3,VI3 bar,VI4,VI4 bar
+               @ IND,FUSE_MARK,PAD
+ 
+          M4SLOT  INTERACT  VI3
+          M4SLOT  INTERACT  VI3BAR
+          M4SLOT  INTERACT  VI4
+          M4SLOT  INTERACT  VI4BAR
+          M4SLOT  INTERACT  IND
+          M4SLOT  INTERACT  FUSEMARK
+          M4SLOT  INTERACT  PADMARK
+          M4SLOT  INTERACT  SEALRMARK
+}
+
+1XM4SLOT_M4SLBK.S  {@ Minimum spacing of M4SLOT to M4SLBK is 0.2um
+  
+    EXT M4SLOT M4SLBK  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM4SLOT_V4.S  {@ Minimum spacing of M4SLOT to VI4 is 0.2um
+  
+    EXT M4SLOT VI4  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM4SLOT_V4B.S  {@ Minimum spacing of M4SLOT to VI4 BAR is 0.2um
+  
+    EXT M4SLOT VI4BAR  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM4SLOT_V3.S  {@ Minimum spacing of M4SLOT to VI3 is 0.2um
+  
+    EXT M4SLOT VI3  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM4SLOT_V3B.S  {@ Minimum spacing of M4SLOT to VI3 BAR is 0.2um
+  
+    EXT M4SLOT VI3BAR  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM4SLOT_IND.S  {@ Minimum spacing of M4SLOT to IND is 0.2um
+  
+    EXT M4SLOT IND  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM4SLOT_FM.S  {@ Minimum spacing of M4SLOT to FUSEMARK is 0.2um
+  
+    EXT M4SLOT FUSEMARK  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM4SLOT_PM.S  {@ Minimum spacing of M4SLOT to PADMARK is 0.2um
+  
+    EXT M4SLOT PADMARK  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM4SLOT_SRM.S  {@ Minimum spacing of M4SLOT to SEALRMARK is 0.2um
+  
+    EXT M4SLOT SEALRMARK  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+       
+
+
+// ===For ME5  1X  metal  slot===
+
+1XM5SLOT.L_W {@ Exact ME5 SLOT length and width is 0.4um
+ 
+    NOT RECTANGLE M5SLOT == 0.4 BY == 0.4   
+
+}
+
+// 1XMnSLOT.P not  checked
+
+1XM5_1XM5SLOT.EN {@ Minimum ME5 enclosure of ME5 SLOT is 0.4um
+
+   ENC M5SLOT ME5 < 0.4 ABUT<90 SINGULAR OVERLAP OUTSIDE ALSO REGION
+}
+
+1XM5SLOT.S {@ Minimum spacing of ME5 SLOT to ME5 SLOT is 0.4 um
+
+   EXT M5SLOT  < 0.4 ABUT>0<90 SINGULAR REGION
+}
+
+
+1XM5SLOT.R {@ M5SLOT is not allowed to touch,intersect or cover and VI4,VI4 bar,VI5,VI5 bar
+               @ IND,FUSE_MARK,PAD
+ 
+          M5SLOT  INTERACT  VI4
+          M5SLOT  INTERACT  VI4BAR
+          M5SLOT  INTERACT  VI5
+          M5SLOT  INTERACT  VI5BAR
+          M5SLOT  INTERACT  IND
+          M5SLOT  INTERACT  FUSEMARK
+          M5SLOT  INTERACT  PADMARK
+          M5SLOT  INTERACT  SEALRMARK
+}
+
+1XM5SLOT_M5SLBK.S  {@ Minimum spacing of M5SLOT to M5SLBK is 0.2um
+  
+    EXT M5SLOT M5SLBK  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM5SLOT_V5.S  {@ Minimum spacing of M5SLOT to VI5 is 0.2um
+  
+    EXT M5SLOT VI5  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM5SLOT_V5B.S  {@ Minimum spacing of M5SLOT to VI5 BAR is 0.2um
+  
+    EXT M5SLOT VI5BAR  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM5SLOT_V4.S  {@ Minimum spacing of M5SLOT to VI4 is 0.2um
+  
+    EXT M5SLOT VI4  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM5SLOT_V4B.S  {@ Minimum spacing of M5SLOT to VI4 BAR is 0.2um
+  
+    EXT M5SLOT VI4BAR  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM5SLOT_IND.S  {@ Minimum spacing of M5SLOT to IND is 0.2um
+  
+    EXT M5SLOT IND  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM5SLOT_FM.S  {@ Minimum spacing of M5SLOT to FUSEMARK is 0.2um
+  
+    EXT M5SLOT FUSEMARK  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM5SLOT_PM.S  {@ Minimum spacing of M5SLOT to PADMARK is 0.2um
+  
+    EXT M5SLOT PADMARK  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+1XM5SLOT_SRM.S  {@ Minimum spacing of M5SLOT to SEALRMARK is 0.2um
+  
+    EXT M5SLOT SEALRMARK  < 0.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+       
+
+
+// ===For ME6  2X  metal  slot===
+
+
+2XM6SLOT.L_W {@ Exact ME6 SLOT length and width is 0.8um
+ 
+    NOT RECTANGLE M6SLOT == 0.8 BY == 0.8   
+
+}
+
+
+// 2XMnSLOT.P not  checked
+
+2XM6_2XM6SLOT.EN {@ Minimum ME6 enclosure of ME6 SLOT is 0.8um
+
+   ENC M6SLOT ME6 < 0.8 ABUT<90 SINGULAR OVERLAP OUTSIDE ALSO REGION
+}
+
+2XM6SLOT.S {@ Minimum spacing of ME6 SLOT to ME6 SLOT is 0.8 um
+
+   EXT M6SLOT  < 0.8 ABUT>0<90 SINGULAR REGION
+}
+
+2XM6SLOT.R {@ M6SLOT is not allowed to touch,intersect or cover VI5,VI5 bar,VI6,VI6 bar
+               @ IND,FUSE_MARK,PAD
+
+          M6SLOT  INTERACT  VI5
+          M6SLOT  INTERACT  VI5BAR
+
+          
+          M6SLOT  INTERACT  VI6
+          M6SLOT  INTERACT  VI6BAR       
+
+          
+          M6SLOT  INTERACT  IND
+          M6SLOT  INTERACT  FUSEMARK
+          M6SLOT  INTERACT  PADMARK
+          M6SLOT  INTERACT  SEALRMARK
+}
+
+2XM6SLOT_M6SLBK.S  {@ Minimum spacing of M6SLOT to M6SLBK is 0.4um
+  
+    EXT M6SLOT M6SLBK  < 0.4 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+
+2XM6SLOT_V6.S  {@ Minimum spacing of M6SLOT to VI6 is 0.4um
+  
+    EXT M6SLOT VI6  < 0.4 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+2XM6SLOT_V6B.S  {@ Minimum spacing of M6SLOT to VI6 BAR is 0.4um
+  
+    EXT M6SLOT VI6BAR  < 0.4 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+
+2XM6SLOT_V5.S  {@ Minimum spacing of M6SLOT to VI5 is 0.4um
+  
+    EXT M6SLOT VI5  < 0.4 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+2XM6SLOT_V5B.S  {@ Minimum spacing of M6SLOT to VI5 BAR is 0.4um
+  
+    EXT M6SLOT VI5BAR  < 0.4 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+2XM6SLOT_IND.S  {@ Minimum spacing of M6SLOT to IND is 0.4um
+  
+    EXT M6SLOT IND  < 0.4 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+2XM6SLOT_FM.S  {@ Minimum spacing of M6SLOT to FUSEMARK is 0.4um
+  
+    EXT M6SLOT FUSEMARK  < 0.4 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+2XM6SLOT_PM.S  {@ Minimum spacing of M6SLOT to PADMARK is 0.4um
+  
+    EXT M6SLOT PADMARK  < 0.4 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+2XM6SLOT_SRM.S  {@ Minimum spacing of M6SLOT to SEALRMARK is 0.4um
+  
+    EXT M6SLOT SEALRMARK  < 0.4 ABUT<90 SINGULAR OVERLAP REGION
+}    
+
+
+// ===For ME7  2X  metal  slot===
+
+
+2XM7SLOT.L_W {@ Exact ME7 SLOT length and width is 0.8um
+ 
+    NOT RECTANGLE M7SLOT == 0.8 BY == 0.8   
+
+}
+
+
+// 2XMnSLOT.P not  checked
+
+2XM7_2XM7SLOT.EN {@ Minimum ME7 enclosure of ME7 SLOT is 0.8um
+
+   ENC M7SLOT ME7 < 0.8 ABUT<90 SINGULAR OVERLAP OUTSIDE ALSO REGION
+}
+
+2XM7SLOT.S {@ Minimum spacing of ME7 SLOT to ME7 SLOT is 0.8 um
+
+   EXT M7SLOT  < 0.8 ABUT>0<90 SINGULAR REGION
+}
+
+2XM7SLOT.R {@ M7SLOT is not allowed to touch,intersect or cover VI6,VI6 bar,VI7,VI7 bar
+               @ IND,FUSE_MARK,PAD
+
+          M7SLOT  INTERACT  VI6
+          M7SLOT  INTERACT  VI6BAR
+
+          
+          M7SLOT  INTERACT  VI7
+          M7SLOT  INTERACT  VI7BAR       
+
+          
+          M7SLOT  INTERACT  IND
+          M7SLOT  INTERACT  FUSEMARK
+          M7SLOT  INTERACT  PADMARK
+          M7SLOT  INTERACT  SEALRMARK
+}
+
+2XM7SLOT_M7SLBK.S  {@ Minimum spacing of M7SLOT to M7SLBK is 0.4um
+  
+    EXT M7SLOT M7SLBK  < 0.4 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+
+2XM7SLOT_V7.S  {@ Minimum spacing of M7SLOT to VI7 is 0.4um
+  
+    EXT M7SLOT VI7  < 0.4 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+2XM7SLOT_V7B.S  {@ Minimum spacing of M7SLOT to VI7 BAR is 0.4um
+  
+    EXT M7SLOT VI7BAR  < 0.4 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+
+2XM7SLOT_V6.S  {@ Minimum spacing of M7SLOT to VI6 is 0.4um
+  
+    EXT M7SLOT VI6  < 0.4 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+2XM7SLOT_V6B.S  {@ Minimum spacing of M7SLOT to VI6 BAR is 0.4um
+  
+    EXT M7SLOT VI6BAR  < 0.4 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+2XM7SLOT_IND.S  {@ Minimum spacing of M7SLOT to IND is 0.4um
+  
+    EXT M7SLOT IND  < 0.4 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+2XM7SLOT_FM.S  {@ Minimum spacing of M7SLOT to FUSEMARK is 0.4um
+  
+    EXT M7SLOT FUSEMARK  < 0.4 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+2XM7SLOT_PM.S  {@ Minimum spacing of M7SLOT to PADMARK is 0.4um
+  
+    EXT M7SLOT PADMARK  < 0.4 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+2XM7SLOT_SRM.S  {@ Minimum spacing of M7SLOT to SEALRMARK is 0.4um
+  
+    EXT M7SLOT SEALRMARK  < 0.4 ABUT<90 SINGULAR OVERLAP REGION
+}    
+
+
+// ===For ME8  32.5KA  metal  slot===
+
+
+32.5KAM8SLOT.L_W {@ Exact ME8 SLOT length and width is 3.0um
+ 
+    E = NOT  RECTANGLE M8SLOT == 3.0 BY == 3.0   
+    E   NOT  BOACMK
+}
+
+
+// 32.5KAMnSLOT.P not  checked
+
+32.5KAM8_4XM8SLOT.EN {@ Minimum ME8 enclosure of ME8 SLOT is 2.4um
+
+   ENC M8SLOT ME8 < 2.4 ABUT<90 SINGULAR OVERLAP OUTSIDE ALSO REGION
+}
+
+32.5KAM8SLOT.S {@ Minimum spacing of ME8 SLOT to ME8 SLOT is 3.0um
+
+   EXT M8SLOT  < 3.0 ABUT>0<90 SINGULAR REGION
+}
+
+32.5KAM8SLOT.R1 {@ M8SLOT is not allowed to touch,intersect or cover VI7,VI7 bar,VI8,VI8 bar
+                    @ IND,FUSE_MARK,PAD
+
+          M8SLOT  INTERACT  VI7
+          M8SLOT  INTERACT  VI7BAR
+          
+          M8SLOT  INTERACT  IND
+          M8SLOT  INTERACT  FUSEMARK
+          M8SLOT  INTERACT  PADMARK
+          M8SLOT  INTERACT  SEALRMARK
+}
+
+32.5KAM8SLOT.R2 {@ M8SLOT is not allowed to touch,intersect or cover TMV_RDL
+    
+       M8SLOT  INTERACT  TMV_RDL
+       M8SLOT  INTERACT  TMVBAR
+}
+
+32.5KAM8SLOT_M8SLBK.S  {@ Minimum spacing of M8SLOT to M8SLBK is 1.2um
+  
+    EXT M8SLOT M8SLBK  < 1.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+
+32.5KAM8SLOT_V7.S  {@ Minimum spacing of M8SLOT to VI7 is 1.2um
+  
+    EXT M8SLOT VI7  < 1.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+32.5KAM8SLOT_V7B.S  {@ Minimum spacing of M8SLOT to VI7 BAR is 1.2um
+  
+    EXT M8SLOT VI7BAR  < 1.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+  
+32.5KAM8SLOT_IND.S  {@ Minimum spacing of M8SLOT to IND is 1.2um
+  
+    EXT M8SLOT IND  < 1.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+32.5KAM8SLOT_FM.S  {@ Minimum spacing of M8SLOT to FUSEMARK is 1.2um
+  
+    EXT M8SLOT FUSEMARK  < 1.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+32.5KAM8SLOT_PM.S  {@ Minimum spacing of M8SLOT to PADMARK is 1.2um
+  
+    EXT M8SLOT PADMARK  < 1.2 ABUT<90 SINGULAR OVERLAP REGION
+}
+
+32.5KAM8SLOT_SRM.S  {@ Minimum spacing of M8SLOT to SEALRMARK is 1.2um
+  
+    EXT M8SLOT SEALRMARK  < 1.2 ABUT<90 SINGULAR OVERLAP REGION
+}    
+
+
+32.5KAM8SLOT.L1.S {@ Minimum spacing of M8SLOT to TMV_RDL(only for last Metal) is 1.2um
+ 
+   EXT M8SLOT TMV_RDL  < 1.2 ABUT<90 SINGULAR OVERLAP REGION  
+   
+}
+
+
+// END OF FILE
+ 

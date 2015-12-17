@@ -1,0 +1,82 @@
+procedure( invCB(param)
+let((cell tfId grid minMosWidth poly minLength minHeight)
+
+cell = cdfgData->id~>master || cdfgData->id
+tfId = techGetTechFile(cell)
+grid = techGetMfgGridResolution(tfId) * 1e-6
+
+caseq( param
+  ( pw
+    pdiff = techGetParam(tfId "pdiff")
+    minMosWidth = techGetParam(tfId "minMosWidth") * 1e-6
+    heights = spcHeight(tfId grid) 
+    maxPHeight = nth(1 heights) * 1e-6
+    spcInputDim('pw grid minMosWidth maxPHeight)
+  )
+  ( pl
+    poly = techGetParam(tfId "poly")
+    minLength = techGetSpacingRule(tfId "minWidth" poly)*1e-6
+    spcInputDim('pl grid minLength)
+  )
+  ( nw
+    ndiff = techGetParam(tfId "ndiff")
+    minMosWidth = techGetParam(tfId "minMosWidth") * 1e-6
+    heights = spcHeight(tfId grid) 
+    maxNHeight = nth(2 heights) * 1e-6
+    spcInputDim('nw grid minMosWidth maxNHeight)
+  )
+  ( nl
+    poly = techGetParam(tfId "poly")
+    minLength = techGetSpacingRule(tfId "minWidth" poly)*1e-6
+    spcInputDim('pl grid minLength)
+  )
+  ( supw
+    metal1 = techGetParam(tfId "metal1")
+    minLength = techGetSpacingRule(tfId "minWidth" metal1)*1e-6
+    spcInputDim('supw grid minLength)
+  )
+  ( h 
+    heights = spcHeight(tfId grid) 
+    minHeight = nth(0 heights) * 1e-6
+    spcInputDim('h grid minHeight)
+  )
+  ( hGrid
+    spcInputDim('hGrid grid grid)
+  )
+  ( nf
+    spcInputInt('nf 1)
+  )
+  ( pf
+    spcInputInt('pf 1)
+  )
+)
+))
+
+procedure(spcHeight(tfId grid)
+let((supw metal1 contact m1s cw pps pw nw pdoc ndoc poc m1oc minHeight 
+	pext maxPHeight maxNHeight pdiff ndiff)
+    supw = spcInputDim('supw grid) * 1e6  
+    metal1 = techGetParam(tfId "metal1")
+    contact = techGetParam(tfId "cont")
+    poly = techGetParam(tfId "poly")
+    m1s = techGetSpacingRule(tfId "minSpacing" metal1)
+    cw = techGetSpacingRule(tfId "minWidth" contact)
+    pps = techGetSpacingRule(tfId "minSpacing" poly)
+    pext = techGetSpacingRule(tfId "minExtension" poly)
+    pw = spcInputDim('pw grid) * 1e6
+    nw = spcInputDim('nw grid) * 1e6
+    pdiff = techGetParam(tfId "pdiff")
+    ndiff = techGetParam(tfId "ndiff")
+    pdoc = techGetOrderedSpacingRule(tfId "minEnclosure" pdiff contact)
+    ndoc = techGetOrderedSpacingRule(tfId "minEnclosure" ndiff contact)
+    m1oc = techGetOrderedSpacingRule(tfId "minEnclosure" metal1 contact)
+    poc = techGetOrderedSpacingRule(tfId "minEnclosure" poly contact)
+    contw = 2 * poc + cw
+    minHeight = 2 * supw + 2 * m1s + 2 * pps + nw + pw + 2 * pps
+		- 2 * (pdoc - m1oc) - 2 * (ndoc - m1oc) + contw + 2 * pext
+    minHeight = minHeight * 1e-6
+    h = spcInputDim('h grid minHeight) * 1e6 
+    maxPHeight = h/2 - (supw + m1s - (pdoc - m1oc) + pps + pext + contw/2)
+    maxNHeight = h/2 - (supw + m1s - (ndoc - m1oc) + pps + pext + contw/2)
+    heights = list(minHeight maxPHeight maxNHeight)
+))

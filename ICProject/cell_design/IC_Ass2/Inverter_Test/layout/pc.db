@@ -1,0 +1,10 @@
+#
+umc90nm P_10_SP layout
+|PM0
+#
+umc90nm N_10_SP layout
+|NM0
+#ISCELL
+umc90nm m1_T symbolic
+I2
+I1

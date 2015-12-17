@@ -1,0 +1,211 @@
+Document name : G-DF-LOGIC_MIXED_MODE90N-1P9M-Calibre-drc
+DRC Version   : 1.4 P1
+Tester        : Silvio
+Date          : 09/15/2007
+
+*** QA pattern ***
+
+GDS file name : 
+              : 
+GDS file name : G_QA_LOGIC_MIXED_MODE90N_1P9M_V1.1_P1_A1_060417.gds           
+Layout primary cell : pass
+Result : OK 
+
+GDS file name : G_QA_LOGIC_MIXED_MODE90N_1P9M_V1.1_P1_A1_060417.gds             
+Layout primary cell : fail
+Result : OK
+
+
+GDS file name : G_QA_0.25um_and_Beyond_LOGO_V2.1_P1_B1_060609.gds
+Layout primary cell : pass
+Result : OK
+
+GDS file name : G_QA_0.25um_and_Beyond_LOGO_V2.1_P1_B1_060609.gds
+Layout primary cell : fail
+Result : OK
+
+GDS file name : G_QA_LO_MMRF90nm_1P9M_ANTENNA_V05_P1_B1_050609.gds
+Layout primary cell : fail
+Result : OK
+
+GDS file name : G_QA_LO_MMRF90nm_1P9M_ANTENNA_V05_P1_B1_050609.gds
+Layout primary cell : pass
+Result : OK
+
+GDS file name : L90N_1P9M2T1F_DSR_060724.gds
+Layout primary cell : L90N_1P9M2T1F_DSR_060724
+Result : OK
+
+GDS file name : New_rules.gds
+Layout primary cell : new
+Result : OK
+
+GDS file name : G_QA_SBLK_C1_070912.gds
+Layout primary cell : pass
+Result : OK 
+
+GDS file name : G_QA_SBLK_C1_070912.gds
+Layout primary cell : fail
+Result : OK 
+
+
+*** LIBRARY ***
+
+Artisan 
+
+Library   : ARN_sc-rvt-sage-x3
+Version   : 06q2v1_20060701
+File name : umc090.gds2
+Result    : OK
+
+Library   : ARN_sc-sage-x3-hvt
+Version   : 06q2v1_20060701
+File name : umc_l90sp_hvt.gds2
+Result    : OK
+
+Library   : ARN_sc-sage-x3-rvt
+Version   : 06q2v1_20060701
+File name : umc_l90sp.gds2
+Result    : OK
+
+Faraday
+
+Library   : SPRVT  FTC_060711_SC_2006Q3V1.4
+Version   : 2006Q3v1.4
+File name : FSD0A_A_GENERIC_CORE
+Result    : OK
+
+Library   : SPLVT FTC_050831_SC_2005Q3V1.0
+Version   : 2005Q3V1.0
+File name : FSD0T_A_SC.9m126.gds
+Result    : OK
+
+
+Library   : SPHVT  FTC_060711_SC_2006Q3v1.2
+Version   : 2006Q3v1.2
+File name : FSD0C_A_GENERIC_CORE.all.gds
+Result    : OK
+
+Library   : LLRVT  FTC_060609_SC_2006Q2v1.1
+Version   : 2006Q2v1.1
+File name : FSD0K_A_GENERIC_CORE.all.gds
+Result    : OK
+
+
+Library   : LLHVT  FTC_060407_CORE_2006Q1v1.0
+Version   : 2006Q1v1.0
+File name : FSD0J_A_GENERIC_CORE.all.gds
+Result    : OK
+
+
+*** SRAM ***
+
+Bit   cell : L90N LLHVT 208 8T SRAM(DP_11)
+File  name : l90_llhvt_208_8tsram_miniarray_wi_tw_051102.gds
+Topcell    : l90_llhvt_208_8tsram_miniarray_wi_tw
+Result     : OK
+
+
+Bit   cell : L90N LLHVT 208 8T SRAM(DP_11)
+File  name : l90_llhvt_208_8tsram_miniarray_wo_tw_051103.gds
+Topcell    : L90G_208_8tsram_miniarray_wo_tw
+Result     : OK
+
+
+Bit   cell : L90N SPHVT 099N 6T SRAM(SP_11)
+File  name : l90sphvt_099N_6tsram_miniarray_m2b_vb01.gds
+Topcell    : l90sphvt_099N_6tsram_miniarray
+Result     : 4.2.1.1C(marker layer issue)
+
+
+Bit   cell : L90N SPHVT 099N 6T SRAM(SP_11) 
+File  name : l90sphvt_099N_6tsram_miniarray_vb01_060510.gds
+Topcell    : l90sphvt_099N_6tsram_miniarray
+Result     : OK
+
+
+Bit   cell : L90N LLHVT 099 6T SRAM(SP_12)
+File  name : l90llhvt_099_6tsram_miniarray_m2b_060414.gds
+Topcell    : l90_lh099_6tsram_miniarray
+Result     : OK
+
+
+Bit   cell : L90N LLHVT 099 6T SRAM(SP_12)
+File  name : l90llhvt_099_6tsram_miniarray_m3b_060414.gds
+Topcell    : l90_llhvt_099_6tsram_miniarray
+Result     : OK
+
+
+Bit   cell : L90N LLHVT 116 6T SRAM(SP_6)
+File  name : l90llhvt_116_6tsram_miniarray_m2b_vb01.gds
+Topcell    : l90llhvt_116_6tsram_miniarray_m2b
+Result     : OK
+
+
+Bit   cell : L90N LLHVT 116 6T SRAM(SP_6)
+File  name : l90llhvt_116_6tsram_miniarray_vb01.gds
+Topcell    : l90llhvt_116_6tsram_miniarray
+Result     : OK
+
+
+Bit   cell : L90N SPHVT 208 8T SRAM(DP_10)
+File  name : l90sphvt_208_8tsram_miniarray_wi_tw_vACB.gds
+Topcell    : l90sphvt_208_8tsram_miniarray_wi_tw
+Result     : OK
+
+
+Bit   cell : L90 SH116 6TSRAM(SP_5)
+File  name : L90_SH116_6tsram_miniarray_m2b_050630.gds
+Topcell    : l90_sh116_6tsram_miniarray_m2b
+Result     : OK
+
+
+Bit   cell : L90N 099 6TSRAM(SP_7)
+File  name : l90sphvt_099_6tsram_miniarray_050523.gds
+Topcell    : l90sphvt_099_6tsram_miniarray
+Result     : OK
+
+
+Bit   cell : L90N SH 1994 8TSRAM(DP_13)
+File  name : L90_SH1994_8tsram_miniarray_wi_tw_060125.gds
+Topcell    : L90_SH1994_8tsram_miniarray_wi_tw_060125
+Result     : OK 
+
+
+Bit   cell : L90N SH 1994 8TSRAM(DP_13)
+File  name : L90_SH1994_8tsram_miniarray_wo_tw_060124.gds
+Topcell    : L90_SH1994_8tsram_miniarray_wo_tw_060124
+Result     : OK
+
+Bit   cell : L90 LH 1994 8TSRAM(DP_14)
+File  name : L90_LH1994_8tsram_miniarray_wi_tw_060223.gds
+Topcell    : L90_LH1994_8tsram_miniarray_wi_tw_060223
+Result     : OK
+
+
+Bit   cell : L90 LH 1994 8TSRAM(DP_14)
+File  name : L90_LH1994_8tsram_miniarray_wo_tw_060223.gds
+Topcell    : L90_LH1994_8tsram_miniarray_wo_tw_060223
+Result     : OK
+
+*** FDK ***
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            

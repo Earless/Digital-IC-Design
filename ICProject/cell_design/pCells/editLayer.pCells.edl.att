@@ -1,0 +1,28 @@
+;
+; Library Name: pCells
+; Attached File Name: editLayer.pCells
+; Format: list(layer_name layer_purpose) edit
+
+if( !(libId = dmFindLib("pCells")) return(nil))
+leSetLayerPanel(libId list("align" "drawing") nil)
+leSetLayerPanel(libId list("intext" "drawing") t)
+leSetLayerPanel(libId list("cellBoundary" "boundary") nil)
+leSetLayerPanel(libId list("cellBoundary" "drawing") t)
+leSetLayerPanel(libId list("pwell" "drawing") t)
+leSetLayerPanel(libId list("pimplant" "drawing") t)
+leSetLayerPanel(libId list("diff" "drawing") t)
+leSetLayerPanel(libId list("poly1" "drawing") t)
+leSetLayerPanel(libId list("cont" "drawing") t)
+leSetLayerPanel(libId list("metal1" "drawing") t)
+leSetLayerPanel(libId list("via" "drawing") t)
+leSetLayerPanel(libId list("metal2" "drawing") t)
+leSetLayerPanel(libId list("vapox" "drawing") t)
+leSetLayerPanel(libId list("ndiff" "drawing") t)
+leSetLayerPanel(libId list("pdiff" "drawing") t)
+leSetLayerPanel(libId list("nwell" "drawing") t)
+leSetLayerPanel(libId list("poly2" "drawing") t)
+leSetLayerPanel(libId list("nimplant" "drawing") t)
+leSetLayerPanel(libId list("buried" "drawing") t)
+leSetLayerPanel(libId list("isolation" "drawing") t)
+leSetLayerPanel(libId list("padtext" "drawing") t)
+leSetLayerPanel(libId list("pad" "drawing") t)

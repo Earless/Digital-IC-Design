@@ -1,0 +1,6 @@
+ddserv showWhatsNew string "4.4"
+layout  displayPinNames boolean t
+layout updatePCellIncrement float 1.0
+graphic stretchHandlesLayer string "y0 drawing"
+ui      showOptionForms boolean t
+layoutXL        constraintAssistedMode  boolean nil

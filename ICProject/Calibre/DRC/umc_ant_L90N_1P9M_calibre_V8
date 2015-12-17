@@ -1,0 +1,2169 @@
+//////////////////////////////////////////////////////////////////////
+//                                                                  
+//     Title   : Calibre DRC of 90nm 1P9M LOGIC/Mixedmode Process   
+//               antenna rule checking                           
+//     DRC Version: V8 
+//     Parent Doc :  G-03-LOGIC/MIXEDMODE90N-1P9M-TLR  Ver: 1.4 P1                                
+//                                                                 
+//     Copyright (c) United Microelectronics Corporation, 1980-2006
+//     All Rights Reserved
+//
+//     This source file is proprietary information of United
+//     Microelectronics Corporation.  It may not be distributed,
+//     in whole or in any part without prior written permission.                                                                             
+//     LIMITATION OF LIABILITY:                                                  
+//        United Microelectronics Corp. is not  liable  for  any               
+//        property damage, personal  injury,  loss  of  profits,                  
+//        interruption of business,  or  for  any other special,                  
+//        consequential or incidental  damages, however  caused,                  
+//        whether for breach of warranty,contract tort(including                 
+//        negligence),strict liability or otherwise.                             
+//							
+//     This runset is validated with Calibre 2006.2-23.21 
+//								 
+/////////////////////////////////////////////////////////////////////////////////////
+// revision    date      who              changes                                    
+//=========== ======  ======== ===================================================== 
+// 03/28/2005  V1     Momo      new create(According to umc_ant_L90G_1P8M)   
+// 05/25/2005  V2     Silvio    update ANT.8.1,ANT.8.1 default is not checked
+// 08/25/2005  V3     silvio    update ANT.1A.poly ANT.2A.POCT
+// 09/29/2005  V4     Silvio    update VIA antenna checking rules  
+//                              CONNECT MEX MEX+1 BY VIX after VIX antenna checking
+//                              add NET AREA PRINT function 
+// 11/03/2005  V5     Silvio    upadte  ANT.1A.poly ANT.2A.POCT  connect
+// 03/23/2006  V6     Silvio    Diode definition 
+//                              N_POCT_SS 2 -> 5 
+// 08/13/2006  V7     Silvio    add ANT.2A.POCT_MG_SP6_1 ANT.2A.POCT_MG_SP6_2
+// 01/30/2007  V8     Silvio    update CONNECT DIODE_MEX DIODE
+////////////////////////////////////////////////////////////////////////////////////
+/// ===============================================================================
+//
+// Antenna Ratio Look Up Table 
+//------------------------------------------------------------------------------
+// DIO_AREA		0.32*0.32um^2
+//-------------------------------------------------------------------------------
+// *For thoes technology not listed in the look up table, please refer to the 
+//  INTERCAP SPEC.
+//
+// ----------------------------------------------------------------
+// Please set following VARIABLEs according to your design technology
+// ----------------------------------------------------------------
+//
+
+VARIABLE DIO_AREA       0.1      // Minimum DIODE AREA
+
+VARIABLE N_PO_SS	100	 // Diode not used, area ratio of PO1
+VARIABLE N_POCT_SS	5	 // Diode not used, area ratio of CONT
+VARIABLE N_VIA_SS	20	 // Diode not used, area ratio of VIA
+VARIABLE N_MET_SS	500	 // Diode not used, area ratio of METAL
+
+LAYOUT PATH "/ds/silvio/UMK90LVDSP135MTX_B_V04_A.gds"
+LAYOUT PRIMARY "UMK90LVDSP135MTX_B_A"
+LAYOUT SYSTEM GDSII
+	
+DRC SUMMARY REPORT "UMK90LVDSP135MTX_B_A.sum"
+DRC RESULTS DATABASE "UMK90LVDSP135MTX_B_A.db" ASCII
+DRC MAXIMUM VERTEX 199 
+DRC KEEP EMPTY       NO
+DRC MAXIMUM RESULTS  ALL
+
+
+PRECISION 1000
+UNIT LENGTH U
+RESOLUTION  5
+
+//////////////////////////////////////////////
+// INPUT LAYER STATEMENTS
+//////////////////////////////////////////////
+
+// INPUT LAYERS refer to 90nm_layers_v3.8.cal
+
+INCLUDE ./90nm_layers_v3.8.cal
+
+
+//  PWELL IS NWEL REVERSE TONE
+
+GATE    = PO1  AND DIFF
+TG_GATE = GATE AND TG
+MG_GATE = GATE AND MG
+SP_GATE = GATE NOT (TG OR MG)
+
+PDIF = DIFF AND PPLUS
+NDIF = DIFF AND NPLUS
+
+PSD  = PDIF NOT GATE         	
+NSD  = NDIF NOT GATE        	
+
+DIODE = NSD OR PSD 
+
+POCT = PO1 AND CONT
+
+DRC INCREMENTAL CONNECT YES
+
+
+// Connectivity statements //
+
+CONNECT PO1 TG_GATE
+CONNECT PO1 MG_GATE
+CONNECT PO1 SP_GATE
+CONNECT PO1 POCT
+
+//
+
+
+//
+//============================================
+//=== 8.3 Antenna rule and recommendation  ===
+//============================================
+//
+
+
+// PO1 and contact antenna checking before connect ME1
+
+// 1. Poly Antenna check 
+
+
+ANT.1A.poly_SP { @ Ratio of the total of the poly area to the gate area < ^N_PO_SS, Without DIODE
+	PO1_SP = NET AREA RATIO  PO1  SP_GATE > N_PO_SS
+	X = STAMP PO1_SP  BY  PO1
+	E = NET AREA RATIO SP_GATE  X  > 0  
+	COPY E
+	
+
+        Y = NET AREA RATIO  PO1  E > N_PO_SS  ACCUMULATE
+	NET AREA RATIO PRINT Y  ANT.1A.poly_SP.sum
+}
+
+ANT.1A.poly_TG { @ Ratio of the total of the poly area to the TG gate area < ^N_PO_SS, Without DIODE
+	PO1_TG = NET AREA RATIO  PO1  TG_GATE > N_PO_SS
+	X = STAMP PO1_TG  BY  PO1
+	E = NET AREA RATIO TG_GATE  X  > 0  
+	COPY E
+	
+
+        Y = NET AREA RATIO  PO1  E > N_PO_SS  ACCUMULATE
+	NET AREA RATIO PRINT Y  ANT.1A.poly_TG.sum
+}
+
+ANT.1A.poly_MG { @ Ratio of the total of the poly area to the MG gate area < ^N_PO_SS, Without DIODE
+	PO1_MG = NET AREA RATIO  PO1  MG_GATE > N_PO_SS
+	X = STAMP PO1_MG  BY  PO1
+	E = NET AREA RATIO MG_GATE  X  > 0  
+	COPY E
+
+        Y = NET AREA RATIO  PO1  E > N_PO_SS  ACCUMULATE
+	NET AREA RATIO PRINT Y  ANT.1A.poly_MG.sum
+}
+
+
+// 2. Cont Antenna check 
+
+
+
+ANT.2A.POCT_SP { @ Ratio of the poly cont area to the gate area < ^N_POCT_SS, WITH NO DIODE
+      CT_SP = NET AREA RATIO POCT  SP_GATE > N_POCT_SS
+      X = STAMP CT_SP  BY  PO1
+      Y = NET AREA RATIO X        SP_GATE > 0
+      E = NET AREA RATIO SP_GATE  Y       > 0
+      COPY  E
+     
+     
+     
+      Z = NET AREA RATIO  POCT  E   > N_POCT_SS  ACCUMULATE             
+      NET AREA RATIO PRINT Z  ANT.2A.POCT_SP.sum     
+}
+
+ANT.2A.POCT_TG { @ Ratio of the poly cont area to the TG gate area < ^N_POCT_SS, WITH NO DIODE
+      CT_TG = NET AREA RATIO POCT  TG_GATE > N_POCT_SS
+      X = STAMP CT_TG  BY  PO1
+      Y = NET AREA RATIO X        TG_GATE > 0
+      E = NET AREA RATIO TG_GATE  Y       > 0
+      COPY  E
+     
+     
+     
+      Z = NET AREA RATIO  POCT  E   > N_POCT_SS  ACCUMULATE             
+      NET AREA RATIO PRINT Z  ANT.2A.POCT_TG.sum 
+}
+
+ANT.2A.POCT_MG { @ Ratio of the poly cont area to the MG gate area < ^N_POCT_SS, WITH NO DIODE
+      CT_MG = NET AREA RATIO POCT  MG_GATE > N_POCT_SS
+      X = STAMP CT_MG  BY  PO1
+      Y = NET AREA RATIO X        MG_GATE > 0
+      E = NET AREA RATIO MG_GATE  Y       > 0
+      Z = E  NOT  SP_6
+      COPY  Z
+        
+     
+      W = NET AREA RATIO  POCT  Z   > N_POCT_SS  ACCUMULATE             
+      NET AREA RATIO PRINT W  ANT.2A.POCT_MG.sum 
+}
+
+ANT.2A.POCT_MG_SP6_1 { @ Ratio of the poly cont area to the MG gate area < 5.5, WITH NO DIODE
+                       @ When the gate area is 0.0024um2
+      
+      GATE048 = AREA (MG_GATE AND SP_6) == 0.0024                 
+      
+      CT_MG = NET AREA RATIO POCT  MG_GATE > 5.5
+      X = STAMP CT_MG  BY  PO1
+      Y = NET AREA RATIO X        MG_GATE > 0
+      E = NET AREA RATIO MG_GATE  Y       > 0
+      Z = (E  AND  SP_6) INTERACT GATE048
+      COPY  Z
+        
+     
+      W = NET AREA RATIO  POCT  Z   > N_POCT_SS  ACCUMULATE             
+      NET AREA RATIO PRINT W  ANT.2A.POCT_MG_SP6_1.sum 
+}
+
+ANT.2A.POCT_MG_SP6_2 { @ Ratio of the poly cont area to the MG gate area < ^N_POCT_SS, WITH NO DIODE
+                       @ When the gate area is 0.0024um2
+      
+      GATE048 = AREA (MG_GATE AND SP_6) == 0.0024                 
+      
+      CT_MG = NET AREA RATIO POCT  MG_GATE > N_POCT_SS
+      X = STAMP CT_MG  BY  PO1
+      Y = NET AREA RATIO X        MG_GATE > 0
+      E = NET AREA RATIO MG_GATE  Y       > 0
+      Z = (E  AND  SP_6) NOT INTERACT GATE048
+      COPY  Z
+        
+     
+      W = NET AREA RATIO  POCT  Z   > N_POCT_SS  ACCUMULATE             
+      NET AREA RATIO PRINT W  ANT.2A.POCT_MG_SP6_2.sum 
+}
+
+
+
+//
+
+CONNECT ME1 PO1   BY CONT
+CONNECT ME1 DIODE BY CONT
+CONNECT ME1 CONT
+
+//
+
+DIODE_ME1   =  NET  AREA  DIODE  >=  DIO_AREA
+
+CONNECT DIODE_ME1 DIODE
+
+
+// 3. ME1 Antenna check 
+
+
+ME1_NO_NP = NET AREA RATIO ME1 DIODE_ME1 == 0	// ME1 DO NOT CONNECT WITH DIODE
+
+
+//
+
+
+ANT.4A.ME1_SP { @ Ratio of the Metal1 area to the gate area < ^N_MET_SS, WITH NO DIODE
+      X   = NET AREA RATIO ME1_NO_NP SP_GATE > N_MET_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO  ME1_NO_NP   X_C  > 0
+      COPY X 
+
+      NET AREA RATIO PRINT X  ANT.4A.ME1_SP.sum     
+}
+
+ANT.4A.ME1_TG { @ Ratio of the Metal1 area to the gate area < ^N_MET_SS, WITH NO DIODE
+      X   = NET AREA RATIO ME1_NO_NP TG_GATE > N_MET_SS ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO  ME1_NO_NP   X_C  > 0
+      COPY X
+      
+      NET AREA RATIO PRINT X  ANT.4A.ME1_TG.sum
+}
+
+ANT.4A.ME1_MG { @ Ratio of the Metal1 area to the gate area < ^N_MET_SS, WITH NO DIODE
+      X   = NET AREA RATIO ME1_NO_NP MG_GATE > N_MET_SS ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO   ME1_NO_NP  X_C  > 0
+      COPY X
+      
+      NET AREA RATIO PRINT X  ANT.4A.ME1_MG.sum
+}
+
+
+// ME1 atenna check with diode
+
+
+ME1_WITH_NP = NET AREA RATIO ME1 DIODE_ME1 > 0    // ME1 CONNECT WITH DIODE 
+
+
+//
+
+  
+ANT.6A.ME1_SP {@ Ratio of ME1 to SP gate area < (45000 + 450 * diode area) with diode
+   X = NET AREA RATIO ME1_WITH_NP OVER SP_GATE DIODE_ME1 >1
+             [AREA(ME1_WITH_NP) / (AREA(SP_GATE)*(45000+ 450*AREA(DIODE_ME1)))]  ACCUMULATE
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO DIODE_ME1  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME1_SP.sum
+}
+
+ANT.6A.ME1_TG {@ Ratio of ME1 to TG gate area < (45000 + 450 * diode area) with diode
+   X = NET AREA RATIO ME1_WITH_NP OVER TG_GATE DIODE_ME1 >1
+             [AREA(ME1_WITH_NP) / (AREA(TG_GATE)*(45000+ 450*AREA(DIODE_ME1)))]  ACCUMULATE
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO DIODE_ME1  X_C >0
+   COPY X 
+
+   NET AREA RATIO PRINT X  ANT.6A.ME1_TG.sum
+}  
+
+ANT.6A.ME1_MG {@ Ratio of ME1 to MG gate area < (45000 + 450 * diode area) with diode
+   X = NET AREA RATIO ME1_WITH_NP OVER MG_GATE DIODE_ME1 >1
+             [AREA(ME1_WITH_NP) / (AREA(MG_GATE)*(45000+ 450*AREA(DIODE_ME1)))]  ACCUMULATE
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO DIODE_ME1  X_C >0
+   COPY X 
+
+   NET AREA RATIO PRINT X  ANT.6A.ME1_MG.sum
+}  
+                                                  
+
+// ME1  accumulation  calculation
+
+
+ME1_CA_SP   = NET AREA RATIO ME1_WITH_NP  OVER SP_GATE DIODE_ME1 >0
+              [AREA(ME1_WITH_NP) / (AREA(SP_GATE)*(45000+ 450*AREA(DIODE_ME1)))] ACCUMULATE      // SP GATE ME1 ACCUMULATE
+
+ME1_CA_TG   = NET AREA RATIO ME1_WITH_NP  OVER TG_GATE DIODE_ME1 >0
+              [AREA(ME1_WITH_NP) / (AREA(TG_GATE)*(45000+ 450*AREA(DIODE_ME1)))] ACCUMULATE      // TG GATE ME1 ACCUMULATE
+
+ME1_CA_MG   = NET AREA RATIO ME1_WITH_NP  OVER MG_GATE DIODE_ME1 >0
+              [AREA(ME1_WITH_NP) / (AREA(MG_GATE)*(45000+ 450*AREA(DIODE_ME1)))] ACCUMULATE      // MG GATE ME1 ACCUMULATE
+
+//
+
+
+// 4. VI1 Antenna check
+
+
+//
+
+CONNECT VI1 ME1
+
+//
+
+// VI1 antenna checking before connect to ME2
+
+
+VIA1_NO_NP = NET AREA RATIO VI1 DIODE_ME1 ==0	// VIA1 DO NOT CONNECT WITH DIODE
+
+
+ANT.3A.VIA1_SP { @ Ratio of the VIA1 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X  =  NET AREA RATIO VIA1_NO_NP SP_GATE > N_VIA_SS ACCUMULATE
+      X_C = STAMP X  BY  PO1 
+            NET AREA RATIO VIA1_NO_NP   X_C > 0
+      COPY X 
+      
+      NET AREA RATIO PRINT X ANT.3A.VIA1_SP.sum
+}
+
+ANT.3A.VIA1_TG { @ Ratio of the VIA1 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X  = NET AREA RATIO VIA1_NO_NP TG_GATE > N_VIA_SS ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA1_NO_NP   X_C  > 0
+      COPY  X
+      
+      NET AREA RATIO PRINT X ANT.3A.VIA1_TG.sum
+}
+
+ANT.3A.VIA1_MG { @ Ratio of the VIA1 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X  = NET AREA RATIO VIA1_NO_NP MG_GATE > N_VIA_SS ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA1_NO_NP  X_C  > 0
+      COPY  X
+      
+      NET AREA RATIO PRINT X ANT.3A.VIA1_MG.sum
+}
+
+
+// VI1 atenna check with diode
+
+
+VI1_WITH_NP = NET AREA RATIO VI1 DIODE_ME1 > 0    // VI1 CONNECT WITH DIODE
+
+//
+
+                             
+ANT.5A.VI1_SP {@ Ratio of VI1 to SP gate area < (800 + 200 * diode area) with diode
+   X = NET AREA RATIO VI1_WITH_NP OVER SP_GATE DIODE_ME1 >1
+             [AREA(VI1_WITH_NP) / (AREA(SP_GATE)*(800+200*AREA(DIODE_ME1)))]  ACCUMULATE
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1        X_C >0
+   NET AREA RATIO DIODE_ME1  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.5A.VI1_SP.sum
+}
+
+ANT.5A.VI1_TG {@ Ratio of VI1 to TG gate area < (800 + 200 * diode area) with diode
+   X = NET AREA RATIO VI1_WITH_NP OVER TG_GATE DIODE_ME1 >1
+             [AREA(VI1_WITH_NP) / (AREA(TG_GATE)*(800+200*AREA(DIODE_ME1)))]  ACCUMULATE
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1        X_C >0
+   NET AREA RATIO DIODE_ME1  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.5A.VI1_TG.sum
+}
+
+ANT.5A.VI1_MG {@ Ratio of VI1 to MG gate area < (800 + 200 * diode area) with diode
+   X = NET AREA RATIO VI1_WITH_NP OVER MG_GATE DIODE_ME1 >1
+             [AREA(VI1_WITH_NP) / (AREA(MG_GATE)*(800+200*AREA(DIODE_ME1)))]  ACCUMULATE
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1    X_C >0
+   NET AREA RATIO DIODE_ME1  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.5A.VI1_MG.sum
+}
+
+// VI1  accumulation  calculation
+
+VI1_CA_SP   = NET AREA RATIO VI1_WITH_NP  OVER SP_GATE DIODE_ME1 >0
+              [AREA(VI1_WITH_NP) / (AREA(SP_GATE)*(800+ 200*AREA(DIODE_ME1)))] ACCUMULATE    // SP GATE VI1 ACCUMULATE
+
+VI1_CA_TG   = NET AREA RATIO VI1_WITH_NP  OVER TG_GATE DIODE_ME1 >0
+              [AREA(VI1_WITH_NP) / (AREA(TG_GATE)*(800+ 200*AREA(DIODE_ME1)))] ACCUMULATE    // TG GATE VI1 ACCUMULATE
+
+VI1_CA_MG   = NET AREA RATIO VI1_WITH_NP  OVER MG_GATE DIODE_ME1 >0
+              [AREA(VI1_WITH_NP) / (AREA(MG_GATE)*(800+ 200*AREA(DIODE_ME1)))] ACCUMULATE    // MG GATE VI1 ACCUMULATE
+
+
+//
+
+CONNECT ME1 ME2 BY VI1  // connect after VI1 antenna checking
+
+//
+
+
+// 5. ME2 Antenna check
+
+DIODE_ME2   =  NET  AREA  DIODE  >=  DIO_AREA
+
+CONNECT DIODE_ME2 DIODE
+
+
+ME2_NO_NP  = NET AREA RATIO ME2 DIODE_ME2 ==0	// ME2 DO NOT CONNECT WITH DIODE
+
+//
+
+ANT.4A.ME2_SP { @ Ratio of the Metal2 area to the gate area < ^N_MET_SS, WITH NO DIODE
+    X   = NET AREA RATIO ME2_NO_NP SP_GATE > N_MET_SS  ACCUMULATE
+    X_C = STAMP X  BY  PO1
+          NET AREA RATIO  ME2_NO_NP    X_C >0
+    COPY  X
+
+    NET AREA RATIO PRINT X  ANT.4A.ME2_SP.sum
+}
+
+ANT.4A.ME2_TG { @ Ratio of the Metal2 area to the gate area < ^N_MET_SS, WITH NO DIODE
+    X   = NET AREA RATIO ME2_NO_NP TG_GATE > N_MET_SS  ACCUMULATE
+    X_C = STAMP X  BY  PO1
+          NET AREA RATIO  ME2_NO_NP    X_C >0
+    COPY  X
+
+    NET AREA RATIO PRINT X  ANT.4A.ME2_TG.sum
+}
+
+ANT.4A.ME2_MG { @ Ratio of the Metal2 area to the gate area < ^N_MET_SS, WITH NO DIODE
+    X   = NET AREA RATIO ME2_NO_NP MG_GATE > N_MET_SS  ACCUMULATE
+    X_C = STAMP X  BY  PO1
+          NET AREA RATIO  ME2_NO_NP    X_C >0
+    COPY  X
+
+    NET AREA RATIO PRINT X  ANT.4A.ME2_MG.sum
+}
+
+
+// ME1 + ME2 Antenna check
+
+
+ME2_WITH_NP = NET AREA RATIO ME2 DIODE_ME2 > 0   // ME2 CONNECT WITH DIODE
+
+//
+
+
+ANT.6A.ME2_SP {@ Ratio of cumulative ME1+ME2 to SP gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME2_WITH_NP OVER SP_GATE DIODE_ME2 >1
+             [AREA(ME2_WITH_NP) / (AREA(SP_GATE)*(45000+ 450*AREA(DIODE_ME2)))] ACCUMULATE ME1_CA_SP
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO DIODE_ME2  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME2_SP.sum
+}
+
+ANT.6A.ME2_TG {@ Ratio of cumulative ME1+ME2 to TG gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME2_WITH_NP OVER TG_GATE DIODE_ME2 >1
+             [AREA(ME2_WITH_NP) / (AREA(TG_GATE)*(45000+ 450*AREA(DIODE_ME2)))] ACCUMULATE ME1_CA_TG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO DIODE_ME2  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME2_TG.sum
+}
+
+ANT.6A.ME2_MG {@ Ratio of cumulative ME1+ME2 to MG gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME2_WITH_NP OVER MG_GATE DIODE_ME2 >1
+             [AREA(ME2_WITH_NP) / (AREA(MG_GATE)*(45000+ 450*AREA(DIODE_ME2)))] ACCUMULATE ME1_CA_MG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO DIODE_ME2  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME2_MG.sum
+}
+
+
+// ME1 + ME2   accumulation  calculation
+
+ME2_CA_SP   = NET AREA RATIO ME2_WITH_NP OVER SP_GATE DIODE_ME2 >0
+             [AREA(ME2_WITH_NP) / (AREA(SP_GATE)*(45000+ 450*AREA(DIODE_ME2)))] ACCUMULATE ME1_CA_SP     // SP GATE ME1+ME2 ACCUMULATE
+
+ME2_CA_TG   = NET AREA RATIO ME2_WITH_NP OVER TG_GATE DIODE_ME2 >0
+             [AREA(ME2_WITH_NP) / (AREA(TG_GATE)*(45000+ 450*AREA(DIODE_ME2)))] ACCUMULATE ME1_CA_TG     // TG GATE ME1+ME2 ACCUMULATE
+
+ME2_CA_MG   = NET AREA RATIO ME2_WITH_NP OVER MG_GATE DIODE_ME2 >0
+             [AREA(ME2_WITH_NP) / (AREA(MG_GATE)*(45000+ 450*AREA(DIODE_ME2)))] ACCUMULATE ME1_CA_MG     // MG GATE ME1+ME2 ACCUMULATE
+
+//
+
+
+// 6.VI2 Antenna check
+
+//
+
+CONNECT VI2 ME2
+
+//
+
+// VI2 antenna checking before connect to ME3
+
+
+VIA2_NO_NP = NET AREA RATIO VI2 DIODE_ME2 ==0	// VIA2 DO NOT CONNECT WITH DIODE
+
+
+ANT.3A.VIA2_SP { @ Ratio of the VIA2 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X  =  NET AREA RATIO VIA2_NO_NP SP_GATE > N_VIA_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA2_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.3A.VIA2_SP.sum
+}
+
+ANT.3A.VIA2_TG { @ Ratio of the VIA2 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X  = NET AREA RATIO VIA2_NO_NP TG_GATE > N_VIA_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA2_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.3A.VIA2_TG.sum
+}
+
+ANT.3A.VIA2_MG { @ Ratio of the VIA2 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X  = NET AREA RATIO VIA2_NO_NP MG_GATE > N_VIA_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA2_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.3A.VIA2_MG.sum
+}
+
+// VIA1 + VIA2 Antenna check
+
+VI2_WITH_NP = NET AREA RATIO VI2 DIODE_ME2 > 0   // VI2 CONNECT WITH DIODE
+
+
+ANT.5A.VI2_SP {@ Ratio of cumulative VI1+VI2 to SP gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI2_WITH_NP OVER SP_GATE DIODE_ME2 >1
+             [AREA(VI2_WITH_NP) / (AREA(SP_GATE)*(800+200*AREA(DIODE_ME2)))] ACCUMULATE VI1_CA_SP
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1    X_C >0
+   NET AREA RATIO VI2    X_C >0
+   NET AREA RATIO DIODE_ME2  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.5A.VI2_SP.sum
+}
+
+ANT.5A.VI2_TG {@ Ratio of cumulative VI1+VI2 to TG gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI2_WITH_NP OVER TG_GATE DIODE_ME2 >1
+             [AREA(VI2_WITH_NP) / (AREA(TG_GATE)*(800+200*AREA(DIODE_ME2)))] ACCUMULATE VI1_CA_TG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1    X_C >0
+   NET AREA RATIO VI2    X_C >0
+   NET AREA RATIO DIODE_ME2  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.5A.VI2_TG.sum
+}
+
+ANT.5A.VI2_MG {@ Ratio of cumulative VI1+VI2 to MG gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI2_WITH_NP OVER MG_GATE DIODE_ME2 >1
+             [AREA(VI2_WITH_NP) / (AREA(MG_GATE)*(800+200*AREA(DIODE_ME2)))] ACCUMULATE VI1_CA_MG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1    X_C >0
+   NET AREA RATIO VI2    X_C >0
+   NET AREA RATIO DIODE_ME2  X_C >0
+   COPY X 
+
+   NET AREA RATIO PRINT X  ANT.5A.VI2_MG.sum
+}
+
+
+// VI1 + VI2   accumulation  calculation
+
+VI2_CA_SP   = NET AREA RATIO VI2_WITH_NP OVER SP_GATE DIODE_ME2 >0
+             [AREA(VI2_WITH_NP) / (AREA(SP_GATE)*(800+200*AREA(DIODE_ME2)))] ACCUMULATE VI1_CA_SP     // SP GATE VI1+VI2 ACCUMULATE
+
+VI2_CA_TG   = NET AREA RATIO VI2_WITH_NP OVER TG_GATE DIODE_ME2 >0
+             [AREA(VI2_WITH_NP) / (AREA(TG_GATE)*(800+200*AREA(DIODE_ME2)))] ACCUMULATE VI1_CA_TG     // TG GATE VI1+VI2 ACCUMULATE
+
+VI2_CA_MG   = NET AREA RATIO VI2_WITH_NP OVER MG_GATE DIODE_ME2 >0
+             [AREA(VI2_WITH_NP) / (AREA(MG_GATE)*(800+200*AREA(DIODE_ME2)))] ACCUMULATE VI1_CA_MG     // MG GATE VI1+VI2 ACCUMULATE
+//
+
+CONNECT ME2 ME3 BY VI2  // connect after VI2 antenna checking 
+
+//
+
+
+// 7.ME3 Antenna check
+
+DIODE_ME3   =  NET  AREA  DIODE  >=  DIO_AREA
+
+CONNECT  DIODE_ME3  DIODE
+
+
+ME3_NO_NP  = NET AREA RATIO ME3 DIODE_ME3 ==0	// ME3 DO NOT CONNECT WITH DIODE
+
+//
+
+
+ANT.4A.ME3_SP { @ Ratio of the Metal3 area to the gate area < ^N_MET_SS, WITH NO DIODE
+      X =  NET AREA RATIO ME3_NO_NP SP_GATE > N_MET_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO ME3_NO_NP    X_C >0
+      COPY  X
+      
+      NET AREA RATIO PRINT X  ANT.4A.ME3_SP.sum
+}
+
+ANT.4A.ME3_TG { @ Ratio of the Metal3 area to the gate area < ^N_MET_SS, WITH NO DIODE
+      X  = NET AREA RATIO ME3_NO_NP TG_GATE > N_MET_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO ME3_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.4A.ME3_TG.sum
+}
+
+ANT.4A.ME3_MG { @ Ratio of the Metal3 area to the gate area < ^N_MET_SS, WITH NO DIODE
+      X   = NET AREA RATIO ME3_NO_NP MG_GATE > N_MET_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO ME3_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.4A.ME3_MG.sum
+}
+
+// ME1 + ME2 + ME3  Antenna check
+
+
+ME3_WITH_NP = NET AREA RATIO ME3 DIODE_ME3 > 0   // ME3 CONNECT WITH DIODE
+
+
+ANT.6A.ME3_SP {@ Ratio of cumulative ME1+ME2+ME3 to SP gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME3_WITH_NP OVER SP_GATE DIODE_ME3 >1
+             [AREA(ME3_WITH_NP) / (AREA(SP_GATE)*(45000+ 450*AREA(DIODE_ME3)))] ACCUMULATE ME2_CA_SP
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO ME3    X_C >0
+   NET AREA RATIO DIODE_ME3  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME3_SP.sum
+}
+
+ANT.6A.ME3_TG {@ Ratio of cumulative ME1+ME2+ME3 to TG gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME3_WITH_NP OVER TG_GATE DIODE_ME3 >1
+             [AREA(ME3_WITH_NP) / (AREA(TG_GATE)*(45000+ 450*AREA(DIODE_ME3)))] ACCUMULATE ME2_CA_TG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO ME3    X_C >0
+   NET AREA RATIO DIODE_ME3  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME3_TG.sum
+}
+
+ANT.6A.ME3_MG {@ Ratio of cumulative ME1+ME2+ME3 to MG gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME3_WITH_NP OVER MG_GATE DIODE_ME3 >1
+             [AREA(ME3_WITH_NP) / (AREA(MG_GATE)*(45000+ 450*AREA(DIODE_ME3)))] ACCUMULATE ME2_CA_MG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO ME3    X_C >0
+   NET AREA RATIO DIODE_ME3  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME3_MG.sum
+}
+
+
+// ME1 + ME2 + ME3  accumulation  calculation
+
+ME3_CA_SP   = NET AREA RATIO ME3_WITH_NP OVER SP_GATE DIODE_ME3 >0
+             [AREA(ME3_WITH_NP) / (AREA(SP_GATE)*(45000+ 450*AREA(DIODE_ME3)))] ACCUMULATE ME2_CA_SP     // SP GATE ME1+ME2+ME3 ACCUMULATE
+
+ME3_CA_TG   = NET AREA RATIO ME3_WITH_NP OVER TG_GATE DIODE_ME3 >0
+             [AREA(ME3_WITH_NP) / (AREA(TG_GATE)*(45000+ 450*AREA(DIODE_ME3)))] ACCUMULATE ME2_CA_TG     // TG GATE ME1+ME2+ME3 ACCUMULATE
+
+ME3_CA_MG   = NET AREA RATIO ME3_WITH_NP OVER MG_GATE DIODE_ME3 >0
+             [AREA(ME3_WITH_NP) / (AREA(MG_GATE)*(45000+ 450*AREA(DIODE_ME3)))] ACCUMULATE ME2_CA_MG     // MG GATE ME1+ME2+ME3 ACCUMULATE
+//
+
+// 8.VI3 Antenna check
+
+//
+
+CONNECT VI3 ME3
+
+//
+
+// VI3 antenna checking before connect to ME4
+
+
+VIA3_NO_NP = NET AREA RATIO VI3 DIODE_ME3 ==0	// VIA3 DO NOT CONNECT WITH DIODE
+
+ANT.3A.VIA3_SP { @ Ratio of the VIA3 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X  =  NET AREA RATIO VIA3_NO_NP SP_GATE > N_VIA_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA3_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.3A.VIA3_SP.sum
+}
+
+ANT.3A.VIA3_TG { @ Ratio of the VIA3 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X  = NET AREA RATIO VIA3_NO_NP TG_GATE > N_VIA_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA3_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.3A.VIA3_TG.sum
+}
+
+ANT.3A.VIA3_MG { @ Ratio of the VIA3 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X  = NET AREA RATIO VIA3_NO_NP MG_GATE > N_VIA_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA3_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.3A.VIA3_MG.sum
+}
+
+
+// VIA1 + VIA2 + VIA3 Antenna check
+
+VI3_WITH_NP = NET AREA RATIO VI3 DIODE_ME3 > 0   // VI3 CONNECT WITH DIODE
+
+ANT.5A.VI3_SP {@ Ratio of cumulative VI1+VI2+VI3 to SP gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI3_WITH_NP OVER SP_GATE DIODE_ME3 >1
+             [AREA(VI3_WITH_NP) / (AREA(SP_GATE)*(800+200*AREA(DIODE_ME3)))] ACCUMULATE VI2_CA_SP
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1        X_C >0
+   NET AREA RATIO VI2        X_C >0
+   NET AREA RATIO VI3        X_C >0
+   NET AREA RATIO DIODE_ME3  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.5A.VI3_SP.sum
+}
+
+ANT.5A.VI3_TG {@ Ratio of cumulative VI1+VI2+VI3 to TG gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI3_WITH_NP OVER TG_GATE DIODE_ME3 >1
+             [AREA(VI3_WITH_NP) / (AREA(TG_GATE)*(800+200*AREA(DIODE_ME3)))] ACCUMULATE VI2_CA_TG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1    X_C >0
+   NET AREA RATIO VI2    X_C >0
+   NET AREA RATIO VI3    X_C >0
+   NET AREA RATIO DIODE_ME3  X_C >0
+   COPY X 
+
+   NET AREA RATIO PRINT X  ANT.5A.VI3_TG.sum
+}
+
+ANT.5A.VI3_MG {@ Ratio of cumulative VI1+VI2+VI3 to MG gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI3_WITH_NP OVER MG_GATE DIODE_ME3 >1
+             [AREA(VI3_WITH_NP) / (AREA(MG_GATE)*(800+200*AREA(DIODE_ME3)))] ACCUMULATE VI2_CA_MG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1        X_C >0
+   NET AREA RATIO VI2        X_C >0
+   NET AREA RATIO VI3        X_C >0
+   NET AREA RATIO DIODE_ME3  X_C >0
+   COPY X 
+
+   NET AREA RATIO PRINT X  ANT.5A.VI3_MG.sum
+}
+
+
+// VI1 + VI2 + VI3   accumulation  calculation
+
+
+VI3_CA_SP   = NET AREA RATIO VI3_WITH_NP OVER SP_GATE DIODE_ME3 >0
+             [AREA(VI3_WITH_NP) / (AREA(SP_GATE)*(800+200*AREA(DIODE_ME3)))] ACCUMULATE VI2_CA_SP     // SP GATE VI1+VI2+VI3 ACCUMULATE
+
+VI3_CA_TG   = NET AREA RATIO VI3_WITH_NP OVER TG_GATE DIODE_ME3 >0
+             [AREA(VI3_WITH_NP) / (AREA(TG_GATE)*(800+200*AREA(DIODE_ME3)))] ACCUMULATE VI2_CA_TG     // TG GATE VI1+VI2+VI3 ACCUMULATE
+
+VI3_CA_MG   = NET AREA RATIO VI3_WITH_NP OVER MG_GATE DIODE_ME3 >0
+             [AREA(VI3_WITH_NP) / (AREA(MG_GATE)*(800+200*AREA(DIODE_ME3)))] ACCUMULATE VI2_CA_MG     // MG GATE VI1+VI2+VI3 ACCUMULATE
+
+
+//
+
+CONNECT ME3 ME4 BY VI3   // connect after VI3 antenna checking
+
+//
+
+// 9.ME4 Antenna check
+
+DIODE_ME4   =  NET  AREA  DIODE  >=  DIO_AREA
+
+CONNECT  DIODE_ME4  DIODE
+
+
+ME4_NO_NP  = NET AREA RATIO ME4 DIODE_ME4 ==0	// ME4 DO NOT CONNECT WITH DIODE
+
+//
+
+
+
+ANT.4A.ME4_SP { @ Ratio of the Metal4 area to the gate area < ^N_MET_SS, WITH NO DIODE
+     X = NET AREA RATIO ME4_NO_NP SP_GATE > N_MET_SS  ACCUMULATE
+     X_C = STAMP X  BY  PO1
+           NET AREA RATIO ME4_NO_NP    X_C >0
+     COPY  X
+
+     NET AREA RATIO PRINT X  ANT.4A.ME4_SP.sum
+}
+
+ANT.4A.ME4_TG { @ Ratio of the Metal4 area to the gate area < ^N_MET_SS, WITH NO DIODE
+     X = NET AREA RATIO ME4_NO_NP TG_GATE > N_MET_SS  ACCUMULATE
+     X_C = STAMP X  BY  PO1
+           NET AREA RATIO ME4_NO_NP    X_C >0  
+     COPY  X 
+
+     NET AREA RATIO PRINT X  ANT.4A.ME4_TG.sum
+}
+
+ANT.4A.ME4_MG { @ Ratio of the Metal4 area to the gate area < ^N_MET_SS, WITH NO DIODE
+     X = NET AREA RATIO ME4_NO_NP MG_GATE > N_MET_SS  ACCUMULATE
+     X_C = STAMP X  BY  PO1
+           NET AREA RATIO ME4_NO_NP    X_C >0  
+     COPY  X 
+
+     NET AREA RATIO PRINT X  ANT.4A.ME4_MG.sum
+}
+
+
+// ME1 + ME2 + ME3 + ME4  Antenna check
+
+
+ME4_WITH_NP = NET AREA RATIO ME4 DIODE_ME4 > 0   // ME4 CONNECT WITH DIODE
+
+
+ANT.6A.ME4_SP {@ Ratio of cumulative ME1+ME2+ME3+ME4 to SP gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME4_WITH_NP OVER SP_GATE DIODE_ME4 >1
+             [AREA(ME4_WITH_NP) / (AREA(SP_GATE)*(45000+ 450*AREA(DIODE_ME4)))] ACCUMULATE ME3_CA_SP
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO ME3    X_C >0
+   NET AREA RATIO ME4    X_C >0
+   NET AREA RATIO DIODE_ME4  X_C >0
+   COPY X 
+
+   NET AREA RATIO PRINT X  ANT.6A.ME4_SP.sum
+}
+
+ANT.6A.ME4_TG {@ Ratio of cumulative ME1+ME2+ME3+ME4 to TG gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME4_WITH_NP OVER TG_GATE DIODE_ME4 >1
+             [AREA(ME4_WITH_NP) / (AREA(TG_GATE)*(45000+ 450*AREA(DIODE_ME4)))] ACCUMULATE ME3_CA_TG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO ME3    X_C >0
+   NET AREA RATIO ME4    X_C >0
+   NET AREA RATIO DIODE_ME4  X_C >0
+   COPY X 
+
+   NET AREA RATIO PRINT X  ANT.6A.ME4_TG.sum
+}
+
+ANT.6A.ME4_MG {@ Ratio of cumulative ME1+ME2+ME3+ME4 to MG gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME4_WITH_NP OVER MG_GATE DIODE_ME4 >1
+             [AREA(ME4_WITH_NP) / (AREA(MG_GATE)*(45000+ 450*AREA(DIODE_ME4)))] ACCUMULATE ME3_CA_MG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO ME3    X_C >0
+   NET AREA RATIO ME4    X_C >0
+   NET AREA RATIO DIODE_ME4  X_C >0
+   COPY X 
+
+   NET AREA RATIO PRINT X  ANT.6A.ME4_MG.sum
+}
+
+
+// ME1 + ME2 + ME3 + ME4   accumulation  calculation
+
+ME4_CA_SP   = NET AREA RATIO ME4_WITH_NP OVER SP_GATE DIODE_ME4 >0
+             [AREA(ME4_WITH_NP) / (AREA(SP_GATE)*(45000+ 450*AREA(DIODE_ME4)))] ACCUMULATE ME3_CA_SP     // SP GATE ME1+ME2+ME3+ME4 ACCUMULATE
+
+ME4_CA_TG   = NET AREA RATIO ME4_WITH_NP OVER TG_GATE DIODE_ME4 >0
+             [AREA(ME4_WITH_NP) / (AREA(TG_GATE)*(45000+ 450*AREA(DIODE_ME4)))] ACCUMULATE ME3_CA_TG     // TG GATE ME1+ME2+ME3+ME4 ACCUMULATE
+
+ME4_CA_MG   = NET AREA RATIO ME4_WITH_NP OVER MG_GATE DIODE_ME4 >0
+             [AREA(ME4_WITH_NP) / (AREA(MG_GATE)*(45000+ 450*AREA(DIODE_ME4)))] ACCUMULATE ME3_CA_MG     // MG GATE ME1+ME2+ME3+ME4 ACCUMULATE
+
+
+// 10.VI4 Antenna check
+
+//
+
+CONNECT VI4 ME4
+
+//
+
+// VI4 antenna checking before connect to ME5
+
+
+VIA4_NO_NP = NET AREA RATIO VI4 DIODE_ME4 ==0	// VIA4 DO NOT CONNECT WITH DIODE
+
+
+ANT.3A.VIA4_SP { @ Ratio of the VIA4 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X  =  NET AREA RATIO VIA4_NO_NP SP_GATE > N_VIA_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA4_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.3A.VIA4_SP.sum
+}
+
+ANT.3A.VIA4_TG { @ Ratio of the VIA4 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X  = NET AREA RATIO VIA4_NO_NP TG_GATE > N_VIA_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA4_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.3A.VIA4_TG.sum
+}
+
+ANT.3A.VIA4_MG { @ Ratio of the VIA4 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X   = NET AREA RATIO VIA4_NO_NP MG_GATE > N_VIA_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA4_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.3A.VIA4_MG.sum
+}
+
+
+// VIA1 + VIA2 + VIA3 + VIA4 Antenna check
+
+VI4_WITH_NP = NET AREA RATIO VI4 DIODE_ME4 > 0   // VI4 CONNECT WITH DIODE
+
+
+ANT.5A.VI4_SP {@ Ratio of cumulative VI1+VI2+VI3+VI4 to SP gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI4_WITH_NP OVER SP_GATE DIODE_ME4 >1
+             [AREA(VI4_WITH_NP) / (AREA(SP_GATE)*(800+200*AREA(DIODE_ME4)))] ACCUMULATE VI3_CA_SP
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1    X_C >0
+   NET AREA RATIO VI2    X_C >0
+   NET AREA RATIO VI3    X_C >0
+   NET AREA RATIO VI4    X_C >0
+   NET AREA RATIO DIODE_ME4  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.5A.VI4_SP.sum
+}
+
+ANT.5A.VI4_TG {@ Ratio of cumulative VI1+VI2+VI3+VI4 to TG gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI4_WITH_NP OVER TG_GATE DIODE_ME4 >1
+             [AREA(VI4_WITH_NP) / (AREA(TG_GATE)*(800+200*AREA(DIODE_ME4)))] ACCUMULATE VI3_CA_TG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1    X_C >0
+   NET AREA RATIO VI2    X_C >0
+   NET AREA RATIO VI3    X_C >0
+   NET AREA RATIO VI4    X_C >0
+   NET AREA RATIO DIODE_ME4  X_C >0
+   COPY X 
+
+   NET AREA RATIO PRINT X  ANT.5A.VI4_TG.sum
+}
+
+ANT.5A.VI4_MG {@ Ratio of cumulative VI1+VI2+VI3+VI4 to MG gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI4_WITH_NP OVER MG_GATE DIODE_ME4 >1
+             [AREA(VI4_WITH_NP) / (AREA(MG_GATE)*(800+200*AREA(DIODE_ME4)))] ACCUMULATE VI3_CA_MG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1    X_C >0
+   NET AREA RATIO VI2    X_C >0
+   NET AREA RATIO VI3    X_C >0
+   NET AREA RATIO VI4    X_C >0
+   NET AREA RATIO DIODE_ME4  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.5A.VI4_MG.sum
+}
+
+
+// VI1 + VI2 + VI3 + VI4   accumulation  calculation
+
+VI4_CA_SP   = NET AREA RATIO VI4_WITH_NP OVER SP_GATE DIODE_ME4 >0
+             [AREA(VI4_WITH_NP) / (AREA(SP_GATE)*(800+200*AREA(DIODE_ME4)))] ACCUMULATE VI3_CA_SP     // SP GATE VI1+VI2+VI3+VI4 ACCUMULATE
+
+VI4_CA_TG   = NET AREA RATIO VI4_WITH_NP OVER TG_GATE DIODE_ME4 >0
+             [AREA(VI4_WITH_NP) / (AREA(TG_GATE)*(800+200*AREA(DIODE_ME4)))] ACCUMULATE VI3_CA_TG     // TG GATE VI1+VI2+VI3+VI4 ACCUMULATE
+
+VI4_CA_MG   = NET AREA RATIO VI4_WITH_NP OVER MG_GATE DIODE_ME4 >0
+             [AREA(VI4_WITH_NP) / (AREA(MG_GATE)*(800+200*AREA(DIODE_ME4)))] ACCUMULATE VI3_CA_MG     // MG GATE VI1+VI2+VI3+VI4 ACCUMULATE
+
+
+//
+
+//
+
+CONNECT ME4 ME5 BY VI4   // connect after VI4 antenna checking
+
+//
+
+
+// 11.ME5 Antenna check
+
+DIODE_ME5   =  NET  AREA  DIODE  >=  DIO_AREA
+
+CONNECT DIODE_ME5  DIODE
+
+ME5_NO_NP  = NET AREA RATIO ME5 DIODE_ME5 ==0	// ME5 DO NOT CONNECT WITH DIODE
+
+
+//
+
+
+ANT.4A.ME5_SP { @ Ratio of the Metal5 area to the gate area < ^N_MET_SS, WITH NO DIODE
+     X = NET AREA RATIO ME5_NO_NP SP_GATE > N_MET_SS  ACCUMULATE
+     X_C = STAMP X  BY  PO1
+           NET AREA RATIO ME5_NO_NP    X_C >0
+     COPY  X
+
+     NET AREA RATIO PRINT X  ANT.4A.ME5_SP.sum
+}
+
+ANT.4A.ME5_TG { @ Ratio of the Metal5 area to the gate area < ^N_MET_SS, WITH NO DIODE
+     X = NET AREA RATIO ME5_NO_NP TG_GATE > N_MET_SS  ACCUMULATE
+     X_C = STAMP X  BY  PO1
+           NET AREA RATIO ME5_NO_NP    X_C >0
+     COPY  X 
+
+     NET AREA RATIO PRINT X  ANT.4A.ME5_TG.sum
+}
+
+ANT.4A.ME5_MG { @ Ratio of the Metal5 area to the gate area < ^N_MET_SS, WITH NO DIODE
+     X = NET AREA RATIO ME5_NO_NP MG_GATE > N_MET_SS  ACCUMULATE
+     X_C = STAMP X  BY  PO1
+           NET AREA RATIO ME5_NO_NP    X_C >0
+     COPY  X 
+
+     NET AREA RATIO PRINT X  ANT.4A.ME5_MG.sum
+}
+
+
+// ME1 + ME2 + ME3 + ME4 + ME5  Antenna check
+
+
+ME5_WITH_NP = NET AREA RATIO ME5 DIODE_ME5 > 0   // ME5 CONNECT WITH DIODE
+
+
+ANT.6A.ME5_SP {@ Ratio of cumulative ME1+ME2+ME3+ME4+ME5 to SP gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME5_WITH_NP OVER SP_GATE DIODE_ME5 >1
+             [AREA(ME5_WITH_NP) / (AREA(SP_GATE)*(45000+ 450*AREA(DIODE_ME5)))] ACCUMULATE ME4_CA_SP
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO ME3    X_C >0
+   NET AREA RATIO ME4    X_C >0
+   NET AREA RATIO ME5    X_C >0
+   NET AREA RATIO DIODE_ME5  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME5_SP.sum
+}
+
+ANT.6A.ME5_TG {@ Ratio of cumulative ME1+ME2+ME3+ME4+ME5 to TG gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME5_WITH_NP OVER TG_GATE DIODE_ME5 >1
+             [AREA(ME5_WITH_NP) / (AREA(TG_GATE)*(45000+ 450*AREA(DIODE_ME5)))] ACCUMULATE ME4_CA_TG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO ME3    X_C >0
+   NET AREA RATIO ME4    X_C >0
+   NET AREA RATIO ME5    X_C >0
+   NET AREA RATIO DIODE_ME5  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME5_TG.sum
+}
+
+ANT.6A.ME5_MG {@ Ratio of cumulative ME1+ME2+ME3+ME4+ME5 to MG gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME5_WITH_NP OVER MG_GATE DIODE_ME5 >1
+             [AREA(ME5_WITH_NP) / (AREA(MG_GATE)*(45000+ 450*AREA(DIODE_ME5)))] ACCUMULATE ME4_CA_MG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO ME3    X_C >0
+   NET AREA RATIO ME4    X_C >0
+   NET AREA RATIO ME5    X_C >0
+   NET AREA RATIO DIODE_ME5  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME5_MG.sum
+}
+
+
+// ME1 + ME2 + ME3 + ME4 + ME5  accumulation  calculation
+
+ME5_CA_SP   = NET AREA RATIO ME5_WITH_NP OVER SP_GATE DIODE_ME5 >0
+             [AREA(ME5_WITH_NP) / (AREA(SP_GATE)*(45000+ 450*AREA(DIODE_ME5)))] ACCUMULATE ME4_CA_SP     // SP GATE ME1+ME2+ME3+ME4+ME5 ACCUMULATE
+
+ME5_CA_TG   = NET AREA RATIO ME5_WITH_NP OVER TG_GATE DIODE_ME5 >0
+             [AREA(ME5_WITH_NP) / (AREA(TG_GATE)*(45000+ 450*AREA(DIODE_ME5)))] ACCUMULATE ME4_CA_TG     // TG GATE ME1+ME2+ME3+ME4+ME5 ACCUMULATE
+
+ME5_CA_MG   = NET AREA RATIO ME5_WITH_NP OVER MG_GATE DIODE_ME5 >0
+             [AREA(ME5_WITH_NP) / (AREA(MG_GATE)*(45000+ 450*AREA(DIODE_ME5)))] ACCUMULATE ME4_CA_MG     // MG GATE ME1+ME2+ME3+ME4+ME5 ACCUMULATE
+ 
+
+//
+
+// 12.VI5 Antenna check
+
+
+//
+
+CONNECT VI5 ME5
+
+//
+
+// VI5 antenna checking before connect to ME6
+
+
+VIA5_NO_NP = NET AREA RATIO VI5 DIODE_ME5 ==0	// VIA5 DO NOT CONNECT WITH DIODE
+
+
+ANT.3A.VIA5_SP { @ Ratio of the VIA5 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X  =  NET AREA RATIO VIA5_NO_NP SP_GATE > N_VIA_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA5_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.3A.VIA5_SP.sum
+}
+
+ANT.3A.VIA5_TG { @ Ratio of the VIA5 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X  = NET AREA RATIO VIA5_NO_NP TG_GATE > N_VIA_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA5_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.3A.VIA5_TG.sum
+}
+
+ANT.3A.VIA5_MG { @ Ratio of the VIA5 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X  = NET AREA RATIO VIA5_NO_NP MG_GATE > N_VIA_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA5_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.3A.VIA5_MG.sum
+}
+
+
+// VIA1 + VIA2 + VIA3 + VIA4 + VIA5 Antenna check
+
+
+VI5_WITH_NP = NET AREA RATIO VI5 DIODE_ME5 > 0   // VI5 CONNECT WITH DIODE
+
+ANT.5A.VI5_SP {@ Ratio of cumulative VI1+VI2+VI3+VI4+VI5 to SP gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI5_WITH_NP OVER SP_GATE DIODE_ME5 >1
+             [AREA(VI5_WITH_NP) / (AREA(SP_GATE)*(800+200*AREA(DIODE_ME5)))] ACCUMULATE VI4_CA_SP
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1    X_C >0
+   NET AREA RATIO VI2    X_C >0
+   NET AREA RATIO VI3    X_C >0
+   NET AREA RATIO VI4    X_C >0
+   NET AREA RATIO VI5    X_C >0
+   NET AREA RATIO DIODE_ME5  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.5A.VI5_SP.sum
+}
+
+ANT.5A.VI5_TG {@ Ratio of cumulative VI1+VI2+VI3+VI4+VI5 to TG gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI5_WITH_NP OVER TG_GATE DIODE_ME5 >1
+             [AREA(VI5_WITH_NP) / (AREA(TG_GATE)*(800+200*AREA(DIODE_ME5)))] ACCUMULATE VI4_CA_TG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1    X_C >0
+   NET AREA RATIO VI2    X_C >0
+   NET AREA RATIO VI3    X_C >0
+   NET AREA RATIO VI4    X_C >0
+   NET AREA RATIO VI5    X_C >0
+   NET AREA RATIO DIODE_ME5  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.5A.VI5_TG.sum
+}
+
+ANT.5A.VI5_MG {@ Ratio of cumulative VI1+VI2+VI3+VI4+VI5 to MG gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI5_WITH_NP OVER MG_GATE DIODE_ME5 >1
+             [AREA(VI5_WITH_NP) / (AREA(MG_GATE)*(800+200*AREA(DIODE_ME5)))] ACCUMULATE VI4_CA_MG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1    X_C >0
+   NET AREA RATIO VI2    X_C >0
+   NET AREA RATIO VI3    X_C >0
+   NET AREA RATIO VI4    X_C >0
+   NET AREA RATIO VI5    X_C >0
+   NET AREA RATIO DIODE_ME5  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.5A.VI5_MG.sum
+}
+
+
+//  VI1 + VI2 + VI3 + VI4 + VI5  accumulation  calculation
+
+VI5_CA_SP   = NET AREA RATIO VI5_WITH_NP OVER SP_GATE DIODE_ME5 >0
+             [AREA(VI5_WITH_NP) / (AREA(SP_GATE)*(800+200*AREA(DIODE_ME5)))] ACCUMULATE VI4_CA_SP     // SP GATE VI1+VI2+VI3+VI4+VI5 ACCUMULATE
+
+VI5_CA_TG   = NET AREA RATIO VI5_WITH_NP OVER TG_GATE DIODE_ME5 >0
+             [AREA(VI5_WITH_NP) / (AREA(TG_GATE)*(800+200*AREA(DIODE_ME5)))] ACCUMULATE VI4_CA_TG     // TG GATE VI1+VI2+VI3+VI4+VI5 ACCUMULATE
+
+VI5_CA_MG   = NET AREA RATIO VI5_WITH_NP OVER MG_GATE DIODE_ME5 >0
+             [AREA(VI5_WITH_NP) / (AREA(MG_GATE)*(800+200*AREA(DIODE_ME5)))] ACCUMULATE VI4_CA_MG     // MG GATE VI1+VI2+VI3+VI4+VI5 ACCUMULATE
+
+
+//
+
+//
+
+CONNECT ME5 ME6 BY VI5   // connect after VI5 antenna checking
+
+//
+
+
+
+// 13.ME6 Antenna check
+
+DIODE_ME6   =  NET  AREA  DIODE  >=  DIO_AREA
+
+CONNECT DIODE_ME6  DIODE
+
+
+ME6_NO_NP  = NET AREA RATIO ME6 DIODE_ME6 ==0	// ME6 DO NOT CONNECT WITH DIODE
+
+
+//
+
+
+ANT.4A.ME6_SP { @ Ratio of the Metal6 area to the gate area < ^N_MET_SS, WITH NO DIODE
+     X  =  NET AREA RATIO ME6_NO_NP SP_GATE > N_MET_SS  ACCUMULATE
+     X_C = STAMP X  BY  PO1
+           NET AREA RATIO ME6_NO_NP    X_C >0
+     COPY  X
+
+     NET AREA RATIO PRINT X  ANT.4A.ME6_SP.sum
+}
+
+ANT.4A.ME6_TG { @ Ratio of the Metal6 area to the gate area < ^N_MET_SS, WITH NO DIODE
+     X = NET AREA RATIO ME6_NO_NP TG_GATE > N_MET_SS  ACCUMULATE
+     X_C = STAMP X  BY  PO1
+           NET AREA RATIO ME6_NO_NP    X_C >0
+     COPY  X 
+
+     NET AREA RATIO PRINT X  ANT.4A.ME6_TG.sum
+}
+
+ANT.4A.ME6_MG { @ Ratio of the Metal6 area to the gate area < ^N_MET_SS, WITH NO DIODE
+     X = NET AREA RATIO ME6_NO_NP MG_GATE > N_MET_SS  ACCUMULATE
+     X_C = STAMP X  BY  PO1
+           NET AREA RATIO ME6_NO_NP    X_C >0
+     COPY  X 
+
+     NET AREA RATIO PRINT X  ANT.4A.ME6_MG.sum
+}
+
+
+// ME1 + ME2 + ME3 + ME4 + ME5 + ME6 Antenna check
+
+
+ME6_WITH_NP = NET AREA RATIO ME6 DIODE_ME6 > 0   // ME6 CONNECT WITH DIODE
+
+
+ANT.6A.ME6_SP {@ Ratio of cumulative ME1+ME2+ME3+ME4+ME5+ME6 to SP gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME6_WITH_NP OVER SP_GATE DIODE_ME6 >1
+             [AREA(ME6_WITH_NP) / (AREA(SP_GATE)*(45000+ 450*AREA(DIODE_ME6)))] ACCUMULATE ME5_CA_SP
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO ME3    X_C >0
+   NET AREA RATIO ME4    X_C >0
+   NET AREA RATIO ME5    X_C >0
+   NET AREA RATIO ME6    X_C >0
+   NET AREA RATIO DIODE_ME6  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME6_SP.sum
+}
+
+ANT.6A.ME6_TG {@ Ratio of cumulative ME1+ME2+ME3+ME4+ME5+ME6 to TG gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME6_WITH_NP OVER TG_GATE DIODE_ME6 >1
+             [AREA(ME6_WITH_NP) / (AREA(TG_GATE)*(45000+ 450*AREA(DIODE_ME6)))] ACCUMULATE ME5_CA_TG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO ME3    X_C >0
+   NET AREA RATIO ME4    X_C >0
+   NET AREA RATIO ME5    X_C >0
+   NET AREA RATIO ME6    X_C >0
+   NET AREA RATIO DIODE_ME6  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME6_TG.sum
+}
+
+NT.6A.ME6_MG {@ Ratio of cumulative ME1+ME2+ME3+ME4+ME5+ME6 to MG gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME6_WITH_NP OVER MG_GATE DIODE_ME6 >1
+             [AREA(ME6_WITH_NP) / (AREA(MG_GATE)*(45000+ 450*AREA(DIODE_ME6)))] ACCUMULATE ME5_CA_MG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO ME3    X_C >0
+   NET AREA RATIO ME4    X_C >0
+   NET AREA RATIO ME5    X_C >0
+   NET AREA RATIO ME6    X_C >0
+   NET AREA RATIO DIODE_ME6  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME6_MG.sum
+}
+
+
+
+// ME1 + ME2 + ME3 + ME4 + ME5 + ME6  accumulation  calculation
+
+
+ME6_CA_SP   = NET AREA RATIO ME6_WITH_NP OVER SP_GATE DIODE_ME6 >0
+             [AREA(ME6_WITH_NP) / (AREA(SP_GATE)*(45000+ 450*AREA(DIODE_ME6)))] ACCUMULATE ME5_CA_SP     // SP GATE ME1+ME2+ME3+ME4+ME5+ME6 ACCUMULATE
+
+ME6_CA_TG   = NET AREA RATIO ME6_WITH_NP OVER TG_GATE DIODE_ME6 >0
+             [AREA(ME6_WITH_NP) / (AREA(TG_GATE)*(45000+ 450*AREA(DIODE_ME6)))] ACCUMULATE ME5_CA_TG     // TG GATE ME1+ME2+ME3+ME4+ME5+ME6 ACCUMULATE
+
+ME6_CA_MG   = NET AREA RATIO ME6_WITH_NP OVER MG_GATE DIODE_ME6 >0
+             [AREA(ME6_WITH_NP) / (AREA(MG_GATE)*(45000+ 450*AREA(DIODE_ME6)))] ACCUMULATE ME5_CA_MG     // MG GATE ME1+ME2+ME3+ME4+ME5+ME6 ACCUMULATE
+
+
+//
+
+
+// 14.VI6 Antenna check
+
+//
+
+CONNECT VI6 ME6   
+
+//
+
+// VI6 antenna checking before connect to ME7
+
+
+VIA6_NO_NP = NET AREA RATIO VI6 DIODE_ME6 ==0	// VIA6 DO NOT CONNECT WITH DIODE
+
+
+
+ANT.3A.VIA6_SP { @ Ratio of the VIA6 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X  =  NET AREA RATIO VIA6_NO_NP SP_GATE > N_VIA_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA6_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.3A.VIA6_SP.sum
+}
+
+ANT.3A.VIA6_TG { @ Ratio of the VIA6 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X  = NET AREA RATIO VIA6_NO_NP TG_GATE > N_VIA_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA6_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.3A.VIA6_TG.sum
+}
+
+ANT.3A.VIA6_MG { @ Ratio of the VIA6 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X   = NET AREA RATIO VIA6_NO_NP MG_GATE > N_VIA_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA6_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.3A.VIA6_MG.sum
+}
+
+
+// VIA1 + VIA2 + VIA3 + VIA4 + VIA5 + VIA6 Antenna check
+
+
+VI6_WITH_NP = NET AREA RATIO VI6 DIODE_ME6 > 0   // VI6 CONNECT WITH DIODE
+
+
+ANT.5A.VI6_SP {@ Ratio of cumulative VI1+VI2+VI3+VI4+VI5+VI6 to SP gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI6_WITH_NP OVER SP_GATE DIODE_ME6 >1
+             [AREA(VI6_WITH_NP) / (AREA(SP_GATE)*(800+200*AREA(DIODE_ME6)))] ACCUMULATE VI5_CA_SP
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1    X_C >0
+   NET AREA RATIO VI2    X_C >0
+   NET AREA RATIO VI3    X_C >0
+   NET AREA RATIO VI4    X_C >0
+   NET AREA RATIO VI5    X_C >0
+   NET AREA RATIO VI6    X_C >0
+   NET AREA RATIO DIODE_ME6  X_C >0
+   COPY X 
+
+   NET AREA RATIO PRINT X  ANT.5A.VIA6_SP.sum
+}
+
+ANT.5A.VI6_TG {@ Ratio of cumulative VI1+VI2+VI3+VI4+VI5+VI6 to TG gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI6_WITH_NP OVER TG_GATE DIODE_ME6 >1
+             [AREA(VI6_WITH_NP) / (AREA(TG_GATE)*(800+200*AREA(DIODE_ME6)))] ACCUMULATE VI5_CA_TG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1    X_C >0
+   NET AREA RATIO VI2    X_C >0
+   NET AREA RATIO VI3    X_C >0
+   NET AREA RATIO VI4    X_C >0
+   NET AREA RATIO VI5    X_C >0
+   NET AREA RATIO VI6    X_C >0
+   NET AREA RATIO DIODE_ME6  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.5A.VIA6_TG.sum
+}
+
+ANT.5A.VI6_MG {@ Ratio of cumulative VI1+VI2+VI3+VI4+VI5+VI6 to MG gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI6_WITH_NP OVER MG_GATE DIODE_ME6 >1
+             [AREA(VI6_WITH_NP) / (AREA(MG_GATE)*(800+200*AREA(DIODE_ME6)))] ACCUMULATE VI5_CA_MG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1    X_C >0
+   NET AREA RATIO VI2    X_C >0
+   NET AREA RATIO VI3    X_C >0
+   NET AREA RATIO VI4    X_C >0
+   NET AREA RATIO VI5    X_C >0
+   NET AREA RATIO VI6    X_C >0
+   NET AREA RATIO DIODE_ME6  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.5A.VIA6_MG.sum
+}
+
+
+// VI1 + VI2 + VI3 + VI4 + VI5 + VI6  accumulation  calculation
+
+VI6_CA_SP   = NET AREA RATIO VI6_WITH_NP OVER SP_GATE DIODE_ME6 >0
+             [AREA(VI6_WITH_NP) / (AREA(SP_GATE)*(800+200*AREA(DIODE_ME6)))] ACCUMULATE VI5_CA_SP     // SP GATE VI1+VI2+VI3+VI4+VI5+VI6 ACCUMULATE
+
+VI6_CA_TG   = NET AREA RATIO VI6_WITH_NP OVER TG_GATE DIODE_ME6 >0
+             [AREA(VI6_WITH_NP) / (AREA(TG_GATE)*(800+200*AREA(DIODE_ME6)))] ACCUMULATE VI5_CA_TG     // TG GATE VI1+VI2+VI3+VI4+VI5+VI6 ACCUMULATE
+
+VI6_CA_MG   = NET AREA RATIO VI6_WITH_NP OVER MG_GATE DIODE_ME6 >0
+             [AREA(VI6_WITH_NP) / (AREA(MG_GATE)*(800+200*AREA(DIODE_ME6)))] ACCUMULATE VI5_CA_MG     // MG GATE VI1+VI2+VI3+VI4+VI5+VI6 ACCUMULATE
+//
+
+CONNECT ME6 ME7 BY VI6   // connect after VI6 antenna checking 
+
+//
+
+
+// 15.ME7 Antenna check
+
+DIODE_ME7   =  NET  AREA  DIODE  >=  DIO_AREA
+
+CONNECT DIODE_ME7 DIODE
+
+ME7_NO_NP  = NET AREA RATIO ME7 DIODE_ME7 ==0	// ME7 DO NOT CONNECT WITH DIODE
+
+
+//
+
+
+ANT.4A.ME7_SP { @ Ratio of the Metal7 area to the gate area < ^N_MET_SS, WITH NO DIODE
+    X = NET AREA RATIO ME7_NO_NP SP_GATE > N_MET_SS  ACCUMULATE
+    X_C = STAMP X  BY  PO1
+          NET AREA RATIO ME7_NO_NP    X_C >0
+    COPY  X
+
+    NET AREA RATIO PRINT X  ANT.4A.ME7_SP.sum
+}
+
+ANT.4A.ME7_TG { @ Ratio of the Metal7 area to the gate area < ^N_MET_SS, WITH NO DIODE
+     X = NET AREA RATIO ME7_NO_NP TG_GATE > N_MET_SS  ACCUMULATE
+     X_C = STAMP X  BY  PO1
+           NET AREA RATIO ME7_NO_NP    X_C >0
+     COPY  X
+
+     NET AREA RATIO PRINT X  ANT.4A.ME7_TG.sum
+}
+
+ANT.4A.ME7_MG { @ Ratio of the Metal7 area to the gate area < ^N_MET_SS, WITH NO DIODE
+     X = NET AREA RATIO ME7_NO_NP MG_GATE > N_MET_SS  ACCUMULATE
+     X_C = STAMP X  BY  PO1
+           NET AREA RATIO ME7_NO_NP    X_C >0
+     COPY  X
+
+     NET AREA RATIO PRINT X  ANT.4A.ME7_MG.sum
+}
+
+// ME1 + ME2 + ME3 + ME4 + ME5 + ME6 + ME7 Antenna check
+
+
+ME7_WITH_NP = NET AREA RATIO ME7 DIODE_ME7 > 0   // ME7 CONNECT WITH DIODE
+
+
+ANT.6A.ME7_SP {@ Ratio of cumulative ME1+ME2+ME3+ME4+ME5+ME6+ME7 to SP gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME7_WITH_NP OVER SP_GATE DIODE_ME7 >1
+             [AREA(ME7_WITH_NP) / (AREA(SP_GATE)*(45000+ 450*AREA(DIODE_ME7)))] ACCUMULATE ME6_CA_SP
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1        X_C >0
+   NET AREA RATIO ME2        X_C >0
+   NET AREA RATIO ME3        X_C >0
+   NET AREA RATIO ME4        X_C >0
+   NET AREA RATIO ME5        X_C >0
+   NET AREA RATIO ME6        X_C >0
+   NET AREA RATIO ME7        X_C >0
+   NET AREA RATIO DIODE_ME7  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME7_SP.sum
+}
+
+ANT.6A.ME7_TG {@ Ratio of cumulative ME1+ME2+ME3+ME4+ME5+ME6+ME7 to TG gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME7_WITH_NP OVER TG_GATE DIODE_ME7 >1
+             [AREA(ME7_WITH_NP) / (AREA(TG_GATE)*(45000+ 450*AREA(DIODE_ME7)))] ACCUMULATE ME6_CA_TG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1        X_C >0
+   NET AREA RATIO ME2        X_C >0
+   NET AREA RATIO ME3        X_C >0
+   NET AREA RATIO ME4        X_C >0
+   NET AREA RATIO ME5        X_C >0
+   NET AREA RATIO ME6        X_C >0
+   NET AREA RATIO ME7        X_C >0
+   NET AREA RATIO DIODE_ME7  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME7_TG.sum
+}
+
+ANT.6A.ME7_MG {@ Ratio of cumulative ME1+ME2+ME3+ME4+ME5+ME6+ME7 to MG gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME7_WITH_NP OVER MG_GATE DIODE_ME7 >1
+             [AREA(ME7_WITH_NP) / (AREA(MG_GATE)*(45000+ 450*AREA(DIODE_ME7)))] ACCUMULATE ME6_CA_MG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO ME3    X_C >0
+   NET AREA RATIO ME4    X_C >0
+   NET AREA RATIO ME5    X_C >0
+   NET AREA RATIO ME6    X_C >0
+   NET AREA RATIO ME7    X_C >0
+   NET AREA RATIO DIODE_ME7  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME7_MG.sum
+}
+
+
+// ME1 + ME2 + ME3 + ME4 + ME5 + ME6 + ME7  accumulation  calculation
+
+ME7_CA_SP   = NET AREA RATIO ME7_WITH_NP OVER SP_GATE DIODE_ME7 >0
+             [AREA(ME7_WITH_NP) / (AREA(SP_GATE)*(45000+ 450*AREA(DIODE_ME7)))] ACCUMULATE ME6_CA_SP     // SP GATE ME1+ME2+ME3+ME4+ME5+ME6+ME7 ACCUMULATE
+
+ME7_CA_TG   = NET AREA RATIO ME7_WITH_NP OVER TG_GATE DIODE_ME7 >0
+             [AREA(ME7_WITH_NP) / (AREA(TG_GATE)*(45000+ 450*AREA(DIODE_ME7)))] ACCUMULATE ME6_CA_TG     // TG GATE ME1+ME2+ME3+ME4+ME5+ME6+ME7 ACCUMULATE
+
+ME7_CA_MG   = NET AREA RATIO ME7_WITH_NP OVER MG_GATE DIODE_ME7 >0
+             [AREA(ME7_WITH_NP) / (AREA(MG_GATE)*(45000+ 450*AREA(DIODE_ME7)))] ACCUMULATE ME6_CA_MG     // MG GATE ME1+ME2+ME3+ME4+ME5+ME6+ME7 ACCUMULATE
+
+
+
+// 16.VI7 Antenna check
+
+//
+
+CONNECT VI7 ME7
+
+//
+
+// VI7 antenna checking before connect to ME8
+
+
+VIA7_NO_NP = NET AREA RATIO VI7 DIODE_ME7 == 0	// VIA7 DO NOT CONNECT WITH DIODE
+
+
+ANT.3A.VIA7_SP { @ Ratio of the VIA7 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X  =  NET AREA RATIO VIA7_NO_NP SP_GATE > N_VIA_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA7_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.3A.VIA7_SP.sum
+}
+
+ANT.3A.VIA7_TG { @ Ratio of the VIA7 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X  = NET AREA RATIO VIA7_NO_NP TG_GATE > N_VIA_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA7_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.3A.VIA7_TG.sum
+}
+
+ANT.3A.VIA7_MG { @ Ratio of the VIA7 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X  = NET AREA RATIO VIA7_NO_NP MG_GATE > N_VIA_SS  ACCUMULATE
+      X_C = STAMP X  BY  PO1
+            NET AREA RATIO VIA7_NO_NP    X_C >0
+      COPY  X
+
+      NET AREA RATIO PRINT X  ANT.3A.VIA7_MG.sum
+}
+
+
+// VIA1 + VIA2 + VIA3 + VIA4 + VIA5 + VIA6 + VIA7  Antenna check
+
+
+VI7_WITH_NP = NET AREA RATIO VI7 DIODE_ME7 > 0   // VI7 CONNECT WITH DIODE
+
+
+ANT.5A.VI7_SP {@ Ratio of cumulative VI1+VI2+VI3+VI4+VI5+VI6+VI7 to SP gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI7_WITH_NP OVER SP_GATE DIODE_ME7 >1
+             [AREA(VI7_WITH_NP) / (AREA(SP_GATE)*(800+200*AREA(DIODE_ME7)))] ACCUMULATE VI6_CA_SP
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1        X_C >0
+   NET AREA RATIO VI2        X_C >0
+   NET AREA RATIO VI3        X_C >0
+   NET AREA RATIO VI4        X_C >0
+   NET AREA RATIO VI5        X_C >0
+   NET AREA RATIO VI6        X_C >0
+   NET AREA RATIO VI7        X_C >0
+   NET AREA RATIO DIODE_ME7  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.5A.VI7_SP.sum
+}
+
+ANT.5A.VI7_TG {@ Ratio of cumulative VI1+VI2+VI3+VI4+VI5+VI6+VI7 to TG gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI7_WITH_NP OVER TG_GATE DIODE_ME7 >1
+             [AREA(VI7_WITH_NP) / (AREA(TG_GATE)*(800+200*AREA(DIODE_ME7)))] ACCUMULATE VI6_CA_TG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1        X_C >0
+   NET AREA RATIO VI2        X_C >0
+   NET AREA RATIO VI3        X_C >0
+   NET AREA RATIO VI4        X_C >0
+   NET AREA RATIO VI5        X_C >0
+   NET AREA RATIO VI6        X_C >0
+   NET AREA RATIO VI7        X_C >0
+   NET AREA RATIO DIODE_ME7  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.5A.VI7_TG.sum
+}
+
+ANT.5A.VI7_MG {@ Ratio of cumulative VI1+VI2+VI3+VI4+VI5+VI6+VI7 to MG gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI7_WITH_NP OVER MG_GATE DIODE_ME7 >1
+             [AREA(VI7_WITH_NP) / (AREA(MG_GATE)*(800+200*AREA(DIODE_ME7)))] ACCUMULATE VI6_CA_MG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1    X_C >0
+   NET AREA RATIO VI2    X_C >0
+   NET AREA RATIO VI3    X_C >0
+   NET AREA RATIO VI4    X_C >0
+   NET AREA RATIO VI5    X_C >0
+   NET AREA RATIO VI6    X_C >0
+   NET AREA RATIO VI7    X_C >0
+   NET AREA RATIO DIODE_ME7  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.5A.VI7_MG.sum
+}
+
+
+// VI1 + VI2 + VI3 + VI4 + VI5 + VI6 + VI7  accumulation  calculation
+
+VI7_CA_SP   = NET AREA RATIO VI7_WITH_NP OVER SP_GATE DIODE_ME7 >0
+             [AREA(VI7_WITH_NP) / (AREA(SP_GATE)*(800+200*AREA(DIODE_ME7)))] ACCUMULATE VI6_CA_SP     // SP GATE VI1+VI2+VI3+VI4+VI5+VI6 ACCUMULATE
+
+VI7_CA_TG   = NET AREA RATIO VI7_WITH_NP OVER TG_GATE DIODE_ME7 >0
+             [AREA(VI7_WITH_NP) / (AREA(TG_GATE)*(800+200*AREA(DIODE_ME7)))] ACCUMULATE VI6_CA_TG     // TG GATE VI1+VI2+VI3+VI4+VI5+VI6 ACCUMULATE
+
+VI7_CA_MG   = NET AREA RATIO VI7_WITH_NP OVER MG_GATE DIODE_ME7 >0
+             [AREA(VI7_WITH_NP) / (AREA(MG_GATE)*(800+200*AREA(DIODE_ME7)))] ACCUMULATE VI6_CA_MG     // MG GATE VI1+VI2+VI3+VI4+VI5+VI6 ACCUMULATE
+
+//
+
+//
+
+CONNECT ME7 ME8 BY VI7  // connect to ME8 after VI7 antenna checking
+
+//
+
+
+// ME8 Antenna check
+
+DIODE_ME8   =  NET  AREA  DIODE  >=  DIO_AREA
+
+CONNECT DIODE_ME8  DIODE
+
+
+ME8_NO_NP  = NET AREA RATIO ME8 DIODE_ME8 ==0	// ME8 DO NOT CONNECT WITH DIODE
+
+
+//
+
+
+
+ANT.4A.ME8_SP { @ Ratio of the Metal8 area to the gate area < ^N_MET_SS, WITH NO DIODE
+       X = NET AREA RATIO ME8_NO_NP SP_GATE > N_MET_SS  ACCUMULATE
+       X_C = STAMP X  BY  PO1
+             NET AREA RATIO ME8_NO_NP    X_C >0
+       COPY  X
+       
+       NET AREA RATIO PRINT X  ANT.4A.ME8_SP.sum
+}
+
+ANT.4A.ME8_TG { @ Ratio of the Metal8 area to the gate area < ^N_MET_SS, WITH NO DIODE
+       X = NET AREA RATIO ME8_NO_NP TG_GATE > N_MET_SS  ACCUMULATE
+       X_C = STAMP X  BY  PO1
+             NET AREA RATIO ME8_NO_NP    X_C >0
+       COPY  X   
+
+       NET AREA RATIO PRINT X  ANT.4A.ME8_TG.sum 
+}
+
+ANT.4A.ME8_MG { @ Ratio of the Metal8 area to the gate area < ^N_MET_SS, WITH NO DIODE
+       X = NET AREA RATIO ME8_NO_NP MG_GATE > N_MET_SS  ACCUMULATE
+       X_C = STAMP X  BY  PO1
+             NET AREA RATIO ME8_NO_NP    X_C >0
+       COPY  X   
+
+       NET AREA RATIO PRINT X  ANT.4A.ME8_MG.sum   
+}
+
+
+// ME1 + ME2 + ME3 + ME4 + ME5 + ME6 + ME7 + ME8  Antenna check
+
+
+ME8_WITH_NP = NET AREA RATIO ME8 DIODE_ME8 > 0   // ME8 CONNECT WITH DIODE
+
+
+ANT.6A.ME8_SP {@ Ratio of cumulative ME1+ME2+ME3+ME4+ME5+ME6+ME7+ME8 to SP gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME8_WITH_NP OVER SP_GATE DIODE_ME8 >1
+             [AREA(ME8_WITH_NP) / (AREA(SP_GATE)*(45000+ 450*AREA(DIODE_ME8)))] ACCUMULATE ME7_CA_SP
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO ME3    X_C >0
+   NET AREA RATIO ME4    X_C >0
+   NET AREA RATIO ME5    X_C >0
+   NET AREA RATIO ME6    X_C >0
+   NET AREA RATIO ME7    X_C >0
+   NET AREA RATIO ME8    X_C >0
+   NET AREA RATIO DIODE_ME8  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME8_SP.sum
+}
+
+ANT.6A.ME8_TG {@ Ratio of cumulative ME1+ME2+ME3+ME4+ME5+ME6+ME7+ME8 to TG gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME8_WITH_NP OVER TG_GATE DIODE_ME8 >1
+             [AREA(ME8_WITH_NP) / (AREA(TG_GATE)*(45000+ 450*AREA(DIODE_ME8)))] ACCUMULATE ME7_CA_TG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO ME3    X_C >0
+   NET AREA RATIO ME4    X_C >0
+   NET AREA RATIO ME5    X_C >0
+   NET AREA RATIO ME6    X_C >0
+   NET AREA RATIO ME7    X_C >0
+   NET AREA RATIO ME8    X_C >0
+   NET AREA RATIO DIODE_ME8  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME8_TG.sum
+}
+
+ANT.6A.ME8_MG {@ Ratio of cumulative ME1+ME2+ME3+ME4+ME5+ME6+ME7+ME8 to MG gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME8_WITH_NP OVER MG_GATE DIODE_ME8 >1
+             [AREA(ME8_WITH_NP) / (AREA(MG_GATE)*(45000+ 450*AREA(DIODE_ME8)))] ACCUMULATE ME7_CA_MG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO ME3    X_C >0
+   NET AREA RATIO ME4    X_C >0
+   NET AREA RATIO ME5    X_C >0
+   NET AREA RATIO ME6    X_C >0
+   NET AREA RATIO ME7    X_C >0
+   NET AREA RATIO ME8    X_C >0
+   NET AREA RATIO DIODE_ME8  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME8_MG.sum
+}
+
+// ME1 + ME2 + ME3 + ME4 + ME5 + ME6 + ME7 + ME8  accumulation  calculation
+
+ME8_CA_SP   = NET AREA RATIO ME8_WITH_NP OVER SP_GATE DIODE_ME8 >0
+             [AREA(ME8_WITH_NP) / (AREA(SP_GATE)*(45000+ 450*AREA(DIODE_ME8)))] ACCUMULATE ME7_CA_SP     // SP GATE ME1+ME2+ME3+ME4+ME5+ME6+ME7+ME8 ACCUMULATE
+
+ME8_CA_TG   = NET AREA RATIO ME8_WITH_NP OVER TG_GATE DIODE_ME8 >0
+             [AREA(ME8_WITH_NP) / (AREA(TG_GATE)*(45000+ 450*AREA(DIODE_ME8)))] ACCUMULATE ME7_CA_TG     // TG GATE ME1+ME2+ME3+ME4+ME5+ME6+ME7+ME8 ACCUMULATE
+
+ME8_CA_MG   = NET AREA RATIO ME8_WITH_NP OVER MG_GATE DIODE_ME8 >0
+             [AREA(ME8_WITH_NP) / (AREA(MG_GATE)*(45000+ 450*AREA(DIODE_ME8)))] ACCUMULATE ME7_CA_MG     // MG GATE ME1+ME2+ME3+ME4+ME5+ME6+ME7+ME8 ACCUMULATE
+
+//
+
+
+// 18.VI8 Antenna check
+
+//
+
+CONNECT VI8 ME8   
+
+//
+
+VIA8_NO_NP = NET AREA RATIO VI8 DIODE_ME8 == 0	// VIA7 DO NOT CONNECT WITH DIODE
+
+
+ANT.3A.VIA8_SP { @ Ratio of the VIA8 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X   =  NET AREA RATIO VIA8_NO_NP SP_GATE > N_VIA_SS  ACCUMULATE 
+      X_C =  STAMP  X  BY  PO1
+             NET AREA RATIO VIA8_NO_NP   X_C > 0
+      COPY  X
+      
+      NET AREA RATIO PRINT X  ANT.3A.VIA8_SP.sum
+}
+
+ANT.3A.VIA8_TG { @ Ratio of the VIA8 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X   =  NET AREA RATIO VIA8_NO_NP TG_GATE > N_VIA_SS  ACCUMULATE 
+      X_C =  STAMP  X  BY  PO1
+             NET AREA RATIO VIA8_NO_NP   X_C > 0
+      COPY  X
+      
+      NET AREA RATIO PRINT X  ANT.3A.VIA8_TG.sum
+}
+
+ANT.3A.VIA8_MG { @ Ratio of the VIA8 area to the gate area < ^N_VIA_SS, WITH NO DIODE
+      X   =  NET AREA RATIO VIA8_NO_NP MG_GATE > N_VIA_SS  ACCUMULATE 
+      X_C =  STAMP  X  BY  PO1
+             NET AREA RATIO VIA8_NO_NP   X_C > 0
+      COPY  X
+      
+      NET AREA RATIO PRINT X  ANT.3A.VIA8_MG.sum
+}
+
+
+// VIA1 + VIA2 + VIA3 + VIA4 + VIA5 + VIA6 + VIA7 + VIA8   Antenna check
+
+VI8_WITH_NP = NET AREA RATIO VI8 DIODE_ME8 > 0   // VI8 CONNECT WITH DIODE
+
+
+ANT.5A.VI8_SP {@ Ratio of cumulative VI1+VI2+VI3+VI4+VI5+VI6+VI7+VI8 to SP gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI8_WITH_NP OVER SP_GATE DIODE_ME8 >1
+             [AREA(VI8_WITH_NP) / (AREA(SP_GATE)*(800+200*AREA(DIODE_ME8)))] ACCUMULATE VI7_CA_SP
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1    X_C >0
+   NET AREA RATIO VI2    X_C >0
+   NET AREA RATIO VI3    X_C >0
+   NET AREA RATIO VI4    X_C >0
+   NET AREA RATIO VI5    X_C >0
+   NET AREA RATIO VI6    X_C >0
+   NET AREA RATIO VI7    X_C >0
+   NET AREA RATIO VI8    X_C >0
+   NET AREA RATIO DIODE_ME8  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.5A.VI8_SP.sum
+}
+
+ANT.5A.VI8_TG {@ Ratio of cumulative VI1+VI2+VI3+VI4+VI5+VI6+VI7+VI8 to TG gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI8_WITH_NP OVER TG_GATE DIODE_ME8 >1
+             [AREA(VI8_WITH_NP) / (AREA(TG_GATE)*(800+200*AREA(DIODE_ME8)))] ACCUMULATE VI7_CA_TG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1    X_C >0
+   NET AREA RATIO VI2    X_C >0
+   NET AREA RATIO VI3    X_C >0
+   NET AREA RATIO VI4    X_C >0
+   NET AREA RATIO VI5    X_C >0
+   NET AREA RATIO VI6    X_C >0
+   NET AREA RATIO VI7    X_C >0
+   NET AREA RATIO VI8    X_C >0
+   NET AREA RATIO DIODE_ME8  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.5A.VI8_TG.sum
+}
+
+ANT.5A.VI8_MG {@ Ratio of cumulative VI1+VI2+VI3+VI4+VI5+VI6+VI7+VI8 to MG gate area < (800 + 200 * diode area)
+   X = NET AREA RATIO VI8_WITH_NP OVER MG_GATE DIODE_ME8 >1
+             [AREA(VI8_WITH_NP) / (AREA(MG_GATE)*(800+200*AREA(DIODE_ME8)))] ACCUMULATE VI7_CA_MG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO VI1    X_C >0
+   NET AREA RATIO VI2    X_C >0
+   NET AREA RATIO VI3    X_C >0
+   NET AREA RATIO VI4    X_C >0
+   NET AREA RATIO VI5    X_C >0
+   NET AREA RATIO VI6    X_C >0
+   NET AREA RATIO VI7    X_C >0
+   NET AREA RATIO VI8    X_C >0
+   NET AREA RATIO DIODE_ME8  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.5A.VI8_MG.sum
+}
+
+
+//
+
+CONNECT ME8 ME9 BY VI8   // connect after VI8 antenna checking
+
+//
+
+
+// 19.ME9 Antenna check
+
+
+DIODE_ME9   =  NET  AREA  DIODE  >=  DIO_AREA
+
+CONNECT DIODE_ME9  DIODE
+
+ME9_NO_NP  = NET AREA RATIO ME9 DIODE_ME9 ==0	// ME9 DO NOT CONNECT WITH DIODE
+
+//
+
+
+ANT.4A.ME9_SP { @ Ratio of the Metal9 area to the gate area < ^N_MET_SS, WITH NO DIODE
+
+       X   = NET AREA RATIO ME9_NO_NP SP_GATE > N_MET_SS  ACCUMULATE
+       X_C = STAMP  X  BY  PO1
+             NET AREA RATIO ME9_NO_NP    X_C > 0
+       COPY  X
+       
+       NET AREA RATIO PRINT X  ANT.4A.ME9_SP.sum
+}
+
+ANT.4A.ME9_TG { @ Ratio of the Metal9 area to the gate area < ^N_MET_SS, WITH NO DIODE
+       X   = NET AREA RATIO ME9_NO_NP TG_GATE > N_MET_SS  ACCUMULATE
+       X_C = STAMP  X  BY  PO1
+             NET AREA RATIO ME9_NO_NP    X_C > 0
+       COPY  X 
+      
+       NET AREA RATIO PRINT X  ANT.4A.ME9_TG.sum  
+}
+
+ANT.4A.ME9_MG { @ Ratio of the Metal9 area to the gate area < ^N_MET_SS, WITH NO DIODE
+       X   = NET AREA RATIO ME9_NO_NP MG_GATE > N_MET_SS  ACCUMULATE
+       X_C = STAMP  X  BY  PO1
+             NET AREA RATIO ME9_NO_NP    X_C > 0
+       COPY  X 
+      
+       NET AREA RATIO PRINT X  ANT.4A.ME9_MG.sum  
+}
+
+
+// ME1 + ME2 + ME3 + ME4 + ME5 + ME6 + ME7 + ME8 + ME9  Antenna check
+
+
+ME9_WITH_NP = NET AREA RATIO ME9 DIODE_ME9 > 0   // ME9 CONNECT WITH DIODE
+
+
+ANT.6A.ME9_SP {@ Ratio of cumulative ME1+ME2+ME3+ME4+ME5+ME6+ME7+ME8+ME9 to SP gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME9_WITH_NP OVER SP_GATE DIODE_ME9 >1
+             [AREA(ME9_WITH_NP) / (AREA(SP_GATE)*(45000+ 450*AREA(DIODE_ME9)))] ACCUMULATE ME8_CA_SP
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO ME3    X_C >0
+   NET AREA RATIO ME4    X_C >0
+   NET AREA RATIO ME5    X_C >0
+   NET AREA RATIO ME6    X_C >0
+   NET AREA RATIO ME7    X_C >0
+   NET AREA RATIO ME8    X_C >0
+   NET AREA RATIO ME9    X_C >0
+   NET AREA RATIO DIODE_ME9  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME9_SP.sum
+}
+
+ANT.6A.ME9_TG {@ Ratio of cumulative ME1+ME2+ME3+ME4+ME5+ME6+ME7+ME8+ME9 to TG gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME9_WITH_NP OVER TG_GATE DIODE_ME9 >1
+             [AREA(ME9_WITH_NP) / (AREA(TG_GATE)*(45000+ 450*AREA(DIODE_ME9)))] ACCUMULATE ME8_CA_TG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1    X_C >0
+   NET AREA RATIO ME2    X_C >0
+   NET AREA RATIO ME3    X_C >0
+   NET AREA RATIO ME4    X_C >0
+   NET AREA RATIO ME5    X_C >0
+   NET AREA RATIO ME6    X_C >0
+   NET AREA RATIO ME7    X_C >0
+   NET AREA RATIO ME8    X_C >0
+   NET AREA RATIO ME9    X_C >0
+   NET AREA RATIO DIODE_ME9  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME9_TG.sum
+}
+
+ANT.6A.ME9_MG {@ Ratio of cumulative ME1+ME2+ME3+ME4+ME5+ME6+ME7+ME8+ME9 to MG gate area < (45000 + 450 * diode area)
+   X = NET AREA RATIO ME9_WITH_NP OVER MG_GATE DIODE_ME9 >1
+             [AREA(ME9_WITH_NP) / (AREA(MG_GATE)*(45000+ 450*AREA(DIODE_ME9)))] ACCUMULATE ME8_CA_MG
+   
+   X_C = STAMP X  BY  PO1
+   
+   NET AREA RATIO ME1        X_C >0
+   NET AREA RATIO ME2        X_C >0
+   NET AREA RATIO ME3        X_C >0
+   NET AREA RATIO ME4        X_C >0
+   NET AREA RATIO ME5        X_C >0
+   NET AREA RATIO ME6        X_C >0
+   NET AREA RATIO ME7        X_C >0
+   NET AREA RATIO ME8        X_C >0
+   NET AREA RATIO ME9        X_C >0
+   NET AREA RATIO DIODE_ME9  X_C >0
+   COPY X 
+   
+   NET AREA RATIO PRINT X  ANT.6A.ME9_MG.sum
+}
+
+// END 

@@ -1,0 +1,12 @@
+\o Program:		@(#)$CDS: libManager.exe version Exp 01/19/2010 20:09 (ocelot-linux) $
+\o Sub version:		sub-version none
+\o Arguments:		-unmapped -mpssession icfb7924 -mpshost icdvm15.ewi.tudelft.nl 
+\o Working Directory:	icdvm15.ewi.tudelft.nl:/home/rmol/ICProject/cell_design/IC_Ass2
+\o Library Manager customization server connected.
+MPS service: map window
+\o Log file is "/home/rmol/ICProject/cell_design/IC_Ass2/libManager.log".
+Opening libManager window.
+No main selection
+\o Auto refresh applied.
+Main selection: rfLib
+\o libManager is exiting.

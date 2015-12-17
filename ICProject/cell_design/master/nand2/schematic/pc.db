@@ -1,0 +1,14 @@
+#
+basic gnd symbol
+4
+#
+basic vdd symbol
+5
+#
+pCells nmos symbol
+1
+0
+#
+pCells pmos symbol
+3
+2

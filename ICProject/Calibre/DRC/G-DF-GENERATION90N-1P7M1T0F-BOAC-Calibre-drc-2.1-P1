@@ -1,0 +1,626 @@
+/////////////////////////////////////////////////////
+//  UMC 90nm logic 1P7M (1111112) BOAC DRC rule   //
+//  It also be called 1P7M 1T0F process            //
+//  Generated date:  Thu Jul  6 09:17:01 CST 2006  //
+//                                                 //
+/////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+//                                                                    //
+//     Title       : Calibre DRC of 90nm Process Bonding Over Active  // 
+//                   Circuit Pad Layout Rule Guideline                //
+//                                                                    //
+//     DRC VERSION : 2.1  P1                                          //
+//     Parent Document  : G-03B-GENERATION90N-TLR/BOAC Ver:2.1 P1     //
+//                                                                    //  
+//                                                                    //
+//     Copyrignt (c) United Microelectronics Corporation, 1980-2005   //
+//     All Rights Reserved                                            //
+//                                                                    //
+//                                                                    //
+//     This source file is proprietary information of United          //
+//     Microelectronics Corporation.It may not be distributed,        //        
+//     in whole or in any part without prior written permission.      //
+//                                                                    //
+//     LIMITATION OF LIABILITY:                                       //
+//        United Microelectronics Corp. is not  liable  for  any      //
+//        property damage, personal  injury,  loss  of  profits,      //
+//        interruption of business,  or  for  any other special,      //
+//        consequential or incidental  damages, however  caused,      //
+//        whether for breach of warranty,contract tort(including      //
+//        negligence),strict liability or otherwise.                  //
+//                                                                    //
+//       This runset is validated with Calibre 2004.3_9.21            //
+////////////////////////////////////////////////////////////////////////
+// revision  date      who              changes                       //
+//========= ======= ======== ======================================== //
+//1.0 P1   09/08/2005  Silvio       new create                        //
+//2.0 P1   10/31/2005  silvio       update  1E                        //
+//                                  add shrinkable rules              //
+//2.1 P1   07/04/2006  Silvio       update 90nm_layers_v3.5.cal       //
+//                                  4.2MEX                            //
+//                                  remove 4.2.3F 4.2.3G 4.2.3H       //
+////////////////////////////////////////////////////////////////////////
+// Notice (Important, Read Me First)
+// =================================
+// (1) Please set up RESOLUTION,LAYOUT PATH,LAYOUT PRIMARY
+//     according to your design before run CALIBRE drc.
+//     Set up DRC UNSLECT CHECK as your requirements
+//     Use DRC SELECT CHECK to check one or two groups only.
+// (2) Rules not checked. 1B 1I 1J 1P
+// (3) This document includes 14 files
+//      90nm_layers_v3.5.cal
+//	G-DF-GENERATION90N-1P4M1T0F-BOAC-Calibre-drc-2.1-p1
+//	G-DF-GENERATION90N-1P5M1T0F-BOAC-Calibre-drc-2.1-p1
+//	G-DF-GENERATION90N-1P6M1T0F-BOAC-Calibre-drc-2.1-p1
+//	G-DF-GENERATION90N-1P6M1T1F-BOAC-Calibre-drc-2.1-p1
+//	G-DF-GENERATION90N-1P6M2T0F-BOAC-Calibre-drc-2.1-p1
+//	G-DF-GENERATION90N-1P7M1T0F-BOAC-Calibre-drc-2.1-p1
+//	G-DF-GENERATION90N-1P7M1T1F-BOAC-Calibre-drc-2.1-p1
+//	G-DF-GENERATION90N-1P7M2T0F-BOAC-Calibre-drc-2.1-p1
+//	G-DF-GENERATION90N-1P7M2T1F-BOAC-Calibre-drc-2.1-p1
+//	G-DF-GENERATION90N-1P8M1T1F-BOAC-Calibre-drc-2.1-p1
+//	G-DF-GENERATION90N-1P8M2T0F-BOAC-Calibre-drc-2.1-p1
+//	G-DF-GENERATION90N-1P8M2T1F-BOAC-Calibre-drc-2.1-p1
+//	G-DF-GENERATION90N-1P9M2T1F-BOAC-Calibre-drc-2.1-p1
+//////////////////////////////////////////////////////////////////////
+
+// INPUT LAYERS refer to 90nm_layers_v3.5.cal
+
+INCLUDE 90nm_layers_v3.5.cal
+
+//
+// *************************************************************
+// you can comment one or more lines to run these opional checks
+// with basic rule check, or change DRC UNSELECT CHECK ... to 
+// DRC SLELECT CHECK ... to run one or more optional checks only
+// *************************************************************
+//
+
+// The checking rule is Inline_50 as default(//DRC UNSELECT CHECK Inline_50).
+
+//DRC UNSELECT CHECK Inline_50           // Wire bump Inline 50 rules
+
+DRC UNSELECT CHECK  Inline_50.shrink     // Wire bump Inline 50 shrinkable rules
+
+DRC UNSELECT CHECK  Staggered_35         // Wire bump Staggered 35 rules
+
+DRC UNSELECT CHECK  Staggered_35.shrink  // Wire bump Staggered 35 shrinkable rules 
+
+// L80G or L90 setup 
+// The grid size is 0.005 as default setup.
+// If your design is L80,please comment "#DEFINE L90" line.(//#DEFINE  L90)
+
+#DEFINE  L90
+
+//
+LAYOUT TOP LAYER PASV_RDL ME7 VI6 ME6 VI5 ME5 VI4 ME4 VI3 ME3 VI2 ME2 VI1 ME1
+
+//
+//===========================
+//===  Setup Environment  ===
+//===========================
+//
+ 
+LAYOUT DEPTH  ALL
+LAYOUT SYSTEM GDSII
+ 
+UNIT CAPACITANCE FF
+UNIT LENGTH      U
+UNIT RESISTANCE  OHM
+UNIT TIME        US
+
+
+// 90nm or 80nm setup
+ 
+#IFDEF  L90 
+
+// for L90G & L90N grid size is 0.005um
+RESOLUTION 5
+PRECISION  1000
+
+#ELSE  
+
+// for L80G grid size is 0.001um
+RESOLUTION 1
+PRECISION  1000
+
+#ENDIF
+
+// 
+//================================
+//===  Setup Defaults for DRC  ===
+//================================
+//
+
+LAYOUT PATH "/Project/drcdeck/QA_PATTERN/0.090/GENERATION_BOAC/G_QA_GENERATION90N_BOAC_VAB_PC_B1_050905.gds"
+LAYOUT PRIMARY "pass"
+ 
+DRC CHECK TEXT       COMMENTS RFI
+DRC KEEP EMPTY       NO  
+DRC MAXIMUM RESULTS  1000
+DRC MAXIMUM VERTEX   199
+DRC RESULTS DATABASE "./pass.db" ASCII
+DRC SUMMARY REPORT   "./pass.sum"
+DRC TOLERANCE FACTOR .003
+
+FLAG ACUTE   YES
+FLAG OFFGRID YES
+FLAG SKEW    YES
+
+//
+//===================================================================
+//===  Defined types from combinations of layers (DO NOT MODIFY)  ===
+//===================================================================
+//
+
+BOAC_PASV = PASV_RDL  INTERACT  BOACMK
+BOAC_TMV  = TMV_RDL   INTERACT  BOACMK
+BOAC_AL   = AL_RDL    INTERACT  BOACMK
+BOAC_MET  = BOAC_AL     AND     BOACMK
+
+    
+//
+//=============================================================
+//===  Generic Bonding Pad Layout Guidelines(in-line 50um)  ===
+//=============================================================
+//
+
+GROUP  Inline_50         ?.inline.50 
+GROUP  Inline_50.shrink  ?.inline.50_shrink 
+
+
+//
+
+4.1.1A.inline.50 {@ Minimum size of a PASV_RDL region is 43.0um X 56.0um
+   X = INT BOAC_PASV < 43 ABUT>0<90 SINGULAR REGION
+   PASV_RDL_A = EXTENTS BOAC_PASV
+   Y = (NOT RECTANGLE PASV_RDL_A >= 43.0 BY >= 56.0 ) AND BOAC_PASV
+   X OR Y   
+}
+
+4.1.1A.inline.50_shrink {@ Minimum size of a PASV_RDL region is 47.8um X 62.2um(shrinkable)
+   X = INT BOAC_PASV < 47.8 ABUT>0<90 SINGULAR REGION
+   PASV_RDL_A = EXTENTS BOAC_PASV
+   Y = (NOT RECTANGLE PASV_RDL_A >= 47.8 BY >= 62.2 ) AND BOAC_PASV
+   X OR Y   
+}
+
+// 1B not checked
+
+4.1.1C.inline.50 {@ Minimum space between two PASV_RDL regions is 7um
+   EXT BOAC_PASV < 7 ABUT>0<90 REGION
+}
+
+4.1.1C.inline.50_shrink {@ Minimum space between two PASV_RDL regions is 7.33um(shrinkable)
+   EXT BOAC_PASV < 7.33 ABUT>0<90 REGION
+}
+
+//
+
+4.1.1D.inline.50 {@ Exact TMV_RDL size is 4 X 4
+   NOT RECTANGLE BOAC_TMV  == 4.0 BY == 4.0   
+}
+
+4.1.1D.inline.50_shrink {@ Exact TMV_RDL size is 4 X 4
+   NOT RECTANGLE BOAC_TMV  == 4.0 BY == 4.0   
+}
+
+//
+
+4.1.1E.inline.50 {@ Minimum space between two AL_RDL regions is 3.0um
+   EXT BOAC_MET  AL_RDL   < 3.0 ABUT>0<90 REGION
+}
+
+4.1.1E.inline.50_shrink {@ Minimum space between two AL_RDL regions is 3.33um(shrinkable)
+   EXT BOAC_MET  AL_RDL   < 3.33 ABUT>0<90 REGION
+}
+
+//
+
+4.1.1F.inline.50 {@ Minimum PASV_RDL to TMV_RDL is 2.0um
+   EXT BOAC_PASV  BOAC_TMV < 2.0 ABUT INSIDE ALSO REGION
+}
+
+4.1.1F.inline.50_shrink {@ Minimum PASV_RDL to TMV_RDL is 2.0um
+   EXT BOAC_PASV  BOAC_TMV < 2.0 ABUT INSIDE ALSO REGION
+}
+
+//
+
+4.1.1G.inline.50 {@ Minimum TMV_RDL spacing is 2.0um
+   EXT  BOAC_TMV  < 2.0  ABUT<90 REGION
+}
+
+4.1.1G.inline.50_shrink {@ Minimum TMV_RDL spacing is 2.22um(shrinkable)
+   EXT  BOAC_TMV  < 2.22  ABUT<90 REGION
+}
+
+//
+
+4.1.1H.inline.50 {@ Minimum spacing of AL_RDL to Die Seal Ring is 3.0um
+   EXT BOAC_AL SEALRMARK < 3.0 ABUT<90 REGION
+}
+
+4.1.1H.inline.50_shrink {@ Minimum spacing of AL_RDL to Die Seal Ring is 3.0um
+   EXT BOAC_AL SEALRMARK < 3.0 ABUT<90 REGION
+}
+
+//
+
+
+// 1I  1J  not  checked
+
+
+4.1.1L.inline.50 {@ Minimum AL_RDL enclosure of TMV_RDL is 2.0um
+    ENC  BOAC_TMV  BOAC_AL < 2.0  ABUT<90 SINGULAR OUTSIDE ALSO REGION
+}
+
+4.1.1L.inline.50_shrink {@ Minimum AL_RDL enclosure of TMV_RDL is 2.0um
+    ENC  BOAC_TMV  BOAC_AL < 2.0  ABUT<90 SINGULAR OUTSIDE ALSO REGION
+}
+
+//
+
+4.1.1M.inline.50 {@ Minimum AL_RDL enclosure of PASV_RDL is 2.0um
+    ENC  BOAC_PASV  BOAC_AL  < 2.0 ABUT<90 SINGULAR OUTSIDE ALSO REGION
+}
+
+4.1.1M.inline.50_shrink {@ Minimum AL_RDL enclosure of PASV_RDL is 2.0um
+    ENC  BOAC_PASV  BOAC_AL  < 2.0 ABUT<90 SINGULAR OUTSIDE ALSO REGION
+}
+
+//
+
+4.1.1N.DIFF.inline.50 {@ Minimum active circuit(diffusion) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  DIFF < 3.0  ABUT<90 SINGULAR  REGION  
+}
+
+4.1.1N.DIFF.inline.50_shrink {@ Minimum active circuit(diffusion) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  DIFF < 3.0  ABUT<90 SINGULAR  REGION  
+}
+
+//
+
+4.1.1N.PO1.inline.50 {@ Minimum active circuit(PO1) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  PO1 < 3.0  ABUT<90 SINGULAR  REGION  
+}
+
+4.1.1N.PO1.inline.50_shrink {@ Minimum active circuit(PO1) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  PO1 < 3.0  ABUT<90 SINGULAR  REGION  
+}
+
+//
+
+
+4.1.1N.ME7.inline.50 {@ Minimum active circuit(ME7) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME7 < 3.0  ABUT<90 SINGULAR  REGION  
+}  
+
+4.1.1N.ME7.inline.50_shrink {@ Minimum active circuit(ME7) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME7 < 3.0  ABUT<90 SINGULAR  REGION  
+}
+
+//
+      
+
+4.1.1N.ME6.inline.50 {@ Minimum active circuit(ME6) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME6 < 3.0  ABUT<90 SINGULAR  REGION  
+}  
+
+4.1.1N.ME6.inline.50_shrink {@ Minimum active circuit(ME6) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME6 < 3.0  ABUT<90 SINGULAR  REGION  
+}
+
+//
+      
+
+4.1.1N.ME5.inline.50 {@ Minimum active circuit(ME5) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME5 < 3.0  ABUT<90 SINGULAR  REGION  
+}  
+
+4.1.1N.ME5.inline.50_shrink {@ Minimum active circuit(ME5) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME5 < 3.0  ABUT<90 SINGULAR  REGION  
+}
+
+//
+      
+
+4.1.1N.ME4.inline.50 {@ Minimum active circuit(ME4) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME4 < 3.0  ABUT<90 SINGULAR  REGION  
+}  
+
+4.1.1N.ME4.inline.50_shrink {@ Minimum active circuit(ME4) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME4 < 3.0  ABUT<90 SINGULAR  REGION  
+}
+
+//
+      
+
+4.1.1N.ME3.inline.50 {@ Minimum active circuit(ME3) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME3 < 3.0  ABUT<90 SINGULAR  REGION  
+}  
+
+4.1.1N.ME3.inline.50_shrink {@ Minimum active circuit(ME3) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME3 < 3.0  ABUT<90 SINGULAR  REGION  
+}
+
+//
+      
+
+4.1.1N.ME2.inline.50 {@ Minimum active circuit(ME2) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME2 < 3.0  ABUT<90 SINGULAR  REGION  
+}  
+
+4.1.1N.ME2.inline.50_shrink {@ Minimum active circuit(ME2) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME2 < 3.0  ABUT<90 SINGULAR  REGION  
+}
+
+//
+      
+
+4.1.1N.ME1.inline.50 {@ Minimum active circuit(ME1) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME1 < 3.0  ABUT<90 SINGULAR  REGION  
+}  
+
+4.1.1N.ME1.inline.50_shrink {@ Minimum active circuit(ME1) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME1 < 3.0  ABUT<90 SINGULAR  REGION  
+}
+
+//
+      
+    
+//
+//===============================================================
+//===  Generic Bonding Pad Layout Guidelines(staggered 35um)  ===
+//===============================================================
+//
+
+GROUP  Staggered_35           ?.staggered.35 
+GROUP  Staggered_35.shrink    ?.staggered.35_shrink  
+
+//
+
+4.1.1A.staggered.35 {@ Minimum size of a PASV_RDL region is 52.0um X 56.0um
+   X = INT BOAC_PASV < 52 ABUT>0<90 SINGULAR REGION
+   PASV_RDL_A = EXTENTS BOAC_PASV
+   Y = (NOT RECTANGLE PASV_RDL_A >= 52.0 BY >= 56.0 ) AND BOAC_PASV
+   X OR Y   
+}
+
+4.1.1A.staggered.35_shrink {@ Minimum size of a PASV_RDL region is 52.0um X 62.2um(shrinkage)
+   X = INT BOAC_PASV < 52 ABUT>0<90 SINGULAR REGION
+   PASV_RDL_A = EXTENTS BOAC_PASV
+   Y = (NOT RECTANGLE PASV_RDL_A >= 52.0 BY >= 62.2 ) AND BOAC_PASV
+   X OR Y   
+}
+
+//
+
+
+// 1B not checked
+
+
+4.1.1C.staggered.35 {@ Minimum space between two PASV_RDL regions is 18um
+   EXT BOAC_PASV < 18 ABUT>0<90 REGION
+}
+
+4.1.1C.staggered.35_shrink {@ Minimum space between two PASV_RDL regions is 18um
+   EXT BOAC_PASV < 18 ABUT>0<90 REGION
+}
+
+//
+
+4.1.1D.staggered.35 {@ Exact TMV_RDL size is 4 X 4
+   NOT RECTANGLE BOAC_TMV  == 4.0 BY == 4.0   
+}
+
+4.1.1D.staggered.35_shrink {@ Exact TMV_RDL size is 4 X 4
+   NOT RECTANGLE BOAC_TMV  == 4.0 BY == 4.0   
+}
+
+//
+
+4.1.1E.staggered.35 {@ Minimum space between two AL_RDL regions is 3.0um
+   EXT BOAC_MET  AL_RDL   < 3.0 ABUT>0<90 REGION
+}
+
+4.1.1E.staggered.35_shrink {@ Minimum space between two AL_RDL regions is 3.33um(shrinkage)
+   EXT BOAC_MET  AL_RDL   < 3.33 ABUT>0<90 REGION
+}
+
+//
+
+4.1.1F.staggered.35 {@ Minimum PASV_RDL to TMV_RDL is 2.0um
+   EXT BOAC_PASV  BOAC_TMV < 2.0 ABUT INSIDE ALSO REGION
+}
+
+4.1.1F.staggered.35_shrink {@ Minimum PASV_RDL to TMV_RDL is 2.0um
+   EXT BOAC_PASV  BOAC_TMV < 2.0 ABUT INSIDE ALSO REGION
+}
+
+//
+
+4.1.1G.staggered.35 {@ Minimum TMV_RDL spacing is 2.0um
+   EXT  BOAC_TMV  < 2.0  ABUT<90 REGION
+}
+
+4.1.1G.staggered.35_shrink {@ Minimum TMV_RDL spacing is 2.0um(shrinkage)
+   EXT  BOAC_TMV  < 2.22  ABUT<90 REGION
+}
+
+//
+
+4.1.1H.staggered.35 {@ Minimum spacing of AL_RDL to Die Seal Ring is 3.0um
+   EXT BOAC_AL SEALRMARK < 3.0 ABUT<90 REGION
+}
+
+4.1.1H.staggered.35_shrink {@ Minimum spacing of AL_RDL to Die Seal Ring is 3.0um
+   EXT BOAC_AL SEALRMARK < 3.0 ABUT<90 REGION
+}
+
+//
+
+
+// 1I  1J  not  checked
+
+4.1.1L.staggered.35 {@ Minimum AL_RDL enclosure of TMV_RDL is 2.0um
+    ENC  BOAC_TMV  BOAC_AL < 2.0  ABUT<90 SINGULAR OUTSIDE ALSO REGION
+}
+
+4.1.1L.staggered.35_shrink {@ Minimum AL_RDL enclosure of TMV_RDL is 2.0um
+    ENC  BOAC_TMV  BOAC_AL < 2.0  ABUT<90 SINGULAR OUTSIDE ALSO REGION
+}
+
+//
+
+4.1.1M.staggered.35 {@ Minimum AL_RDL enclosure of PASV_RDL is 2.0um
+    ENC  BOAC_PASV  BOAC_AL  < 2.0 ABUT<90 SINGULAR OUTSIDE ALSO REGION
+}
+
+4.1.1M.staggered.35_shrink {@ Minimum AL_RDL enclosure of PASV_RDL is 2.0um
+    ENC  BOAC_PASV  BOAC_AL  < 2.0 ABUT<90 SINGULAR OUTSIDE ALSO REGION
+}
+
+//
+
+4.1.1N.DIFF.staggered.35 {@ Minimum active circuit(diffusion) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  DIFF < 3.0  ABUT<90 SINGULAR  REGION  
+}
+
+4.1.1N.DIFF.staggered.35_shrink {@ Minimum active circuit(diffusion) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  DIFF < 3.0  ABUT<90 SINGULAR  REGION  
+}
+
+//
+
+4.1.1N.PO1.staggered.35 {@ Minimum active circuit(PO1) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  PO1 < 3.0  ABUT<90 SINGULAR  REGION  
+}
+
+4.1.1N.PO1.staggered.35_shrink {@ Minimum active circuit(PO1) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  PO1 < 3.0  ABUT<90 SINGULAR  REGION  
+}
+
+//
+
+
+4.1.1N.ME7.staggered.35 {@ Minimum active circuit(ME7) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME7 < 3.0  ABUT<90 SINGULAR  REGION  
+}  
+
+4.1.1N.ME7.staggered.35_shrink {@ Minimum active circuit(ME7) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME7 < 3.0  ABUT<90 SINGULAR  REGION  
+}
+      
+
+4.1.1N.ME6.staggered.35 {@ Minimum active circuit(ME6) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME6 < 3.0  ABUT<90 SINGULAR  REGION  
+}  
+
+4.1.1N.ME6.staggered.35_shrink {@ Minimum active circuit(ME6) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME6 < 3.0  ABUT<90 SINGULAR  REGION  
+}
+      
+
+4.1.1N.ME5.staggered.35 {@ Minimum active circuit(ME5) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME5 < 3.0  ABUT<90 SINGULAR  REGION  
+}  
+
+4.1.1N.ME5.staggered.35_shrink {@ Minimum active circuit(ME5) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME5 < 3.0  ABUT<90 SINGULAR  REGION  
+}
+      
+
+4.1.1N.ME4.staggered.35 {@ Minimum active circuit(ME4) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME4 < 3.0  ABUT<90 SINGULAR  REGION  
+}  
+
+4.1.1N.ME4.staggered.35_shrink {@ Minimum active circuit(ME4) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME4 < 3.0  ABUT<90 SINGULAR  REGION  
+}
+      
+
+4.1.1N.ME3.staggered.35 {@ Minimum active circuit(ME3) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME3 < 3.0  ABUT<90 SINGULAR  REGION  
+}  
+
+4.1.1N.ME3.staggered.35_shrink {@ Minimum active circuit(ME3) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME3 < 3.0  ABUT<90 SINGULAR  REGION  
+}
+      
+
+4.1.1N.ME2.staggered.35 {@ Minimum active circuit(ME2) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME2 < 3.0  ABUT<90 SINGULAR  REGION  
+}  
+
+4.1.1N.ME2.staggered.35_shrink {@ Minimum active circuit(ME2) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME2 < 3.0  ABUT<90 SINGULAR  REGION  
+}
+      
+
+4.1.1N.ME1.staggered.35 {@ Minimum active circuit(ME1) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME1 < 3.0  ABUT<90 SINGULAR  REGION  
+}  
+
+4.1.1N.ME1.staggered.35_shrink {@ Minimum active circuit(ME1) to die seal ring spacing is 3.0um
+    EXT  SEALRMARK  ME1 < 3.0  ABUT<90 SINGULAR  REGION  
+}
+      
+
+//
+//===========================================
+//===  BOAC Support Structure Guidelines  ===
+//===========================================
+//
+
+BOAC_M7_SLOT = M7SLOT  INTERACT  BOACMK
+BOAC_ME7     = ME7     INTERACT  BOACMK
+
+//
+
+// 3A refer to 4.1.1
+
+4.2.3B {@ ME7 Oxide Slot size in Pad is 1.2 X 1.2um
+
+  NOT RECTANGLE BOAC_M7_SLOT == 1.2  BY == 1.2
+
+}
+
+4.2.3C {@ ME7 Oxide Slot to ME7 Oxide Slot in Pad is 2.8um
+
+  EXT  BOAC_M7_SLOT < 2.8  ABUT<90  REGION
+ 
+  X = SIZE (SIZE  BOAC_M7_SLOT  BY 1.4)  BY -1.4
+  LENGTH X == 1.2 
+}  
+
+4.2.3D.a {@ Minimum enclosure of ME7 Oxide Slot inside ME7 is 2.76um
+  
+  ENC  BOAC_M7_SLOT  ME7  < 2.76 ABUT<90 SINGULAR OUTSIDE ALSO REGION
+}
+
+4.2.3D.b {@ Maximum enclosure of ME7 Oxide Slot inside ME7 is 6.76um
+  
+  X    = SIZE (SIZE  BOAC_M7_SLOT  BY 1.4)  BY -1.4
+  E    = X  INSIDE  EDGE  ME7
+  Y    = ((EXPAND EDGE E OUTSIDE BY 6.77) AND ME7) NOT INTERACT (SIZE BOAC_TMV BY 2)
+  SIZE(SIZE Y BY -3.38) BY 3.38         
+  
+}
+
+4.2.3E {@ Oxide Slots inside the jointed area of TMV and ME7 must be removed
+
+  AND  BOAC_M7_SLOT  TMV_RDL
+}
+
+
+//
+
+4.2.ME7 {@ Pad area(AL_RDL) must be within M7DMBK and M7SLBK
+  NOT COIN INSIDE EDGE BOAC_MET M7DMBK
+  NOT COIN INSIDE EDGE BOAC_MET M7SLBK
+ }
+
+
+// END OF FILE
+

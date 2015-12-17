@@ -1,0 +1,12 @@
+#
+pCells pfet symbol
+1
+#
+pCells nfet symbol
+0
+#
+basic gnd symbol
+I10
+#
+basic vdd symbol
+I9

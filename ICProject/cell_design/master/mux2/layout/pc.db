@@ -1,0 +1,25 @@
+#
+master nand2 layout
+I7
+I1
+I6
+#
+master Inv layout
+I2
+#ISCELL
+cellTechLib M2_M1 symbolic
+I35
+I31
+I30
+I32
+I36
+I4
+I3
+#ISCELL
+cellTechLib M1_POLY1 symbolic
+I34
+I41
+I40
+I37
+I38
+I5

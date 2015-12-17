@@ -1,0 +1,19 @@
+#
+sample pfet ivpcell
++11
++12
++7
++8
++9
++10
++13
++14
+#
+sample nfet ivpcell
++4
++0
++1
++2
++3
++5
++6

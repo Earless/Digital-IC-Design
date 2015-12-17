@@ -1,0 +1,132 @@
+Calibre DRC of 90nm 1P9M LOGIC/Mixedmode Process Release Notes
+DRC version : 1.4 P1
+
+================================================================================================================
+
+This document contains the version 1.4 P1 release information for Calibre DRC of 90nm 1P9M LOGIC/Mixedmode 
+Process.
+
+1.This package includes 35 files 
+  (1)  90nm_layers_v3.8.cal       
+  (2)  G-DF-LOGIC_MIXED_MODE90N-1P4M1T0F-Calibre-drc-1.4-p1       
+  (3)  G-DF-LOGIC_MIXED_MODE90N-1P5M1T0F-Calibre-drc-1.4-p1
+  (4)  G-DF-LOGIC_MIXED_MODE90N-1P6M1T0F-Calibre-drc-1.4-p1
+  (5)  G-DF-LOGIC_MIXED_MODE90N-1P6M1T1F-Calibre-drc-1.4-p1
+  (6)  G-DF-LOGIC_MIXED_MODE90N-1P6M2T0F-Calibre-drc-1.4-p1
+  (7)  G-DF-LOGIC_MIXED_MODE90N-1P7M1T0F-Calibre-drc-1.4-p1
+  (8)  G-DF-LOGIC_MIXED_MODE90N-1P7M1T1F-Calibre-drc-1.4-p1
+  (9)  G-DF-LOGIC_MIXED_MODE90N-1P7M2T0F-Calibre-drc-1.4-p1
+  (10) G-DF-LOGIC_MIXED_MODE90N-1P7M2T1F-Calibre-drc-1.4-p1
+  (11) G-DF-LOGIC_MIXED_MODE90N-1P8M1T1F-Calibre-drc-1.4-p1
+  (12) G-DF-LOGIC_MIXED_MODE90N-1P8M2T0F-Calibre-drc-1.4-p1
+  (13) G-DF-LOGIC_MIXED_MODE90N-1P8M2T1F-Calibre-drc-1.4-p1
+  (14) G-DF-LOGIC_MIXED_MODE90N-1P9M2T1F-Calibre-drc-1.4-p1
+  (15) G-DF-LOGIC_MIXED_MODE90N-1P6M1T-30KA-Calibre-drc-1.4-p1
+  (16) G-DF-LOGIC_MIXED_MODE90N-1P7M1T-30KA-Calibre-drc-1.4-p1
+  (17) G-DF-LOGIC_MIXED_MODE90N-1P7M2T-30KA-Calibre-drc-1.4-p1
+  (18) G-DF-LOGIC_MIXED_MODE90N-1P8M1T-30KA-Calibre-drc-1.4-p1
+  (19) G-DF-LOGIC_MIXED_MODE90N-1P8M2T-30KA-Calibre-drc-1.4-p1
+  (20) G-DF-LOGIC_MIXED_MODE90N-1P9M2T-30KA-Calibre-drc-1.4-p1     
+  (21) umc_1P9M2T1F-X_architecture_Calibre-drc-V1
+  (22) umc_1P8M2T1F-X_architecture_Calibre-drc-V1
+  (23) umc_1P8M2T0F-X_architecture_Calibre-drc-V1
+  (24) umc_1P8M1T1F-X_architecture_Calibre-drc-V1
+  (25) umc_1P7M2T1F-X_architecture_Calibre-drc-V1
+  (26) umc_1P7M2T0F-X_architecture_Calibre-drc-V1
+  (27) umc_1P7M1T1F-X_architecture_Calibre-drc-V1
+  (28) umc_1P6M2T0F-X_architecture_Calibre-drc-V1
+  (29) umc_1P7M1T0F-X_architecture_Calibre-drc-V1
+  (30) umc_1P6M1T1F-X_architecture_Calibre-drc-V1
+  (31) umc_1P6M1T0F-X_architecture_Calibre-drc-V1
+  (32) umc_1P5M1T0F-X_architecture_Calibre-drc-V1
+  (33) umc_1P4M1T0F-X_architecture_Calibre-drc-V1
+  (34) umc90N_memory_v14.cal
+  (35) umc_ant_L90N_1P9M_calibre_V8
+
+2.The detail information for DRC SELECT or DRC UNSELCECT setup 
+  (1)  DRC UNSELECT CHECK DIFF_DENSITY
+       Switch for diffusion density checking. This switch is off as default.
+  
+  (2)  DRC UNSELECT CHECK POLY_DENSITY
+       Switch for PO1 density checking. This switch is off as default.
+  
+  (3)  DRC UNSELECT CHECK METAL_DENSITY
+       Switch for Metal density checking.  This switch is off as default.
+  
+  (4)  DRC UNSELECT CHECK Inline_50
+       Switch for 50um inline bonding pad checking.  This switch is off as default.
+  
+  (5)  DRC UNSELECT CHECK CLVS
+       Switch for copper line and via support structure checking. This switch is off as default.    
+    
+  (6)  DRC UNSELECT CHECK Staggered_35
+       Switch for 35um staggered bonding pad checking.  This switch is on as default.
+  
+  (7)  DRC UNSELECT CHECK SEAL_RING_RULES
+       Switch for die seal ring checking. This switch is off as default.    
+ 
+  (8)  DRC UNSELECT CHECK DIE_CORNER_CHECK_SEARING 
+       Switch for die corner with die seal ring checking. This switch is off as default.  
+ 
+  (9)  DRC UNSELECT CHECK  DIE_CORNER_CHECK_WITHOUT_SEARING
+       Switch for die corner without die seal ring checking. This switch is off as default. 
+  
+  (10) DRC UNSELECT CHECK BOAC_EXCLUDE
+       Switch for BOAC exclude rules(4.2.8.1N.?  4.2.8.1O). This switch is off as default. 
+  
+  (11) DRC UNSELECT CHECK DFM_Priority1
+       Switch for DFM priority1 rules checking. This switch is on as default. 
+  
+  (12) DRC UNSELECT CHECK DFM_Priority2
+       Switch for DFM priority2 rules checking. This switch is on as default.
+  
+  (13) DRC UNSELECT CHECK DFM_Priority3
+       Switch for DFM priority3 rules checking. This switch is on as default.
+  
+  (14) DRC UNSELECT CHECK DFM_Priority4
+       Switch for DFM priority4 rules checking. This switch is on as default.
+  
+  (15) DRC UNSELECT CHECK DFM_Priority5
+       Switch for DFM priority5 rules checking. This switch is on as default.
+  
+  (16) DRC UNSELECT CHECK VIAFARM_RULES
+       Switch for recommended VIAFARM rules(TLR section 4.2.9.2) checking.  This switch is on as default.  
+  
+  (17) DRC UNSELECT CHECK IO_3.3V_RULES
+       Switch for 3.3V device rules checking.  This switch is off as default.  
+  
+  (18) DRC UNSELECT CHECK IO_2.5V_RULES
+       Switch for 2.5V device rules checking.  This switch is on as default.   
+  
+  (19) DRC UNSELECT CHECK IO_1.8V_RULES
+       Switch for 1.8V device rules checking.  This switch is on as default. 
+  
+  (20) DRC UNSELECT CHECK METAL_SPACING_WARNING
+       Switch for metal spacing within dummy block rules checking. This switch is on as default.  
+  
+  (21) DRC UNSELECT CHECK  MIM_Recommend
+  
+  (22) DRC UNSELECT CHECK Design_guideline_rules
+       Switch for design guide line rules checking. This switch is on as default.
+  
+  (23) DRC UNSELECT CHECK OPC_guidelines
+       Switch for opc guideline rules checking. This switch is on as default.
+       
+  (24) #DEFINE ONLY_Manhattan_CHECK
+       Switch for Manhattan or X routing metal rules checking. Manhattan is checked as default.
+  
+
+3.Changes and Enhancements 
+
+  Version : 1.4  P1
+
+  (1) Add 4.1.12.2K , 4.1.12.2K.a , 4.1.12.2L , 4.1.12.2L.a , 4.1.12.2M , 4.1.12.2M.a , 4.1.12.2N , 4.1.12.2N.a
+      Purpose : according to TLR rule change    
+
+
+  (2) Update  4.3.3C , 4.3.3D , 4.3.3E
+      Purpose : update second keyword from ABUT>0<90 to ABUT<90
+
+
+
+

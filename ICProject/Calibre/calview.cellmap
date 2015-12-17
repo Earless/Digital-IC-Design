@@ -1,0 +1,1025 @@
+(p_10_sp
+   (umc90nm P_10_SP symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(n_10_sp
+   (umc90nm N_10_SP symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(p_10_sphvt
+   (umc90nm P_10_SPHVT symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(n_10_sphvt
+   (umc90nm N_10_SPHVT symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(p_10_splvt
+   (umc90nm P_10_SPLVT symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(n_10_splvt
+   (umc90nm N_10_SPLVT symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(p_25
+   (umc90nm P_25 symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(n_25
+   (umc90nm N_25 symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(p_33
+   (umc90nm P_33 symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(n_33
+   (umc90nm N_33 symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(p_18
+   (umc90nm P_18 symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(n_18
+   (umc90nm N_18 symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(p_33_gox52
+   (umc90nm P_33_GOX52 symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(n_33_gox52
+   (umc90nm N_33_GOX52 symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(p_12_llhvt
+   (umc90nm P_12_LLHVT symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(n_12_llhvt
+   (umc90nm N_12_LLHVT symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(p_12_ll
+   (umc90nm P_12_LL symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(n_12_ll
+   (umc90nm N_12_LL symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(p_12_lllvt
+   (umc90nm P_12_LLLVT symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(n_12_lllvt
+   (umc90nm N_12_LLLVT symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(n_10_spnvt
+   (umc90nm N_10_SPNVT symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(n_12_llnvt
+   (umc90nm N_12_LLNVT symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+)
+
+(n_18_nvt
+   (umc90nm N_18_NVT symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+)
+
+(n_25_nvt
+   (umc90nm N_25_NVT symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+  (
+    (nil fingers 1)
+    (nil sd 0)
+  ) 
+)
+
+(n_33_nvt
+   (umc90nm N_33_NVT symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+)
+
+(p_12_llrf
+   (umc90nm P_12_LLRF symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+      (psub PSUB)
+   ) 
+)
+
+(n_12_llrf
+   (umc90nm N_12_LLRF symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+)
+
+(p_12_lllvtrf
+   (umc90nm P_12_LLLVTRF symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+      (psub PSUB)
+   ) 
+)
+
+(n_12_lllvtrf
+   (umc90nm N_12_LLLVTRF symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+)
+
+(p_18_rf
+   (umc90nm P_18_RF symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+      (psub PSUB)
+   ) 
+)
+
+(n_18_rf
+   (umc90nm N_18_RF symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+)
+
+(n_bpw_12_lllvtrf
+   (umc90nm N_BPW_12_LLLVTRF symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+      (nw NW)
+      (psub PSUB)
+   ) 
+)
+
+(n_bpw_12_llrf
+   (umc90nm N_BPW_12_LLRF symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+      (nw NW)
+      (psub PSUB)
+   ) 
+)
+
+(n_bpw_18_rf
+   (umc90nm N_BPW_18_RF symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+      (nw NW)
+      (psub PSUB)
+   ) 
+)
+
+(rsnd
+   (umc90nm RSND symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+      (sub B)
+   ) 
+  (
+    (w w) (w segW) (w effW) (l l) (l segL) (l effL)
+    (nil psegs 1) (nil ssegs 1) (nil simM 1) (nil segments 1)
+  ) 
+)
+
+(rspd
+   (umc90nm RSPD symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+      (sub B)
+   ) 
+  (
+    (w w) (w segW) (w effW) (l l) (l segL) (l effL)
+    (nil psegs 1) (nil ssegs 1) (nil simM 1) (nil segments 1)
+  ) 
+)
+
+(rsnpo
+   (umc90nm RSNPO symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+      (sub B)
+   ) 
+  (
+    (w w) (w segW) (w effW) (l l) (l segL) (l effL)
+    (nil psegs 1) (nil ssegs 1) (nil simM 1) (nil segments 1)
+  ) 
+)
+
+(rsppo
+   (umc90nm RSPPO symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+      (sub B)
+   ) 
+  (
+    (w w) (w segW) (w effW) (l l) (l segL) (l effL)
+    (nil psegs 1) (nil ssegs 1) (nil simM 1) (nil segments 1)
+  ) 
+)
+
+(rsnwell
+   (umc90nm RSNWELL symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+      (sub B)
+   ) 
+  (
+    (w w) (w segW) (w effW) (l l) (l segL) (l effL)
+    (nil psegs 1) (nil ssegs 1) (nil simM 1) (nil segments 1)
+  ) 
+)
+
+(rnnd
+   (umc90nm RNND symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+      (sub B)
+   ) 
+  (
+    (w w) (w segW) (w effW) (l l) (l segL) (l effL)
+    (nil psegs 1) (nil ssegs 1) (nil simM 1) (nil segments 1)    
+  ) 
+)
+
+(rnppo
+   (umc90nm RNPPO symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+      (sub B)
+   ) 
+  (
+    (w w) (w segW) (w effW) (l l) (l segL) (l effL)
+    (nil psegs 1) (nil ssegs 1) (nil simM 1) (nil segments 1)
+  ) 
+)
+
+
+(rnhr1000
+   (umc90nm RNHR1000 symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+      (sub B)
+   ) 
+  (
+    (w w) (w segW) (w effW) (l l) (l segL) (l effL)
+    (nil psegs 1) (nil ssegs 1) (nil simM 1) (nil segments 1)
+  ) 
+)
+
+(rnppo_rf
+   (umc90nm RNPPO_RF symbol)
+   (
+      (plus PLUS)
+      (minus MINUS)
+      (psub PSUB)
+   ) 
+)
+
+(rnppo_nw_rf
+   (umc90nm RNPPO_NW_RF symbol)
+   (
+      (plus PLUS)
+      (minus MINUS)
+      (nw NW)
+      (psub PSUB)
+   ) 
+)
+
+(rnnpo_rf
+   (umc90nm RNNPO_RF symbol)
+   (
+      (plus PLUS)
+      (minus MINUS)
+      (psub PSUB)
+   ) 
+)
+
+(rnnpo_nw_rf
+   (umc90nm RNNPO_NW_RF symbol)
+   (
+      (plus PLUS)
+      (minus MINUS)
+      (nw NW)
+      (psub PSUB)
+   ) 
+)
+
+(rnhr_rf
+   (umc90nm RNHR_RF symbol)
+   (
+      (plus PLUS)
+      (minus MINUS)
+      (psub PSUB)
+   ) 
+)
+
+(rnhr_nw_rf
+   (umc90nm RNHR_NW_RF symbol)
+   (
+      (plus PLUS)
+      (minus MINUS)
+      (nw NW)
+      (psub PSUB)
+   ) 
+)
+
+(dion
+   (umc90nm DION symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+   ) 
+)
+
+(diop
+   (umc90nm DIOP symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+   ) 
+)
+
+(dionw
+   (umc90nm DIONW symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+   ) 
+)
+
+(diodn
+   (umc90nm DIODN symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+   ) 
+)
+
+(diodp
+   (umc90nm DIODP symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+   ) 
+)
+
+(diodnw
+   (umc90nm DIODNW symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+   ) 
+)
+
+(pnp_v32x32 
+  (umc90nm PNP_V32X32 symbol) 
+  ( 
+    (c C) 
+    (b B) 
+    (e E) 
+  ) 
+)  
+
+(ncap_10_sp
+   (umc90nm NCAP_10_SP symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+   ) 
+  
+)
+
+(ncap_12_ll
+   (umc90nm NCAP_12_LL symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+   ) 
+  
+)
+
+(ncap_18_no_vt_imp
+   (umc90nm NCAP_18_NO_VT_IMP symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+   ) 
+  
+)
+
+(ncap_25_no_vt_imp
+   (umc90nm NCAP_25_NO_VT_IMP symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+   ) 
+  
+)
+
+(ncap_33_no_vt_imp
+   (umc90nm NCAP_33_NO_VT_IMP symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+   ) 
+  
+)
+
+(ncap_33
+   (umc90nm NCAP_33 symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+   ) 
+  
+)
+
+(ncap_10_sphvt
+   (umc90nm NCAP_10_SPHVT symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+   ) 
+  (
+     (w w) (w fw) (nil fingers 1)
+  ) 
+)
+
+(ncap_12_llhvt
+   (umc90nm NCAP_12_LLHVT symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+   ) 
+  (
+     (w w) (w fw) (nil fingers 1)
+  ) 
+)
+
+(ncap_25
+   (umc90nm NCAP_25 symbol)
+   (
+      (pos PLUS)
+      (neg MINUS)
+   )
+  (
+     (w w) (w fw) (nil fingers 1)
+  ) 
+   
+)
+
+(momcaps_sy_mmkf
+   (umc90nm MOMCAPS_SY_MMKF symbol)
+   (
+      (plus PLUS)
+      (minus MINUS)
+      (b B)
+   ) 
+)
+
+(momcaps_as_mmkf
+   (umc90nm MOMCAPS_AS_MMKF symbol)
+   (
+      (plus PLUS)
+      (minus MINUS)
+      (b B)
+   ) 
+)
+
+(varmis_12_llrf
+   (umc90nm VARMIS_12_LLRF symbol)
+   (
+      (plus PLUS)
+      (minus MINUS)
+      (psub PSUB)
+   ) 
+)
+
+(varmis_10_sprf
+   (umc90nm VARMIS_10_SPRF symbol)
+   (
+      (plus PLUS)
+      (minus MINUS)
+      (psub PSUB)
+   ) 
+)
+
+(varmis_18_rf
+   (umc90nm VARMIS_18_RF symbol)
+   (
+      (plus PLUS)
+      (minus MINUS)
+      (psub PSUB)
+   ) 
+)
+
+(varmis_25_rf
+   (umc90nm VARMIS_25_RF symbol)
+   (
+      (plus PLUS)
+      (minus MINUS)
+      (psub PSUB)
+   ) 
+)
+
+(vardiop_rf
+   (umc90nm VARDIOP_RF symbol)
+   (
+      (plus PLUS)
+      (minus MINUS)
+      (psub PSUB)
+   ) 
+)
+
+(momcaps_array_vp3_rfvcl
+   (umc90nm MOMCAPS_Array_VP3_RFVCL symbol)
+   (
+      (plus PLUS)
+      (minus MINUS)
+      (nw NW)
+      (psub PSUB)
+   ) 
+  (
+    (Array array)
+    (pin_l Pin_L)
+    (freq Freq)
+    (q    Q)
+  )
+)
+
+(momcaps_array_vp4_rfvcl
+   (umc90nm MOMCAPS_Array_VP4_RFVCL symbol)
+   (
+      (plus PLUS)
+      (minus MINUS)
+      (nw NW)
+      (psub PSUB)
+   ) 
+  (
+    (Array array)
+    (pin_l Pin_L)
+    (freq Freq)
+    (q    Q)
+  )
+
+)
+
+(mimcaps_20fnw_rfkf
+  (umc90nm MIMCAPS_20FNW_RFKF symbol) 
+  ( 
+    (plus PLUS)  
+    (minus MINUS) 
+    (nw NW)
+    (psub PSUB) 
+  )  
+)  
+
+(mimcaps_20f_rfkf
+  (umc90nm MIMCAPS_20F_RFKF symbol) 
+  ( 
+    (plus PLUS)  
+    (minus MINUS) 
+    (psub PSUB) 
+  )  
+)  
+
+(mimcaps_20f_mm
+  (umc90nm MIMCAPS_20F_MM symbol) 
+  ( 
+    (pos PLUS)  
+    (neg MINUS) 
+  )  
+)  
+
+(n_25_rf
+   (umc90nm N_25_RF symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+)
+
+(n_bpw_25_rf
+   (umc90nm N_BPW_25_RF symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+      (nw NW)
+      (psub PSUB)
+   ) 
+)
+
+(p_25_rf
+   (umc90nm P_25_RF symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+      (psub PSUB)
+   ) 
+)
+
+(n_33_rf
+   (umc90nm N_33_RF symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+)
+
+(n_bpw_33_rf
+   (umc90nm N_BPW_33_RF symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+      (nw NW)
+      (psub PSUB)
+   ) 
+)
+
+(p_33_rf
+   (umc90nm P_33_RF symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+      (psub PSUB)
+   ) 
+)
+
+(p_10_sprf
+   (umc90nm P_10_SPRF symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+      (psub PSUB)
+   ) 
+)
+
+(n_10_sprf
+   (umc90nm N_10_SPRF symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+   ) 
+)
+
+(n_bpw_10_sprf
+   (umc90nm N_BPW_10_SPRF symbol)
+   (
+      (d D)
+      (g G)
+      (s S)
+      (b B)
+      (nw NW)
+      (psub PSUB)
+   ) 
+)
+
+(l_cr30k_rfvil
+   (umc90nm L_CR30K_RFVIL symbol)
+   (
+      (plus PLUS)
+      (minus MINUS)
+      (psub PSUB)
+   ) 
+)
+
+(l_sy30k_rfvil
+   (umc90nm L_SY30K_RFVIL symbol)
+   (
+      (plus PLUS)
+      (minus MINUS)
+      (psub PSUB)
+   ) 
+)
+
+(l_sy30kct_rfvil
+   (umc90nm L_SY30KCT_RFVIL symbol)
+   (
+      (plus PLUS)
+      (minus MINUS)
+      (ct CT)
+      (psub PSUB)
+   ) 
+)
+
+(l_sqsk_rfvil
+   (umc90nm L_SQSK_RFVIL symbol)
+   (
+      (plus PLUS)
+      (minus MINUS)
+      (psub PSUB)
+   ) 
+)
+(pad_boac_rf
+  (umc90nm PAD_BOAC_RF symbol) 
+  ( 
+    (plus PLUS)  
+    (psub PSUB) 
+  )  
+)  
+
+((p cap c) 
+  (umc90nm pcapacitor symbol) 
+  ( 
+    (PLUS) 
+    (MINUS) 
+  ) 
+) 
+ 
+((p res r) 
+  (umc90nm presistor symbol) 
+  ( 
+    (PLUS) 
+    (MINUS) 
+  ) 
+) 

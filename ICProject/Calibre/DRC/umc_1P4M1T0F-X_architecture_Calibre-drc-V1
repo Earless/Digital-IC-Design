@@ -1,0 +1,215 @@
+// Calibre SVRFencrypt v1.1
+// This rule file or portions thereof includes data that is
+// encrypted. Lines between the "#Encrypt" and the "#Endcrypt"
+// statements must not be altered in any manner.
+// Mentor Graphics Corporation does not provide support for the
+// encrypted portion of the rules file. This is the sole responsibility of
+// the providing organization and problems encountered are to be reported
+// to the provider. Support by Mentor Graphics for an encrypted
+//  rules file  requires the availability of the original rules file.
+//
+// LIMITATION OF LIABILITY: Mentor Graphics is not liable for any property
+// damage, personal injury, loss of profits, interruption of business, or for
+// any other special, consequential or incidental damages, however caused,
+// whether for breach of warranty, contract, tort (including negligence),
+// strict liability or otherwise. In no event shall Mentor Graphics'
+// liability exceed the amount paid for the product giving rise to the claim.
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//  UMC Logic 1P4M (1112) X architecture rounting DRC rules       //
+//  It also be called 1P4M 1T0F process                    //
+//  Generated date:  Tue Apr 18 09:44:16 CST 2006                                                   //
+//  Version : V1                                                                    //
+//////////////////////////////////////////////////////////////////////////////////////
+//  Revision History
+//  09/26/2005  V1  Silvio   new create
+//
+
+GROUP  X_RULES   ?_X
+
+
+//
+//============================
+//===  X Metal-2 Rule      ===
+//============================
+//
+
+4.2.1.2D_3D.ME2_X {@ Minimum ME2 enclosure of VI1 center is 0.07um
+                 @ VI1 must inside ME2 
+	    
+#DECRYPT "'?~;UP\YPN5^LX@@"TBBQ'`->Z7=A^(:W;(7;K)0&HK6B-!#'7J`&B[^QI.(EJMT219L/1!!"
+TR:-E[K`W(Y-V][^?68;&1!!"2U=-8>F.>FNR'X4F<Q:&14(]]LNTA@YTR\E89.!RI&U!#
+*I`#Z*&YOA#RL'J1J5C>)!!!"/MFEP##[A%S2PXQ:S@D%P;FA['::'+E!MR#?[HYIJCA24MXWO>$%(F.V2<IQABY)!
+"N<-"E1J+MR\DL_J'A^J21!!"Q88S.^,_L>,_?;%2+_B[>2H1]\2VF,&<;$F]FZMJDC00(-*CQ)V]\+CN7).]SG#7!
+;GDA=9=LO-M;J"K(N0>V=1!!"!Y.!O:F<M=%E#!"=,UY4>C40396M68_IF<F5I78JPV,\FJ=OW^Z0!D*O`A#"_V6>FQ-UXM\S%D)X,B2H!G(R-%9<O.F0;0TK&9?$Q6'"FHA!#
+_W\DW`A&BN-YO3G!;DY0NQ!!"7I:CTZ"AA8DWVK6"`^8R964SKUJLT!KLESV3!O.G`HJE:WO=Q=]#;8$V-/I;OBQ/!
+4WPN^A`46?Y>7<:RRP6W7A!!"WT7=>_U9>K,3:W;(*R97J&015")G_^*LE^[=28]:3`AM@/SU>Q:(4!65SKB0))4-!
+#ENDCRYPT
+
+}
+
+// 1.3A checked by 1.2A
+
+// 1.3B checked by 1.2B
+
+// 1.3C checked by 1.2C
+
+// 1.3D checked by 1.2D_3D
+
+// 1.3E checked by 1.2E
+
+// 1.3F checked by 1.2F
+
+// 1.3G checked by 1.2G
+
+// 1.3H checked by 1.2H
+
+// 1.3I checked by 1.2C
+
+
+
+// 
+//==========================
+//=== X Metal-3 Rule  ===
+//==========================
+// 
+
+4.2.1.2D_3D.ME3_X {@ Minimum ME3 enclosure of VI2 center is 0.07um
+                 @ VI2 must inside ME3 
+	    
+#DECRYPT "'?~;UP\YPN5^LX@@"TBBQ'`->Z7=A^(:W;(7;K)0&HK6B-!#'7J`&B[^QI.(EJMT219L/1!!"
+,;KT>])GY4B'KAESGQTR1A!!"^0,K;0]H.LKUU)[,\6;$9@M3$N_,V8[V,5C$R@B;5.A!#
++'L&D!8KP08/^%@[L7S+(!!!"G+?&JZRZ`>[M-Y*U&N6'OGT)/JN.D]P+_9OT&U>+)M(J;Z%C$^-(B`BEV;F]4\-N!
+(MY*6TFN90N"=&"N+1.L@!!!">?6D)\O*VM`X^7'Z`,O(\`G_6NMZ]13I>O1XE_AFGM=1;-%E6]C?02Z>N<M-Q10_!
+NQ^A0H:DWS04;C!(FD[+D!!!"Z%G/:0+Z-\4YIK=2S%H%+9;\3&9<T&S1C&-EKWBA$J`%1S3Y!4TB%/NN%7NW1JH41*GRBU%(1+V>FR8GFRX?HVG=F1HHS)QV;!!=(Y_HO'Y!#
+<_Z/5P*5("P^QJP:;L<EAA!!"ZH!JY_+J0$OQT:SMS&=7B9/OH`6+\Z1;G#RZD"O\(<HO/I]5.TNPD,^Y(M4"@W6C!
+D=>EY<H^F&X7_X9):7GCB!!!"Y#\HY6>9IJV;"*.M.V+A<%?NM>-M!L_68:`^3:>R4M!"\@MEF'9V])Y*=NZ6AP$%!
+#ENDCRYPT
+
+}
+
+// 1.3A checked by 1.2A
+
+// 1.3B checked by 1.2B
+
+// 1.3C checked by 1.2C
+
+// 1.3D checked by 1.2D_3D
+
+// 1.3E checked by 1.2E
+
+// 1.3F checked by 1.2F
+
+// 1.3G checked by 1.2G
+
+// 1.3H checked by 1.2H
+
+// 1.3I checked by 1.2C
+
+
+
+
+
+
+
+//
+//=========================
+//=== X Via-2 Rule   ===
+//=========================
+//
+
+
+4.2.2.2C_3C.a.VI2_X {@ Minimum ME2 enclosure of VI2 is 0, no VI2 outside ME2
+                   @ Minimum ME2 enclosure of VI2 center is 0.07um
+#DECRYPT "'?~;UP\YPN5^LX@@"TBBQ'`->Z7=A^(:W;(7;K)0&HK6B-!#'7J`&B[^QI.(EJMT219L/1!!"
+>E*;%;K4B6$NZQ!9;';4OA!!"^0,K;0]H.LKUU)[,\6;$93UG&%^\+U>J2,?*6IKHTXU!#
++'L&D!8KP08/^%@[L7S+(!!!"G+?&JZRZ`>[M-Y*U&N6'OGT)/JN.D]P+_9OT&U>+)M(J;Z%C$^-(B`BEV;F]4\-N!
+(MY*6TFN90N"=&"N+1.L@!!!">?6D)\O*VM`X^7'Z`,O(\`G_6NMZ]13I>O1XE_AFGM=1;-%E6]C?02Z>N<M-Q10_!
+NQ^A0H:DWS04;C!(FD[+D!!!"Z%G/:0+Z-\4YIK=2S%H%+9;\3&9<T&S1C&-EKWBA$J`%1S3Y!4TB%/NN%7NW1JH41*GRBU%(1+V>FR8GFRX?HVG=F1HHS)QV;!!=(Y_HO'Y!#
+&Z\VR91[;%MZ9N+TVF>_]Q!!"ZH!JY_+J0$OQT:SMS&=7B6]XN;1RJ.&40S2=^8E;(9-RF'@>WBT<<JS\U;D6N>`P!
+D=>EY<H^F&X7_X9):7GCB!!!"Y#\HY6>9IJV;"*.M.V+A<%?NM>-M!L_68:`^3:>R4M!"\@MEF'9V])Y*=NZ6AP$%!
+#ENDCRYPT
+
+}
+
+4.2.2.2C_3C.b12.VI2_X {@ ME2 line end enclosure of VI2 center is 0.11
+              @ Minimum ME2 line end enclosure of VI2 center for four sides is 0.09
+
+#DECRYPT "'?~;UP\YPN5^LX@@"TBBQ'`->Z7=A^(:W;(7;K)0&HK6B-!#'7J`&B[^QI.(EJMT219L/1!!"
+Y_4WT^C6[4!G#B'+Y'?`#!!!"7O=>M7-VV;C_F(KY9H_:)N*9@[^(N-W[P?5^YS$"%)+:B<=;J>/L04$#0D'L>8]OET2E4P@,8-V4M)YN7HW#X1!!"
+A)<J_@96P\RJ1+GJQ`TS+Q!!"L'$27$EXNC%/`/6^S<>%ESQX[LAF0TMW6/V\98[81OA_EXVLN6,!M'YTC<'Z7,/[#;`X9B3CW][`BDK'44:8_!!!"
+/^S%A3+`E#8)=J)1N>YGQ1!!"L'$27$EXNC%/`/6^S<>%EZ)O6=?SPS3\P3Z=.:L^+1ABM)<WK,E_":TK-PW`0A>I!
+J"[E/.5),ANW<P.2)@B.FQ!!"X"[B'X(4^%)XTC5;E,8_TG'O"F+%FT6U9TJN"\*H[&K]$QY;]X=2:;(K]_UGI@\;!
+4Q20EYB=V]+=A%;A!<5>)1!!"0\^'W&;*]5QT9;G)(&NP@0!'W]&X3MR[$W8=7F,<<EA&PZKY#*C4/ZH2]LAM-C/;G?^<,@48=@%X&QV0R1FAWAJ\N!;5O9Y2TB`&/@G$(:M!#
+W[D\M?4<1<4,0F%1N6J^"Q!!"S!@[#A;CFL4B-.FRU/UXC.C/'5)H^0<"T)#QLQ\Q^BM[CW+4O0?8W3#Z,OS=Y,LKM\@)_&S3ES>IF:E_"`WH];$!Q%O\C"HGQ@-A9[M.]AQ!#
+A)<J_@96P\RJ1+GJQ`TS+Q!!"L'$27$EXNC%/`/6^S<>%ESQX[LAF0TMW6/V\98[81OA_EXVLN6,!M'YTC<'Z7,/[#;`X9B3CW][`BDK'44:8_!!!"
+/^S%A3+`E#8)=J)1N>YGQ1!!"L'$27$EXNC%/`/6^S<>%EZ)O6=?SPS3\P3Z=.:L^+1ABM)<WK,E_":TK-PW`0A>I!
+[]_F_#PZ!Z;:N1C3W@`D,Q!!"O/6M`]=W:C\9LZN8J??(P<Z-["!!["LK!@V10:\J+3F&<(''1_XFMK,I7R/0=F\C!
+;\?]!R]]2=L85<ZJ0\_ETQ!!".PX(U71"G.'LM*H]7+',R8)EW5<_%Y7QQU_A&]XLZIE!#
+#ENDCRYPT
+
+}
+
+4.2.2.2C_3C.c.VI2_X {@ Minimum ME2 line end enclosure of VI2 center is 0.13um
+                         @ is surrounded by other ME2 line with space is <= 0.16
+#DECRYPT "'?~;UP\YPN5^LX@@"TBBQ'`->Z7=A^(:W;(7;K)0&HK6B-!#'7J`&B[^QI.(EJMT219L/1!!"
+L2&D._?N]PK#8<EEIY&.8Q!!"M8LH#L$%:AUOUT,]+DKV`A!!"
+AC1I5"K2FPC.[^#?\9.`,!!!"WJ`*HY^L:;=3T5N/^!@NAVB^.0"(KV&`<4TR:ZZG+M?]+53-M9*3D4I.8ZYB@TR'!
+$HJ42CG`_Z?JZCUAL,X0ZQ!!"6:#$:X-/UV]@FX\[TH4S9?LM\/PY37$:7Q&P$AP:WZK,*_1]]<^^*GOLT#L$XBU@!
+VW/8J^S?#*?NR4]#8CHH\Q!!"(]\3XS27L_^^6YY^Q-?61%^OE6A9G,@*8Y\K/]`DOADMT'P(!B1@]*I<;RR^^\F7O_$TH9OFW-D`7POL\7P:7Q!!"
+SZ'C1".2J:]FWGOP8,1?O!!!"3)G_Y]<Y>6*!3O+PM;V1!0A'\=<1`.X5EAU"T&>(0;8]H^6,<`C$>1T*12P>VPK[VU#1;W80%4?:BL$H31@W.Q!!"
+L2&D._?N]PK#8<EEIY&.8Q!!"M8LH#L$%:AUOUT,]+DKV`A!!"
+?';5TX-+PG:G>FT5E'N*\A!!"NC8?(<."YW6DUFDFP6/\=LT6%>#Q7QBW]>RAS7%*--L/5`CVBA3R3_#7^,_)F&&7!
+L2&D._?N]PK#8<EEIY&.8Q!!"M8LH#L$%:AUOUT,]+DKV`A!!"
+TZT3?UN!NMI@.S+$:%5\!A!!"4FCPP+7OX;!7W(&28KZ5T/#[3?!O&[M&&%=2U'`!R:B6)P-EA*ICY3,!R@'EY/]+!
+L2&D._?N]PK#8<EEIY&.8Q!!"M8LH#L$%:AUOUT,]+DKV`A!!"
+QR>_#]('_W,R712#;/:[#1!!"Q-.PJ#VFP>H]&WP`,!/6X6/:X,VANK``?G9;)E5!@XHOK@,]F9FB]ANA^,>BM36Y!
+F0^<E@>"$QDVL#/$H5DN1Q!!"U1=U9T.8F!-YH5)?.[^%82A6)</UE_E]_-^[IA3DQ<J%&M]($CJ=UBGTL[1J`&-&!
+*!&ESJD)/$O<D9K.W:M;*Q!!"[@T9)ZIQP.$7Y:0#*Y:4JF[P:%#-LYS=?#N)/CV%38MI:123RR*2OQ12-;Z4HC*H!
+@?6F]B*Y"YY2GL/S\%0/:Q!!"DB-/BUBSVXTY7TF2TTMO1[^0G?Y!5:3BRV]+O9WJ!P:[!*5;D,\#X(VZA2=-G>Q\X"Z6=R[;-![[\B=ZECHEO(0(]LQ,EQCG'*20H/:>K]I!#
+4?NC,^(P*4I-#+ZT_=,D?Q!!"E.A6VN*<Q-C91-5:U\KLD!!!"
+L2&D._?N]PK#8<EEIY&.8Q!!"M8LH#L$%:AUOUT,]+DKV`A!!"
+SC33<3".&_3S<L\CRHZM51!!"IC?^7>"[THUN8_GSP=%DRUGRBX`%,KP/=S%6%3((C%5!#
+L2&D._?N]PK#8<EEIY&.8Q!!"M8LH#L$%:AUOUT,]+DKV`A!!"
+P;L\%NWH(%2$+K$`U%TR&!!!"C?V<*NF3Z]:R8D`+L_]Z)W8"-R^2U_=2S'N2?&H9K"I64:.,6#-G][?&J-#QJ3RJ!
+T`E'_501(D2(8;J"XV2]?!!!"9FZ.S$;#BHD:B%?T&B^5;A#ZOIL]I7U,R?"5-(#,S4-H+/Q7:0)X+Y@J"<-Y0BXP!
+%C^HT7G>\_)/,<*FH?IZ>1!!"ML_&)OK89-FLSQ#+#48#F$8'X@F^V21-&<9\OF0$SB)!#
+L2&D._?N]PK#8<EEIY&.8Q!!"M8LH#L$%:AUOUT,]+DKV`A!!"
+0SJ;?#$?0YEJF/F#HN5%^Q!!"NCU$K@NF)^WQ.,4-WM=14O7'Q:$],+RL/7D[9/S@DO`2&!L],BG)5`KOI,1:ON#J!
+%L'IW[(=%B%<2(3B<LDN#A!!";1PZNV$$;?UUE/F*H]72=3L_8(M.6#U46E,[8]TIZ:%;JH%12Q5'*:8*.HQCCE(;YM-M#P&7EUJZ2'7B[9VJ`YF(H^*`?@L\@&1)6NG/.31&3=81(U5T36HZRAIHBXWF&`./8;I&GO_9&"C"DO8^?A!!"
+L2&D._?N]PK#8<EEIY&.8Q!!"M8LH#L$%:AUOUT,]+DKV`A!!"
+S#&7(NQ"A*>VUV'Q!`#Y)A!!"Y)04`%$ZF=QZ6<\X0L99!B$(]HVD#5&@1+W9H^,7&6=!#
+L2&D._?N]PK#8<EEIY&.8Q!!"M8LH#L$%:AUOUT,]+DKV`A!!"
+(+7@`Z<$Y=C@5`:$;ZA22Q!!"Y!*>$''DZ`Q).^^R<DV-W+;:1ETK+YE9YD`.:QF/F%?HP\E)0$,D;7C3).,6AVT/C.8.IV(N7//K:RIIR9WYP!!!"
+9#A#K40XDB,+.AD[%V-^S!!!"@O^!G;$:HC:NRB'*N:6$+$&ULS:!PEQRS32.(CJ3^P]@(<&_`.],$#KK]^N,X:GXG/2\=L,4!&T#.VEEN#X?H6,DPZF\4Z6(C$P-!C';^WI!#
+$XKCI^=S.9%%FM_+=U&:>Q!!"W5D]`5WDV45F_JB+[!Y'3_Z8P8I;4(UU25BX9T"1?(A$BP%O7BY%I@-`O&SY,*L!!
+_#.AL7$H^#B:.Q0I.X;L=1!!"2)$Y&G]JN&W7C\(US@F4,[492UF=&LC\-T`"A!50#K;ELME7/V/"RE6\;SG<`(,$B]PD[;N(0^J4N-*Q^F'-/W!OXLR0TX:2MN?.;D,%&Z1!#
+).R);#@I9'[!^F"3#5*5`1!!"-"CW'B'BM@'P@2W45^]H2;#8(7[-_"]CH!F:VD#;U+!4J,5#6I[\6\?'?_L1E5)7K1`_$XZSLN9`!Y^ACQMB!A!!"
+/V2%-_9[2GH@;0:HT"/21!!!"5OEI"#/*7ITB$<GOKNK'WA8M*+M;Q\:1.`-%J%OU=0IO0-WB3[QP?L,+@Z*>NNO=<V*$]EPGYW6_M.\)Q83/H:^`/.?QT@^&>_'O3:@E+EY!#
+")Z,B1=\=$7#BC)39K>?SQ!!"^0D7D5ANHLH.W]_&XSMSLQ@J'Q*BAB]U[_;V48VV2ZU'T7\-V"P,`2!9"OFEN@VE!
+RDV.5RO6L:Q<)::@_YH"Q!!!",TSL]4Q,+^PX+L8\$-F@=!!!"
+4?NC,^(P*4I-#+ZT_=,D?Q!!"E.A6VN*<Q-C91-5:U\KLD!!!"
+#ENDCRYPT
+
+}
+
+// 2.3A checked by 2.2A
+
+// 2.3B checked by 2.2B
+
+// 2.3C.a checked by 2C_3C.a
+
+// 2.3C.b checked by 2C_3C.b12
+
+// 2.3C.c checked by 2C_3C.c
+
+// 2.3D checked by 2.2D
+
+// 2.3E checked by 2.2E
+ 
+
+
+
+
+

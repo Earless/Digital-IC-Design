@@ -1,0 +1,57 @@
+procedure( mosCB(param)
+let((cell tfId grid minMosWidth poly minLength minThreshold wParamID)
+
+cell = cdfgData->id~>master || cdfgData->id
+tfId = techGetTechFile(cell)
+grid = techGetMfgGridResolution(tfId)
+
+caseq( param
+  ( w
+    minMosWidth = techGetParam(tfId "minMosWidth") * 1e-6
+    spcInputDim('w (grid * 1e-6) minMosWidth)
+  )
+  ( l
+    poly = techGetParam(tfId "poly")
+    minLength = techGetSpacingRule(tfId "minWidth" poly)*1e-6
+    spcInputDim('l (grid * 1e-6) minLength)
+  )
+  ( threshold
+    minThreshold = cdfgData->threshold->defValue
+    spcInputDim('threshold grid minThreshold)
+  )
+  ( fingers
+    spcInputInt('fingers 1 50)
+  )
+  ( splitting
+    spcInputInt('fingers 2) 
+  )
+  ( drainCoverage
+    spcInputInt('drainCoverage 10 100)
+  )
+  ( sourceCoverage
+    spcInputInt('sourceCoverage 10 100)
+  )
+  ( leftCnts
+      when((paramID = get(cdfgData 'leftCnts))
+	  when((wParamID = get(cdfgData  'leftStretch))
+	      if(paramID->value && paramID->value != "FALSE" then
+		  wParamID->value = get(cdfgData  'maxStretch)->value
+	      else
+		  wParamID->value = get(cdfgData  'minStretch)->value
+	      )
+	  )
+      )
+  )
+  ( rightCnts
+      when((paramID = get(cdfgData 'rightCnts))
+	  when((wParamID = get(cdfgData  'rightStretch))
+	      if(paramID->value && paramID->value != "FALSE" then
+		  wParamID->value = get(cdfgData  'maxStretch)->value
+	      else
+		  wParamID->value = get(cdfgData  'minStretch)->value
+	      )
+	  )
+      )
+  )
+)
+))
