@@ -1,6 +1,6 @@
 \o Program:		@(#)$CDS: libManager.exe version Exp 01/19/2010 20:09 (ocelot-linux) $
 \o Sub version:		sub-version none
-\o Arguments:		-unmapped -mpssession icfb7960 -mpshost icdvm15.ewi.tudelft.nl 
+\o Arguments:		-unmapped -mpssession icfb8494 -mpshost icdvm15.ewi.tudelft.nl 
 \o Working Directory:	icdvm15.ewi.tudelft.nl:/home/rmol/ICProject/cell_design
 \o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
 \o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
@@ -14,7 +14,7 @@
 MPS service: map window
 \o Log file is "/home/rmol/ICProject/cell_design/libManager.log".
 Opening libManager window.
-Main selection: analogLib MOS_a2d symbol
+Main selection: sample and2 symbol
 \o Opening design file through session server.
 MPS request: edit design
 \o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
@@ -26,12 +26,12 @@ MPS request: edit design
 \o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
 \o to suppress this warning message.
 MPS request: update library list
-Main selection: analogLib core spectre
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: pCells pLayer
-\o Opening design file through session server.
-MPS request: edit design
+Main selection: ICProject
+Invoking command (fileNewCellView).
+Main selection: ICProject nand3
+MPS service: map window
+No main selection
+\o Auto refresh applied.
 \o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
 \o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
 \o Insert UNDEFINE basic
@@ -40,8 +40,15 @@ MPS request: edit design
 \o Or remove or comment out DEFINE basic
 \o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
 \o to suppress this warning message.
-Main selection: pCells pLayer layout
-MPS request: update library list
-\o Opening design file through session server.
-MPS request: edit design
+\o Auto refresh applied.
+\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
+\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o Insert UNDEFINE basic
+\o before DEFINE basic
+\o     in /home/rmol/ICProject/cell_design/cds.lib
+\o Or remove or comment out DEFINE basic
+\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o to suppress this warning message.
+Main selection: ICProject nand3 schematic
+MPS service: shutdown
 \o libManager is exiting.
