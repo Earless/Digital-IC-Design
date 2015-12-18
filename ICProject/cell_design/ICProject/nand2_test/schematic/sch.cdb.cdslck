@@ -1,0 +1,16 @@
+#
+# Edit Lock-Stake file. CAUTION: Please do not change.
+#
+# Information about current Edit Lock Owner.
+#
+LockStakeVersion               1.1
+LoginName                      rcanggaputra
+HostName                       icdvm15.ewi.tudelft.nl
+ProcessIdentifier              31713
+ProcessCreationTime_UTC        1450449645
+ProcessCreationTime_Readable   Fri Dec 18 15:40:45 2015 CET
+AppIdentifier                  /data/cad/Cadence/IC5/5.1.41HF143/tools/dfII/bin/icfb.exe
+OSType                         lnx86
+ReasonForPlacingEditLock       XXsave write lock
+FilePathUsedToEditLock         /home/rcanggaputra/ICProject/cell_design/ICProject/nand2_test/schematic/sch.cdb
+TimeEditLocked                 Fri Dec 18 16:13:19 2015 CET
