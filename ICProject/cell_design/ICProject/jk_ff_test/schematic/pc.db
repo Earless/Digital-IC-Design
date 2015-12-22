@@ -1,10 +1,4 @@
 #
-ICProject nand3 symbol
-I6
-#
-analogLib cap symbol
-C0
-#
 analogLib vpulse symbol
 V3
 V2
@@ -12,9 +6,16 @@ V1
 #
 analogLib vdc symbol
 V0
+#
+analogLib cap symbol
+C1
+C0
+#
+ICProject jk_ff symbol
+I0
 #ISCELL
 analogLib vdd symbol
-I1
+I2
 #ISCELL
 analogLib gnd symbol
-I2
+I3
