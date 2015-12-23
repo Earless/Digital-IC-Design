@@ -1,0 +1,18 @@
+#
+ICProject nand3 symbol
+I11
+#
+ICProject nand2 symbol
+I8
+I5
+I10
+I6
+I9
+#ISCELL
+basic ipin symbol
+PIN1
+PIN0
+#ISCELL
+basic opin symbol
+PIN4
+PIN5
