@@ -1,6 +1,6 @@
 \o Program:		@(#)$CDS: libManager.exe version Exp 01/19/2010 20:09 (ocelot-linux) $
 \o Sub version:		sub-version none
-\o Arguments:		-unmapped -mpssession icfb13757 -mpshost icdvm15.ewi.tudelft.nl 
+\o Arguments:		-unmapped -mpssession icfb19755 -mpshost icdvm15.ewi.tudelft.nl 
 \o Working Directory:	icdvm15.ewi.tudelft.nl:/home/rmol/ICProject/cell_design
 \o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
 \o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
@@ -14,30 +14,24 @@
 MPS service: map window
 \o Log file is "/home/rmol/ICProject/cell_design/libManager.log".
 Opening libManager window.
-Main selection: ICProject jk_ff_test
+Main selection: ICProject
+Invoking command (fileNewCellView).
+Main selection: ICProject inverter schematic
+Invoking command (fileNewCellView).
 \o Opening design file through session server.
 MPS request: edit design
-\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
-\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o Insert UNDEFINE basic
-\o before DEFINE basic
-\o     in /home/rmol/ICProject/cell_design/cds.lib
-\o Or remove or comment out DEFINE basic
-\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o to suppress this warning message.
+Main selection: ICProject inverter_test schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject jk_ff schematic
+\o Opening design file through session server.
+MPS request: edit design
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject jk_ff symbol
+\o Opening design file through session server.
+MPS request: edit design
 Main selection: ICProject jk_ff_test schematic
-MPS request: update library list
-\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
-\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o Insert UNDEFINE basic
-\o before DEFINE basic
-\o     in /home/rmol/ICProject/cell_design/cds.lib
-\o Or remove or comment out DEFINE basic
-\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o to suppress this warning message.
-MPS request: update library list
-\o Opening design file through session server.
-MPS request: edit design
 \o Opening design file through session server.
 MPS request: edit design
 \o libManager is exiting.

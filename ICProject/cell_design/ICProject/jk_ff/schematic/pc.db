@@ -1,11 +1,18 @@
 #
+ICProject inverter symbol
+I14
+#
 ICProject nand2 symbol
-I3
-I2
+I9
+I8
+I10
+I12
+I11
+I13
 #
 ICProject nand3 symbol
-I1
-I0
+I6
+I7
 #ISCELL
 basic ipin symbol
 PIN2
