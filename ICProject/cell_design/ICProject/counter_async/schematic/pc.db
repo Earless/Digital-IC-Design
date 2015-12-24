@@ -1,0 +1,18 @@
+#
+ICProject jk_ff symbol
+I3
+I2
+I1
+I0
+#ISCELL
+analogLib vdd symbol
+I4
+#ISCELL
+basic ipin symbol
+PIN0
+#ISCELL
+basic opin symbol
+PIN8
+PIN7
+PIN6
+PIN5
