@@ -1,6 +1,6 @@
 \o Program:		@(#)$CDS: libManager.exe version Exp 01/19/2010 20:09 (ocelot-linux) $
 \o Sub version:		sub-version none
-\o Arguments:		-unmapped -mpssession icfb12746 -mpshost icdvm15.ewi.tudelft.nl 
+\o Arguments:		-unmapped -mpssession icfb11105 -mpshost icdvm15.ewi.tudelft.nl 
 \o Working Directory:	icdvm15.ewi.tudelft.nl:/home/rmol/ICProject/cell_design
 \o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
 \o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
@@ -14,34 +14,31 @@
 MPS service: map window
 \o Log file is "/home/rmol/ICProject/cell_design/libManager.log".
 Opening libManager window.
-Main selection: ICProject inverter_test schematic
-\o Opening design file through session server.
-MPS request: edit design
-\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
-\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o Insert UNDEFINE basic
-\o before DEFINE basic
-\o     in /home/rmol/ICProject/cell_design/cds.lib
-\o Or remove or comment out DEFINE basic
-\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o to suppress this warning message.
-MPS request: update library list
-Main selection: ICProject nand2_test schematic
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: ICProject nand3_test schematic
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: ICProject jk_ff_test schematic
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: ICProject d_ff_test schematic
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: ICProject counter_async symbol
-\o Opening design file through session server.
-MPS request: edit design
+Main selection: ICProject
 Invoking command (fileNewCellView).
+Main selection: ICProject xor2 schematic
+\o Opening design file through session server.
+MPS request: edit design
+\o Opening design file through session server.
+MPS request: edit design
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject nand2_test schematic
+Invoking command (editCopySimple).
+Showing dialog "Copy View" (simpleCopyDialog).
+Dialog activated Ok in "Copy Cell" (simpleCopyDialog).
+\o Performing copy
+\o 	from: ICProject nand2_test  
+\o 	  to: ICProject xor2_test  
+\o Processing files to be copied...
+\o Generating copy list.
+\o Checking copy destinations.
+\o Beginning simple copy to library "ICProject".
+Showing dialog "Copy Monitor - 4 Files" (copyProgressDialog).
+\o Copying ICProject/nand2_test/schematic
+\o Transfer of 4 files phase complete in  0:00:00
+Closing dialog "Copy Monitor - 4 Files" (copyProgressDialog).
+\o Copy is done
 \o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
 \o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
 \o Insert UNDEFINE basic
@@ -51,48 +48,9 @@ Invoking command (fileNewCellView).
 \o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
 \o to suppress this warning message.
 MPS request: update library list
-Main selection: ICProject counter_async schematic
+Closing dialog "Copy Cell" (simpleCopyDialog).
+Main selection: ICProject xor2_test schematic
 \o Opening design file through session server.
 MPS request: edit design
-Main selection: ICProject counter_async symbol
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: ICProject counter_async_test schematic
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: ICProject jk_ff schematic
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: ICProject counter_async schematic
-\o Opening design file through session server.
-MPS request: edit design
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: ICProject counter_async_test schematic
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: ICProject counter_async schematic
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: ICProject counter_async_test
-\o Opening design file through session server.
-MPS request: edit design
-\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
-\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o Insert UNDEFINE basic
-\o before DEFINE basic
-\o     in /home/rmol/ICProject/cell_design/cds.lib
-\o Or remove or comment out DEFINE basic
-\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o to suppress this warning message.
-Main selection: ICProject counter_async_test schematic
-MPS request: update library list
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: ICProject counter_async schematic
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: ICProject counter_async_test schematic
-\o Opening design file through session server.
-MPS request: edit design
+MPS service: shutdown
 \o libManager is exiting.

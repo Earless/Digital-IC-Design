@@ -3,6 +3,12 @@ ICProject inverter symbol
 I6
 #
 ICProject jk_ff symbol
+I13
+I12
+I11
+I10
+I8
+I9
 I3
 I2
 I1
@@ -15,6 +21,12 @@ basic ipin symbol
 PIN0
 #ISCELL
 basic opin symbol
+PIN15
+PIN13
+PIN14
+PIN12
+PIN11
+PIN10
 PIN8
 PIN7
 PIN6

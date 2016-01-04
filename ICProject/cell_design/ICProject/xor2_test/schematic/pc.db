@@ -1,24 +1,16 @@
 #
-ICProject counter_async symbol
+ICProject xor2 symbol
 I4
-#
-analogLib cap symbol
-C10
-C9
-C8
-C7
-C5
-C6
-C3
-C2
-C1
-C0
 #
 analogLib vpulse symbol
 V1
+V2
 #
 analogLib vdc symbol
 V0
+#
+analogLib cap symbol
+C0
 #ISCELL
 analogLib vdd symbol
 I1
