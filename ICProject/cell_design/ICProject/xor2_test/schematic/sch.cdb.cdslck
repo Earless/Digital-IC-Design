@@ -11,6 +11,6 @@ ProcessCreationTime_UTC        1452092903
 ProcessCreationTime_Readable   Wed Jan  6 16:08:23 2016 CET
 AppIdentifier                  /data/cad/Cadence/IC5/5.1.41HF143/tools/dfII/bin/icfb.exe
 OSType                         lnx86
-ReasonForPlacingEditLock       XXopen upgrade lock
-FilePathUsedToEditLock         /home/rmol/ICProject/cell_design/ICProject/noninverting_gate_test/schematic/sch.cdb
-TimeEditLocked                 Wed Jan  6 17:12:57 2016 CET
+ReasonForPlacingEditLock       XXsave write lock
+FilePathUsedToEditLock         /home/rmol/ICProject/cell_design/ICProject/xor2_test/schematic/sch.cdb
+TimeEditLocked                 Wed Jan  6 17:15:16 2016 CET

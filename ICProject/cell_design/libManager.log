@@ -1,6 +1,6 @@
 \o Program:		@(#)$CDS: libManager.exe version Exp 01/19/2010 20:09 (ocelot-linux) $
 \o Sub version:		sub-version none
-\o Arguments:		-unmapped -mpssession icfb16859 -mpshost icdvm15.ewi.tudelft.nl 
+\o Arguments:		-unmapped -mpssession icfb27543 -mpshost icdvm15.ewi.tudelft.nl 
 \o Working Directory:	icdvm15.ewi.tudelft.nl:/home/rmol/ICProject/cell_design
 \o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
 \o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
@@ -14,239 +14,9 @@
 MPS service: map window
 \o Log file is "/home/rmol/ICProject/cell_design/libManager.log".
 Opening libManager window.
-Main selection: ICProject and2 schematic
-\o Opening design file through session server.
-MPS request: edit design
-\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
-\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o Insert UNDEFINE basic
-\o before DEFINE basic
-\o     in /home/rmol/ICProject/cell_design/cds.lib
-\o Or remove or comment out DEFINE basic
-\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o to suppress this warning message.
-MPS request: update library list
-Invoking command (editRename).
-Showing dialog "Rename Cell ICProject/and2" (renameDialog).
-Dialog activated Ok in "Rename Cell ICProject/and2" (renameDialog).
-\o Renaming cell "and2" to "nor2" in library "ICProject".
-Showing dialog "Rename Monitor - 10 Files" (copyProgressDialog).
-\o Copying ICProject/and2/schematic
-\o Copying ICProject/and2/symbol
-\o Copying ICProject/and2/prop.xx
-\o Transfer of 10 files phase complete in  0:00:00
-Closing dialog "Rename Monitor - 10 Files" (copyProgressDialog).
-\o Could not obtain the ViewType for View. [ICProject.d_ff_test:ICProject]
-\o Performing instance update.
-\o Start running ccpCdbaUpdtr ...
-\o *WARNING* LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
-\o ccpCdbaUpdtr ran successfully ...
-\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o Insert UNDEFINE basic
-\o before DEFINE basic
-\o     in /home/rmol/ICProject/cell_design/cds.lib
-\o Or remove or comment out DEFINE basic
-\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o to suppress this warning message.
-\o Loading umc90nm/libInit.il ...
-\o 	Loading umc90nm/loadCxt.ile ... done!
-\o 	Loading context 'umc90nm' from library 'umc90nm' ... done!
-\o 	Loading context 'pdkUtils' from library 'umc90nm' ... done!
-\o 	Loading context 'Util' from library 'umc90nm' ... done!
-\o 	Loading context 'RF_CB_all' from library 'umc90nm' ... done!
-\o 	Loading context 'MM_other_CB' from library 'umc90nm' ... done!
-\o 	Loading context 'OIF_OCF_CB_all' from library 'umc90nm' ... done!
-\o 	Loading umc90nm/.cdsenv ... done!
-\o 	Loading umc90nm/libInitCustomExit.il ... done!
-\o Loaded umc90nm/libInit.il successfully!
-Closing dialog "Rename Cell ICProject/and2" (renameDialog).
-\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
-\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o Insert UNDEFINE basic
-\o before DEFINE basic
-\o     in /home/rmol/ICProject/cell_design/cds.lib
-\o Or remove or comment out DEFINE basic
-\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o to suppress this warning message.
-MPS request: update library list
-Main selection: ICProject nor2 schematic
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: ICProject nor2 symbol
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: ICProject nor2 schematic
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: ICProject and2_test schematic
-Invoking command (editRename).
-Showing dialog "Rename Cell ICProject/and2_test" (renameDialog).
-Dialog activated Ok in "Rename Cell ICProject/and2_test" (renameDialog).
-\o Renaming cell "and2_test" to "nor2_test" in library "ICProject".
-Showing dialog "Rename Monitor - 5 Files" (copyProgressDialog).
-\o Copying ICProject/and2_test/schematic
-\o Transfer of 5 files phase complete in  0:00:00
-Closing dialog "Rename Monitor - 5 Files" (copyProgressDialog).
-\o Could not obtain the ViewType for View. [ICProject.d_ff_test:ICProject]
-\o Performing instance update.
-\o Start running ccpCdbaUpdtr ...
-\o *WARNING* LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
-\o ccpCdbaUpdtr ran successfully ...
-\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o Insert UNDEFINE basic
-\o before DEFINE basic
-\o     in /home/rmol/ICProject/cell_design/cds.lib
-\o Or remove or comment out DEFINE basic
-\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o to suppress this warning message.
-\o Loading umc90nm/libInit.il ...
-\o 	Loading umc90nm/loadCxt.ile ... done!
-\o 	Loading context 'umc90nm' from library 'umc90nm' ... done!
-\o 	Loading context 'pdkUtils' from library 'umc90nm' ... done!
-\o 	Loading context 'Util' from library 'umc90nm' ... done!
-\o 	Loading context 'RF_CB_all' from library 'umc90nm' ... done!
-\o 	Loading context 'MM_other_CB' from library 'umc90nm' ... done!
-\o 	Loading context 'OIF_OCF_CB_all' from library 'umc90nm' ... done!
-\o 	Loading umc90nm/.cdsenv ... done!
-\o 	Loading umc90nm/libInitCustomExit.il ... done!
-\o Loaded umc90nm/libInit.il successfully!
-Closing dialog "Rename Cell ICProject/and2_test" (renameDialog).
-\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
-\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o Insert UNDEFINE basic
-\o before DEFINE basic
-\o     in /home/rmol/ICProject/cell_design/cds.lib
-\o Or remove or comment out DEFINE basic
-\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o to suppress this warning message.
-MPS request: update library list
-Main selection: ICProject nor2_test schematic
-\o Opening design file through session server.
-MPS request: edit design
-\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
-\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o Insert UNDEFINE basic
-\o before DEFINE basic
-\o     in /home/rmol/ICProject/cell_design/cds.lib
-\o Or remove or comment out DEFINE basic
-\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o to suppress this warning message.
-MPS request: update library list
-Main selection: ICProject 30ps_inverter schematic
-\o Opening design file through session server.
-MPS request: edit design
-Invoking command (editRename).
-Showing dialog "Rename Cell ICProject/30ps_inverter" (renameDialog).
-Dialog activated Ok in "Rename Cell ICProject/30ps_inverter" (renameDialog).
-\o Renaming cell "30ps_inverter" to "inverter_20ps" in library "ICProject".
-Showing dialog "Rename Monitor - 10 Files" (copyProgressDialog).
-\o Copying ICProject/30ps_inverter/schematic
-\o Copying ICProject/30ps_inverter/symbol
-\o Copying ICProject/30ps_inverter/prop.xx
-\o Transfer of 10 files phase complete in  0:00:00
-Closing dialog "Rename Monitor - 10 Files" (copyProgressDialog).
-\o Could not obtain the ViewType for View. [ICProject.d_ff_test:ICProject]
-\o Performing instance update.
-\o Start running ccpCdbaUpdtr ...
-\o *WARNING* LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
-\o ccpCdbaUpdtr ran successfully ...
-\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o Insert UNDEFINE basic
-\o before DEFINE basic
-\o     in /home/rmol/ICProject/cell_design/cds.lib
-\o Or remove or comment out DEFINE basic
-\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o to suppress this warning message.
-\o Loading umc90nm/libInit.il ...
-\o 	Loading umc90nm/loadCxt.ile ... done!
-\o 	Loading context 'umc90nm' from library 'umc90nm' ... done!
-\o 	Loading context 'pdkUtils' from library 'umc90nm' ... done!
-\o 	Loading context 'Util' from library 'umc90nm' ... done!
-\o 	Loading context 'RF_CB_all' from library 'umc90nm' ... done!
-\o 	Loading context 'MM_other_CB' from library 'umc90nm' ... done!
-\o 	Loading context 'OIF_OCF_CB_all' from library 'umc90nm' ... done!
-\o 	Loading umc90nm/.cdsenv ... done!
-\o 	Loading umc90nm/libInitCustomExit.il ... done!
-\o Loaded umc90nm/libInit.il successfully!
-Closing dialog "Rename Cell ICProject/30ps_inverter" (renameDialog).
-\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
-\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o Insert UNDEFINE basic
-\o before DEFINE basic
-\o     in /home/rmol/ICProject/cell_design/cds.lib
-\o Or remove or comment out DEFINE basic
-\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o to suppress this warning message.
-MPS request: update library list
-Main selection: ICProject 30ps_inverter_test
-Invoking command (editRename).
-Showing dialog "Rename Cell ICProject/30ps_inverter_test" (renameDialog).
-Dialog activated Ok in "Rename Cell ICProject/30ps_inverter_test" (renameDialog).
-\o Renaming cell "30ps_inverter_test" to "inverter_20ps_test" in library "ICProject".
-Showing dialog "Rename Monitor - 23 Files" (copyProgressDialog).
-\o Copying ICProject/30ps_inverter_test/schematic
-\o Copying ICProject/30ps_inverter_test/simulation/ICProject/.sevSaveDir
-\o Copying ICProject/30ps_inverter_test/simulation/ICProject/30ps_inverter_test/.sevSaveDir
-\o Copying ICProject/30ps_inverter_test/simulation/ICProject/30ps_inverter_test/spectre/state1/ADE_state.info
-\o Copying ICProject/30ps_inverter_test/simulation/ICProject/30ps_inverter_test/spectre/state1/cosimOptions
-\o Copying ICProject/30ps_inverter_test/simulation/ICProject/30ps_inverter_test/spectre/state1/simulationFiles
-\o Copying ICProject/30ps_inverter_test/simulation/ICProject/30ps_inverter_test/spectre/state1/environmentOptions
-\o Copying ICProject/30ps_inverter_test/simulation/ICProject/30ps_inverter_test/spectre/state1/rfstim
-\o Copying ICProject/30ps_inverter_test/simulation/ICProject/30ps_inverter_test/spectre/state1/.sevSaveDir
-\o Copying ICProject/30ps_inverter_test/simulation/ICProject/30ps_inverter_test/spectre/state1/variables
-\o Copying ICProject/30ps_inverter_test/simulation/ICProject/30ps_inverter_test/spectre/state1/modelSetup
-\o Copying ICProject/30ps_inverter_test/simulation/ICProject/30ps_inverter_test/spectre/state1/spList
-\o Copying ICProject/30ps_inverter_test/simulation/ICProject/30ps_inverter_test/spectre/state1/turboOptions
-\o Copying ICProject/30ps_inverter_test/simulation/ICProject/30ps_inverter_test/spectre/state1/graphicalStimuli
-\o Copying ICProject/30ps_inverter_test/simulation/ICProject/30ps_inverter_test/spectre/state1/convergence
-\o Copying ICProject/30ps_inverter_test/simulation/ICProject/30ps_inverter_test/spectre/state1/simulatorOptions
-\o Copying ICProject/30ps_inverter_test/simulation/ICProject/30ps_inverter_test/spectre/state1/analyses
-\o Copying ICProject/30ps_inverter_test/simulation/ICProject/30ps_inverter_test/spectre/state1/outputs
-\o Copying ICProject/30ps_inverter_test/simulation/ICProject/30ps_inverter_test/spectre/.sevSaveDir
-\o Transfer of 23 files phase complete in  0:00:00
-Closing dialog "Rename Monitor - 23 Files" (copyProgressDialog).
-\o Could not obtain the ViewType for View. [ICProject.d_ff_test:ICProject]
-\o Performing instance update.
-\o Start running ccpCdbaUpdtr ...
-\o *WARNING* LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
-\o ccpCdbaUpdtr ran successfully ...
-\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o Insert UNDEFINE basic
-\o before DEFINE basic
-\o     in /home/rmol/ICProject/cell_design/cds.lib
-\o Or remove or comment out DEFINE basic
-\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o to suppress this warning message.
-\o Loading umc90nm/libInit.il ...
-\o 	Loading umc90nm/loadCxt.ile ... done!
-\o 	Loading context 'umc90nm' from library 'umc90nm' ... done!
-\o 	Loading context 'pdkUtils' from library 'umc90nm' ... done!
-\o 	Loading context 'Util' from library 'umc90nm' ... done!
-\o 	Loading context 'RF_CB_all' from library 'umc90nm' ... done!
-\o 	Loading context 'MM_other_CB' from library 'umc90nm' ... done!
-\o 	Loading context 'OIF_OCF_CB_all' from library 'umc90nm' ... done!
-\o 	Loading umc90nm/.cdsenv ... done!
-\o 	Loading umc90nm/libInitCustomExit.il ... done!
-\o Loaded umc90nm/libInit.il successfully!
-Closing dialog "Rename Cell ICProject/30ps_inverter_test" (renameDialog).
-\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
-\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o Insert UNDEFINE basic
-\o before DEFINE basic
-\o     in /home/rmol/ICProject/cell_design/cds.lib
-\o Or remove or comment out DEFINE basic
-\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
-\o to suppress this warning message.
-MPS request: update library list
 Main selection: ICProject inverter_20ps schematic
 \o Opening design file through session server.
 MPS request: edit design
-Main selection: ICProject inverter_20ps symbol
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: ICProject inverter_20ps_test simulation
-\o Opening design file through session server.
-MPS request: edit design
 \o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
 \o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
 \o Insert UNDEFINE basic
@@ -256,20 +26,70 @@ MPS request: edit design
 \o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
 \o to suppress this warning message.
 MPS request: update library list
+Main selection: ICProject inverter_test schematic
 \o Opening design file through session server.
 MPS request: edit design
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject counter_async_test schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject jk_ff schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject d_ff schematic
+\o Opening design file through session server.
+MPS request: edit design
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject d_ff symbol
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject d_ff_test schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject jk_ff schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject jk_ff_test schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject counter_async schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject d_ff schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject inverter schematic
 \o Opening design file through session server.
 MPS request: edit design
 Main selection: ICProject inverter_20ps_test schematic
 \o Opening design file through session server.
 MPS request: edit design
-Main selection: ICProject inverter_20ps schematic
+Main selection: ICProject jk_ff schematic
 \o Opening design file through session server.
 MPS request: edit design
+Main selection: ICProject nand2 schematic
 \o Opening design file through session server.
 MPS request: edit design
-Main selection: ICProject inverter_20ps_test schematic
+Main selection: ICProject nand3 schematic
 \o Opening design file through session server.
 MPS request: edit design
-MPS service: shutdown
-\o libManager is exiting.
+Main selection: ICProject noninverting_gate schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject nor2 schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject xor2 schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject noninverting_gate_test schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject xor2_test schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject nand2_test schematic
+\o Opening design file through session server.
+MPS request: edit design

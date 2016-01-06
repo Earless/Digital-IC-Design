@@ -3,8 +3,8 @@ ICProject xor2 symbol
 I4
 #
 analogLib vpulse symbol
-V1
 V2
+V1
 #
 analogLib vdc symbol
 V0
