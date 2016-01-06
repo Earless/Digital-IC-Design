@@ -1,11 +1,8 @@
 #
 ICProject counter_async symbol
-I4
+I5
 #
 analogLib cap symbol
-C10
-C9
-C8
 C7
 C5
 C6
