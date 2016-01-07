@@ -1,5 +1,5 @@
 #
-ICProject inverter symbol
+ICProject inverter_fast symbol
 I6
 #
 ICProject jk_ff symbol
@@ -15,11 +15,12 @@ analogLib vdd symbol
 I4
 #ISCELL
 basic ipin symbol
+PIN1
 PIN0
 #ISCELL
 basic opin symbol
-PIN16
 PIN12
+PIN16
 PIN8
 PIN7
 PIN6

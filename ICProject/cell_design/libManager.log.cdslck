@@ -6,11 +6,11 @@
 LockStakeVersion               1.1
 LoginName                      rmol
 HostName                       icdvm15.ewi.tudelft.nl
-ProcessIdentifier              27559
-ProcessCreationTime_UTC        1452092908
-ProcessCreationTime_Readable   Wed Jan  6 16:08:28 2016 CET
+ProcessIdentifier              10123
+ProcessCreationTime_UTC        1452167690
+ProcessCreationTime_Readable   Thu Jan  7 12:54:50 2016 CET
 AppIdentifier                  /data/cad/Cadence/IC5/5.1.41HF143/tools/dfII/bin/32bit/libManager.exe
 OSType                         lnx86
 ReasonForPlacingEditLock       log file
 FilePathUsedToEditLock         /home/rmol/ICProject/cell_design/libManager.log
-TimeEditLocked                 Wed Jan  6 16:08:33 2016 CET
+TimeEditLocked                 Thu Jan  7 12:54:53 2016 CET

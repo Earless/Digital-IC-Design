@@ -1,17 +1,17 @@
 #
 ICProject nand2 symbol
-I22
-I21
 I20
-I19
+I22
 I18
+I19
+I21
 I17
 #
 ICProject nand3 symbol
 I16
 I15
 #
-ICProject inverter symbol
+ICProject inverter_fast symbol
 I14
 #ISCELL
 basic ipin symbol

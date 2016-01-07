@@ -12,6 +12,7 @@ C1
 C0
 #
 analogLib vpulse symbol
+V2
 V1
 #
 analogLib vdc symbol
