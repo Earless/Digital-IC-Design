@@ -1,0 +1,15 @@
+#
+ICProject d_ff_reset symbol
+I3
+#
+ICProject xor2 symbol
+I1
+#ISCELL
+basic ipin symbol
+PIN2
+PIN1
+PIN0
+#ISCELL
+basic opin symbol
+PIN4
+PIN3

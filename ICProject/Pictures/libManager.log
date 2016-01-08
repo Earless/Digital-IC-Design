@@ -1,0 +1,10 @@
+\o Program:		@(#)$CDS: libManager.exe version Exp 01/19/2010 20:09 (ocelot-linux) $
+\o Sub version:		sub-version none
+\o Arguments:		-unmapped -mpssession icfb27373 -mpshost icdvm15.ewi.tudelft.nl 
+\o Working Directory:	icdvm15.ewi.tudelft.nl:/home/rmol/ICProject/Pictures
+\o Library Manager customization server connected.
+MPS service: map window
+\o Log file is "/home/rmol/ICProject/Pictures/libManager.log".
+Opening libManager window.
+No main selection
+\o libManager is exiting.

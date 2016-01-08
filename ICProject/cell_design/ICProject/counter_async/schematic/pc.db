@@ -1,22 +1,19 @@
 #
-ICProject inverter_fast symbol
-I6
+analogLib cap symbol
+C0
 #
-ICProject jk_ff symbol
-I8
-I9
-I10
-I3
-I2
-I1
-I0
-#ISCELL
-analogLib vdd symbol
-I4
+ICProject t_ff symbol
+I26
+I25
+I27
+I28
+I22
+I24
+I23
 #ISCELL
 basic ipin symbol
 PIN1
-PIN0
+PIN2
 #ISCELL
 basic opin symbol
 PIN12
@@ -26,3 +23,9 @@ PIN7
 PIN6
 PIN5
 PIN11
+#ISCELL
+analogLib gnd symbol
+I29
+#ISCELL
+analogLib vdd symbol
+I30
