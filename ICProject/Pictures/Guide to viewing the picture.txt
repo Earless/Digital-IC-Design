@@ -1,0 +1,30 @@
+Guide for reading the delay line simulation result
+
+Legends:
+Netlist name	||	Signal name
+
+net5 		||	start signal
+net0116 	|| 	stop signal
+net072		||	Output of delay stage 0 (delay = 20ps)
+net069		||	Output of delay stage 1 (delay = 40ps)
+net064		||	Output of delay stage 2 (delay = 60ps)
+net061		||	Output of delay stage 3 (delay = 80ps)
+net056		||	Output of delay stage 4 (delay = 100ps)
+net053		||	Output of delay stage 5 (delay = 120ps)
+net048		||	Output of delay stage 6 (delay = 140ps)
+net045		||	Output of delay stage 7 (delay = 160ps)
+
+-Each pictures shows a single output of delay netlist, as a the net signals overlaps in a single picture.
+-The signal showcased in the picture is highlighted by green in the signal plot, and has green border in the signal legend
+-The name of the file indicates the distance between start and stop signal (115 means the delay is 115ps)
+
+-On 115ps simulation, it can be seen that after stop signal goes up bits 0 to 2 are high while bits 3 to 7 are low, corresponding to delay of 60ps
+-On 135ps simulation, it can be seen that after stop signal goes up bits 0 to 3 are high while bits 4 to 7 are low, corresponding to delay of 80ps
+-On 155ps simulation, it can be seen that after stop signal goes up bits 0 to 4 are high while bits 5 to 7 are low
+corresponding to delay of 100ps
+
+It can be seen that the simulated devices does have a resolution of ~20ps but the results have an offset of ~55ps
+
+- ~15 ps of this is attributed to the rounding to smaller value, because the next stage will not go high before it reach 20ps, while the signal only has 15ps to travel to the next stage
+
+- ~40 ps of this is attributed to the delay of the D-flip-flop used. Each D-flip-flop has at most 2 NAND gates cascaded with each other which means it has a critical path of 2 NAND, meaning the high signal from the inverter stage might not make it to the end of the 2 NANDs before stop signal goes into rising edge. Each nand has a delay of ~20ps as per our simulation, thus resulting in this 40ps delay.
