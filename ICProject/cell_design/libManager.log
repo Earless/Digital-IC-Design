@@ -1,6 +1,6 @@
 \o Program:		@(#)$CDS: libManager.exe version Exp 01/19/2010 20:09 (ocelot-linux) $
 \o Sub version:		sub-version none
-\o Arguments:		-unmapped -mpssession icfb13391 -mpshost icdvm15.ewi.tudelft.nl 
+\o Arguments:		-unmapped -mpssession icfb23844 -mpshost icdvm15.ewi.tudelft.nl 
 \o Working Directory:	icdvm15.ewi.tudelft.nl:/home/rmol/ICProject/cell_design
 \o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
 \o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
@@ -14,9 +14,24 @@
 MPS service: map window
 \o Log file is "/home/rmol/ICProject/cell_design/libManager.log".
 Opening libManager window.
-Main selection: ICProject and2 schematic
-\o Opening design file through session server.
-MPS request: edit design
+Main selection: ICProject d_ff_test
+Invoking command (editCopySimple).
+Showing dialog "Copy View" (simpleCopyDialog).
+Dialog activated Ok in "Copy Cell" (simpleCopyDialog).
+\o Performing copy
+\o 	from: ICProject d_ff_test  
+\o 	  to: ICProject t_ff_test  
+\o Processing files to be copied...
+\o Generating copy list.
+\o Could not obtain the ViewType for View. [ICProject.d_ff_test:ICProject]
+\o Checking copy destinations.
+\o Beginning simple copy to library "ICProject".
+\o Could not obtain the ViewType for View. [ICProject.d_ff_test:ICProject]
+Showing dialog "Copy Monitor - 5 Files" (copyProgressDialog).
+\o Copying ICProject/d_ff_test/schematic
+\o Transfer of 5 files phase complete in  0:00:00
+Closing dialog "Copy Monitor - 5 Files" (copyProgressDialog).
+\o Copy is done
 \o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
 \o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
 \o Insert UNDEFINE basic
@@ -26,27 +41,23 @@ MPS request: edit design
 \o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
 \o to suppress this warning message.
 MPS request: update library list
-Invoking command (editProperties).
-MPS request: edit property
+Closing dialog "Copy Cell" (simpleCopyDialog).
+Main selection: ICProject t_ff_test ICProject
 Invoking command (editDelete).
-Showing dialog "Delete Cells" (deleteDialog).
-Dialog activated Ok in "Delete Cells" (deleteDialog).
+Showing dialog "Delete CellViews" (deleteDialog).
+Dialog activated Ok in "Delete CellViews" (deleteDialog).
 Showing dialog "Delete Confirmation" (genericDialog).
-\o Remove 2 cells from disk?
+\o Remove 1 cell view from disk?
 \o 
 \o Library: ICProject
-\o    Cells: and2
-\o             and2_test
+\o      Cell: t_ff_test
+\o    View: ICProject
 Dialog activated Yes in "Delete Confirmation" (genericDialog).
 Closing dialog "Delete Confirmation" (genericDialog).
 \o Delete operation will include the DM repository.
-\o Deleting 2 cells from library "ICProject".
+\o Deleting view "ICProject" from cell "t_ff_test" in library "ICProject".
 Showing dialog "Deleting Files" (tdmWorkingDialog).
-\o Deleting cell "and2_test".
-\o Deleted cell 'ICProject/and2_test'.
-\o Deleting cell "and2".
-Main selection: ICProject
-\o Deleted cell 'ICProject/and2'.
+\o Deleted cellview 'ICProject/t_ff_test/ICProject'.
 \o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
 \o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
 \o Insert UNDEFINE basic
@@ -55,19 +66,11 @@ Main selection: ICProject
 \o Or remove or comment out DEFINE basic
 \o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
 \o to suppress this warning message.
+Main selection: ICProject t_ff_test
 Closing dialog "Deleting Files" (tdmWorkingDialog).
-\o Deletion of 2 cells done.
-Closing dialog "Delete Cells" (deleteDialog).
-Main selection: ICProject t_ff schematic
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: ICProject d_ff_reset schematic
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: ICProject counter_async schematic
-\o Opening design file through session server.
-MPS request: edit design
-Main selection: ICProject d_ff_reset schematic
+\o Deletion of 1 view done.
+Main selection: ICProject t_ff_test schematic
+Closing dialog "Delete CellViews" (deleteDialog).
 \o Opening design file through session server.
 MPS request: edit design
 Main selection: ICProject t_ff schematic
@@ -79,7 +82,3 @@ MPS request: edit design
 Main selection: ICProject counter_async_test schematic
 \o Opening design file through session server.
 MPS request: edit design
-Main selection: ICProject counter_async schematic
-\o Opening design file through session server.
-MPS request: edit design
-\o libManager is exiting.
