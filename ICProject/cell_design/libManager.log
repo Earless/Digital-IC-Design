@@ -1,7 +1,7 @@
 \o Program:		@(#)$CDS: libManager.exe version Exp 01/19/2010 20:09 (ocelot-linux) $
 \o Sub version:		sub-version none
-\o Arguments:		-unmapped -mpssession icfb23844 -mpshost icdvm15.ewi.tudelft.nl 
-\o Working Directory:	icdvm15.ewi.tudelft.nl:/home/rmol/ICProject/cell_design
+\o Arguments:		-unmapped -mpssession icfb24945 -mpshost et4293.et.tudelft.nl 
+\o Working Directory:	et4293.et.tudelft.nl:/home/rmol/ICProject/cell_design
 \o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
 \o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
 \o Insert UNDEFINE basic
@@ -14,23 +14,68 @@
 MPS service: map window
 \o Log file is "/home/rmol/ICProject/cell_design/libManager.log".
 Opening libManager window.
-Main selection: ICProject d_ff_test
+Main selection: ICProject inverter_20ps_test simulation
+Invoking command (editDelete).
+Showing dialog "Delete CellViews" (deleteDialog).
+Dialog activated Ok in "Delete CellViews" (deleteDialog).
+Showing dialog "Delete Confirmation" (genericDialog).
+\o Remove 1 cell view from disk?
+\o 
+\o Library: ICProject
+\o      Cell: inverter_20ps_test
+\o    View: simulation
+Dialog activated Yes in "Delete Confirmation" (genericDialog).
+Closing dialog "Delete Confirmation" (genericDialog).
+\o Delete operation will include the DM repository.
+\o Deleting view "simulation" from cell "inverter_20ps_test" in library "ICProject".
+Showing dialog "Deleting Files" (tdmWorkingDialog).
+MPS request: update library list
+Main selection: ICProject inverter_20ps_test
+\o Deleted cellview 'ICProject/inverter_20ps_test/simulation'.
+\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
+\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o Insert UNDEFINE basic
+\o before DEFINE basic
+\o     in /home/rmol/ICProject/cell_design/cds.lib
+\o Or remove or comment out DEFINE basic
+\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o to suppress this warning message.
+Main selection: ICProject inverter_20ps_test schematic
+Closing dialog "Deleting Files" (tdmWorkingDialog).
+\o Deletion of 1 view done.
+Closing dialog "Delete CellViews" (deleteDialog).
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject inverter_20ps schematic
+\o Opening design file through session server.
+MPS request: edit design
+No main selection
+\o Auto refresh applied.
+\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
+\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o Insert UNDEFINE basic
+\o before DEFINE basic
+\o     in /home/rmol/ICProject/cell_design/cds.lib
+\o Or remove or comment out DEFINE basic
+\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o to suppress this warning message.
+Main selection: ICProject inverter_45ps schematic
 Invoking command (editCopySimple).
 Showing dialog "Copy View" (simpleCopyDialog).
+Main selection: ICProject inverter_45ps_test schematic
 Dialog activated Ok in "Copy Cell" (simpleCopyDialog).
 \o Performing copy
-\o 	from: ICProject d_ff_test  
-\o 	  to: ICProject t_ff_test  
+\o 	from: ICProject inverter_45ps  
+\o 	  to: ICProject inverter_25ps  
 \o Processing files to be copied...
 \o Generating copy list.
-\o Could not obtain the ViewType for View. [ICProject.d_ff_test:ICProject]
 \o Checking copy destinations.
 \o Beginning simple copy to library "ICProject".
-\o Could not obtain the ViewType for View. [ICProject.d_ff_test:ICProject]
-Showing dialog "Copy Monitor - 5 Files" (copyProgressDialog).
-\o Copying ICProject/d_ff_test/schematic
-\o Transfer of 5 files phase complete in  0:00:00
-Closing dialog "Copy Monitor - 5 Files" (copyProgressDialog).
+Showing dialog "Copy Monitor - 8 Files" (copyProgressDialog).
+\o Copying ICProject/inverter_45ps/schematic
+\o Copying ICProject/inverter_45ps/symbol
+\o Transfer of 8 files phase complete in  0:00:00
+Closing dialog "Copy Monitor - 8 Files" (copyProgressDialog).
 \o Copy is done
 \o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
 \o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
@@ -42,22 +87,21 @@ Closing dialog "Copy Monitor - 5 Files" (copyProgressDialog).
 \o to suppress this warning message.
 MPS request: update library list
 Closing dialog "Copy Cell" (simpleCopyDialog).
-Main selection: ICProject t_ff_test ICProject
-Invoking command (editDelete).
-Showing dialog "Delete CellViews" (deleteDialog).
-Dialog activated Ok in "Delete CellViews" (deleteDialog).
-Showing dialog "Delete Confirmation" (genericDialog).
-\o Remove 1 cell view from disk?
-\o 
-\o Library: ICProject
-\o      Cell: t_ff_test
-\o    View: ICProject
-Dialog activated Yes in "Delete Confirmation" (genericDialog).
-Closing dialog "Delete Confirmation" (genericDialog).
-\o Delete operation will include the DM repository.
-\o Deleting view "ICProject" from cell "t_ff_test" in library "ICProject".
-Showing dialog "Deleting Files" (tdmWorkingDialog).
-\o Deleted cellview 'ICProject/t_ff_test/ICProject'.
+Invoking command (editCopySimple).
+Showing dialog "Copy Cell" (simpleCopyDialog).
+Dialog activated Ok in "Copy Cell" (simpleCopyDialog).
+\o Performing copy
+\o 	from: ICProject inverter_45ps_test  
+\o 	  to: ICProject inverter_25ps_test  
+\o Processing files to be copied...
+\o Generating copy list.
+\o Checking copy destinations.
+\o Beginning simple copy to library "ICProject".
+Showing dialog "Copy Monitor - 4 Files" (copyProgressDialog).
+\o Copying ICProject/inverter_45ps_test/schematic
+\o Transfer of 4 files phase complete in  0:00:00
+Closing dialog "Copy Monitor - 4 Files" (copyProgressDialog).
+\o Copy is done
 \o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
 \o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
 \o Insert UNDEFINE basic
@@ -66,19 +110,259 @@ Showing dialog "Deleting Files" (tdmWorkingDialog).
 \o Or remove or comment out DEFINE basic
 \o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
 \o to suppress this warning message.
-Main selection: ICProject t_ff_test
-Closing dialog "Deleting Files" (tdmWorkingDialog).
-\o Deletion of 1 view done.
-Main selection: ICProject t_ff_test schematic
-Closing dialog "Delete CellViews" (deleteDialog).
+MPS request: update library list
+Closing dialog "Copy Cell" (simpleCopyDialog).
+Main selection: ICProject inverter_25ps schematic
 \o Opening design file through session server.
 MPS request: edit design
-Main selection: ICProject t_ff schematic
+Main selection: ICProject inverter_25ps
 \o Opening design file through session server.
 MPS request: edit design
+Main selection: ICProject inverter_25ps schematic
+\o Opening design file through session server.
+\o  A File->Open is already in progress, please wait.
+Main selection: ICProject counter_async
+\o Opening design file through session server.
+\o  A File->Open is already in progress, please wait.
+\o Opening design file through session server.
+\o  A File->Open is already in progress, please wait.
+\o Opening design file through session server.
+\o  A File->Open is already in progress, please wait.
+\o Opening design file through session server.
+\o  A File->Open is already in progress, please wait.
+\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
+\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o Insert UNDEFINE basic
+\o before DEFINE basic
+\o     in /home/rmol/ICProject/cell_design/cds.lib
+\o Or remove or comment out DEFINE basic
+\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o to suppress this warning message.
 Main selection: ICProject counter_async schematic
+MPS request: update library list
+Main selection: ICProject counter_async
+\o Opening design file through session server.
+\o  A File->Open is already in progress, please wait.
+\o Opening design file through session server.
+\o  A File->Open is already in progress, please wait.
+\o Opening design file through session server.
+\o  A File->Open is already in progress, please wait.
+Main selection: ICProject
+\o XtWarning 
+\o     Name: viewPopupShell
+\o     Class: XmRowColumn
+\o     XtGrabPointer failed.
+\o 
+Main selection: ICProject xor2
 \o Opening design file through session server.
 MPS request: edit design
-Main selection: ICProject counter_async_test schematic
+Main selection: ICProject
+\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
+\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o Insert UNDEFINE basic
+\o before DEFINE basic
+\o     in /home/rmol/ICProject/cell_design/cds.lib
+\o Or remove or comment out DEFINE basic
+\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o to suppress this warning message.
+Main selection: ICProject inverter_25ps
+MPS request: update library list
+Main selection: ICProject inverter_25ps schematic
 \o Opening design file through session server.
 MPS request: edit design
+Main selection: ICProject inverter_25ps_test schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject inverter_25ps schematic
+\o XtWarning 
+\o     Name: viewPopupShell
+\o     Class: XmRowColumn
+\o     XtGrabPointer failed.
+\o 
+Main selection: ICProject inverter_25ps
+Invoking command (editCopySimple).
+Showing dialog "Copy Cell" (simpleCopyDialog).
+Dialog activated Ok in "Copy Cell" (simpleCopyDialog).
+\o Performing copy
+\o 	from: ICProject inverter_25ps  
+\o 	  to: ICProject inverter_30ps  
+\o Processing files to be copied...
+\o Generating copy list.
+\o Checking copy destinations.
+\o Beginning simple copy to library "ICProject".
+Showing dialog "Copy Monitor - 8 Files" (copyProgressDialog).
+\o Copying ICProject/inverter_25ps/schematic
+\o Copying ICProject/inverter_25ps/symbol
+\o Transfer of 8 files phase complete in  0:00:01
+Closing dialog "Copy Monitor - 8 Files" (copyProgressDialog).
+\o Copy is done
+\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
+\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o Insert UNDEFINE basic
+\o before DEFINE basic
+\o     in /home/rmol/ICProject/cell_design/cds.lib
+\o Or remove or comment out DEFINE basic
+\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o to suppress this warning message.
+Main selection: ICProject inverter_25ps schematic
+MPS request: update library list
+Closing dialog "Copy Cell" (simpleCopyDialog).
+Main selection: ICProject inverter_25ps_test schematic
+Invoking command (editRename).
+Showing dialog "Rename Cell ICProject/inverter_25ps_test" (renameDialog).
+Dialog activated Cancel in "Rename Cell ICProject/inverter_25ps_test" (renameDialog).
+Closing dialog "Rename Cell ICProject/inverter_25ps_test" (renameDialog).
+Invoking command (editCopySimple).
+Showing dialog "Copy Cell" (simpleCopyDialog).
+Dialog activated Ok in "Copy Cell" (simpleCopyDialog).
+\o Performing copy
+\o 	from: ICProject inverter_25ps_test  
+\o 	  to: ICProject inverter_30ps_test  
+\o Processing files to be copied...
+\o Generating copy list.
+\o Checking copy destinations.
+\o Beginning simple copy to library "ICProject".
+Showing dialog "Copy Monitor - 4 Files" (copyProgressDialog).
+\o Copying ICProject/inverter_25ps_test/schematic
+\o Transfer of 4 files phase complete in  0:00:01
+Closing dialog "Copy Monitor - 4 Files" (copyProgressDialog).
+\o Copy is done
+\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
+\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o Insert UNDEFINE basic
+\o before DEFINE basic
+\o     in /home/rmol/ICProject/cell_design/cds.lib
+\o Or remove or comment out DEFINE basic
+\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o to suppress this warning message.
+MPS request: update library list
+Closing dialog "Copy Cell" (simpleCopyDialog).
+Main selection: ICProject inverter_30ps schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject inverter_30ps_test schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject inverter_30ps
+Invoking command (editCopySimple).
+Showing dialog "Copy Cell" (simpleCopyDialog).
+Dialog activated Ok in "Copy Cell" (simpleCopyDialog).
+\o Performing copy
+\o 	from: ICProject inverter_30ps  
+\o 	  to: ICProject inverter_35ps  
+\o Processing files to be copied...
+\o Generating copy list.
+\o Checking copy destinations.
+\o Beginning simple copy to library "ICProject".
+Showing dialog "Copy Monitor - 8 Files" (copyProgressDialog).
+\o Copying ICProject/inverter_30ps/schematic
+\o Copying ICProject/inverter_30ps/symbol
+\o Transfer of 8 files phase complete in  0:00:01
+Closing dialog "Copy Monitor - 8 Files" (copyProgressDialog).
+\o Copy is done
+\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
+\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o Insert UNDEFINE basic
+\o before DEFINE basic
+\o     in /home/rmol/ICProject/cell_design/cds.lib
+\o Or remove or comment out DEFINE basic
+\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o to suppress this warning message.
+Main selection: ICProject inverter_30ps schematic
+MPS request: update library list
+Closing dialog "Copy Cell" (simpleCopyDialog).
+Main selection: ICProject inverter_30ps_test schematic
+Invoking command (editCopySimple).
+Showing dialog "Copy Cell" (simpleCopyDialog).
+Dialog activated Ok in "Copy Cell" (simpleCopyDialog).
+\o Performing copy
+\o 	from: ICProject inverter_30ps_test  
+\o 	  to: ICProject inverter_35ps_test  
+\o Processing files to be copied...
+\o Generating copy list.
+\o Checking copy destinations.
+\o Beginning simple copy to library "ICProject".
+Showing dialog "Copy Monitor - 4 Files" (copyProgressDialog).
+\o Copying ICProject/inverter_30ps_test/schematic
+\o Transfer of 4 files phase complete in  0:00:00
+Closing dialog "Copy Monitor - 4 Files" (copyProgressDialog).
+\o Copy is done
+\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
+\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o Insert UNDEFINE basic
+\o before DEFINE basic
+\o     in /home/rmol/ICProject/cell_design/cds.lib
+\o Or remove or comment out DEFINE basic
+\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o to suppress this warning message.
+MPS request: update library list
+Closing dialog "Copy Cell" (simpleCopyDialog).
+Main selection: ICProject inverter_35ps schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject inverter_35ps_test schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject inverter_35ps schematic
+Invoking command (editCopySimple).
+Showing dialog "Copy Cell" (simpleCopyDialog).
+Dialog activated Ok in "Copy Cell" (simpleCopyDialog).
+\o Performing copy
+\o 	from: ICProject inverter_35ps  
+\o 	  to: ICProject inverter_40ps  
+\o Processing files to be copied...
+\o Generating copy list.
+\o Checking copy destinations.
+\o Beginning simple copy to library "ICProject".
+Showing dialog "Copy Monitor - 8 Files" (copyProgressDialog).
+\o Copying ICProject/inverter_35ps/schematic
+\o Copying ICProject/inverter_35ps/symbol
+\o Transfer of 8 files phase complete in  0:00:00
+Closing dialog "Copy Monitor - 8 Files" (copyProgressDialog).
+\o Copy is done
+\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
+\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o Insert UNDEFINE basic
+\o before DEFINE basic
+\o     in /home/rmol/ICProject/cell_design/cds.lib
+\o Or remove or comment out DEFINE basic
+\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o to suppress this warning message.
+MPS request: update library list
+Closing dialog "Copy Cell" (simpleCopyDialog).
+Main selection: ICProject inverter_35ps_test schematic
+Invoking command (editCopySimple).
+Showing dialog "Copy Cell" (simpleCopyDialog).
+Dialog activated Ok in "Copy Cell" (simpleCopyDialog).
+\o Performing copy
+\o 	from: ICProject inverter_35ps_test  
+\o 	  to: ICProject inverter_40ps_test  
+\o Processing files to be copied...
+\o Generating copy list.
+\o Checking copy destinations.
+\o Beginning simple copy to library "ICProject".
+Showing dialog "Copy Monitor - 4 Files" (copyProgressDialog).
+\o Copying ICProject/inverter_35ps_test/schematic
+\o Transfer of 4 files phase complete in  0:00:00
+Closing dialog "Copy Monitor - 4 Files" (copyProgressDialog).
+\o Copy is done
+\o Warning: LIB basic from File /home/rmol/ICProject/cell_design/cds.lib Line 5 redefines
+\o LIB basic from File /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o Insert UNDEFINE basic
+\o before DEFINE basic
+\o     in /home/rmol/ICProject/cell_design/cds.lib
+\o Or remove or comment out DEFINE basic
+\o     in /u/55/55/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+\o to suppress this warning message.
+MPS request: update library list
+Closing dialog "Copy Cell" (simpleCopyDialog).
+Main selection: ICProject inverter_40ps schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject inverter_45ps_test schematic
+\o Opening design file through session server.
+MPS request: edit design
+Main selection: ICProject inverter_40ps_test schematic
+\o Opening design file through session server.
+MPS request: edit design
+\o libManager is exiting.

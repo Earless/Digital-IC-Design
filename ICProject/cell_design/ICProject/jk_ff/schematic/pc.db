@@ -11,7 +11,7 @@ ICProject nand3 symbol
 I16
 I15
 #
-ICProject inverter_fast symbol
+ICProject inverter_10ps symbol
 I14
 #ISCELL
 basic ipin symbol
