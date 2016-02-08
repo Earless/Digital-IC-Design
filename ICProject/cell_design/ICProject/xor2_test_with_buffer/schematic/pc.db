@@ -1,0 +1,44 @@
+#
+ICProject inverter_25ps symbol
+I42
+#
+ICProject inverter_20ps symbol
+I41
+#
+ICProject inverter_15ps symbol
+I40
+#
+ICProject inverter_30ps symbol
+I33
+I32
+I30
+I29
+#
+ICProject inverter_10ps symbol
+I39
+I35
+I34
+I31
+I28
+#
+ICProject 2_input_xor symbol
+I5
+#
+analogLib vpulse symbol
+V2
+V1
+#
+analogLib vdc symbol
+V0
+#
+analogLib cap symbol
+C3
+C2
+C1
+C0
+#ISCELL
+analogLib vdd symbol
+I1
+#ISCELL
+analogLib gnd symbol
+I2
