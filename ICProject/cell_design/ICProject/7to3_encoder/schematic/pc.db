@@ -1,8 +1,28 @@
 #
+ICProject inverter_50ps symbol
+I23
+I19
+#
+ICProject and2 symbol
+I26
+I24
+I17
+I20
+#
+ICProject nor2 symbol
+I16
+I25
+#
+ICProject or2 symbol
+I14
+I15
+#
+ICProject or3 symbol
+I22
+I13
+#
 ICProject or4 symbol
-I9
-I11
-I10
+I12
 #ISCELL
 basic opin symbol
 PIN11
@@ -10,8 +30,8 @@ PIN10
 PIN9
 #ISCELL
 basic ipin symbol
-PIN8
 PIN1
+PIN8
 PIN16
 PIN15
 PIN14

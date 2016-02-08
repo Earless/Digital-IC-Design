@@ -1,0 +1,23 @@
+#
+ICProject 4to2_mux symbol
+I6
+#
+analogLib vpulse symbol
+V6
+V5
+V4
+V3
+V2
+V1
+#
+analogLib vdc symbol
+V0
+#
+analogLib cap symbol
+C0
+#ISCELL
+analogLib vdd symbol
+I1
+#ISCELL
+analogLib gnd symbol
+I2
