@@ -1,0 +1,15 @@
+#
+ICProject inverter_50ps symbol
+I2
+#
+ICProject nor4 symbol
+I0
+#ISCELL
+basic ipin symbol
+PIN3
+PIN2
+PIN1
+PIN0
+#ISCELL
+basic opin symbol
+PIN4
