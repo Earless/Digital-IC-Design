@@ -1,21 +1,24 @@
 #
+ICProject inverter_15ps symbol
+I31
+#
 analogLib cap symbol
 C0
 #
 ICProject t_ff symbol
-I25
 I26
+I25
 I22
 I24
 I23
 #ISCELL
 basic ipin symbol
-PIN1
 PIN2
+PIN1
 #ISCELL
 basic opin symbol
-PIN8
 PIN16
+PIN8
 PIN7
 PIN6
 PIN5
