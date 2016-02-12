@@ -1,0 +1,22 @@
+#
+Testbench 5_bit_T2B symbol
+I4
+#
+Testbench td symbol
+I3
+#ISCELL
+basic ipin symbol
+PIN9
+PIN1
+PIN0
+#ISCELL
+basic opin symbol
+PIN6
+PIN5
+PIN4
+PIN3
+PIN2
+#ISCELL
+basic iopin symbolr
+PIN8
+PIN7

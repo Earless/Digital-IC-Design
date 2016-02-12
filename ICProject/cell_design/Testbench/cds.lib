@@ -1,0 +1,10 @@
+DEFINE master ./master 
+DEFINE pCells ./pCells 
+DEFINE tutorial ./tutorial 
+DEFINE basic ${CDS_INST_DIR}/tools/dfII/etc/cdslib/basic 
+DEFINE cellTechLib ./cellTechLib 
+DEFINE sample ${CDS_INST_DIR}/tools/dfII/samples/cdslib/sample 
+DEFINE ROD ./ROD
+include /opt/cad/cadence/DesignKits/UMC090_ET4293/designkit/cds.lib
+DEFINE avTech /opt/cad/cadence/5.1.41/lnx86/ASSURA3.1.4/tools/assura/etc/avtech/avTech
+
