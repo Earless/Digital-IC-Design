@@ -1,6 +1,6 @@
 #
-ICProject d_ff_reset symbol
-I3
+ICProject d_ff_for_counter symbol
+I4
 #
 ICProject xor2 symbol
 I1
@@ -11,5 +11,5 @@ PIN1
 PIN0
 #ISCELL
 basic opin symbol
-PIN4
 PIN3
+PIN4
