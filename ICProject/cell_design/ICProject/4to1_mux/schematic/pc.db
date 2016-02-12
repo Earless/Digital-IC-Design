@@ -1,17 +1,16 @@
 #
-ICProject nand3 symbol
-I17
-#
-ICProject nand2 symbol
-I13
-I15
-I16
+ICProject 2to1_mux symbol
 I12
-I14
+I11
+I10
 #ISCELL
 basic ipin symbol
+PIN8
 PIN1
+PIN6
+PIN7
 PIN0
+PIN5
 #ISCELL
 basic opin symbol
 PIN4
