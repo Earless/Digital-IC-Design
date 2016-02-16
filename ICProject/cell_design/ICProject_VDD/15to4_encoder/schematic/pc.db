@@ -1,59 +1,59 @@
 #
-ICProject inverter_50ps symbol
-I76
-I81
-I73
-I67
+ICProject_VDD inverter_50ps symbol
+I117
+I116
+I108
+I107
 #
-ICProject or3 symbol
-I79
-I71
-I62
-I58
-I59
-I72
-I63
+ICProject_VDD nor2 symbol
+I106
+I105
+I104
+I103
+I102
+I101
 #
-ICProject nor2 symbol
-I68
-I57
-I43
-I54
-I51
-I60
+ICProject_VDD and2 symbol
+I122
+I121
+I115
+I114
+I113
+I112
+I111
+I110
+I100
+I99
+I98
+I97
 #
-ICProject and2 symbol
-I74
-I78
-I77
-I69
-I66
-I55
-I52
-I45
-I42
-I65
-I39
-I33
+ICProject_VDD nor4 symbol
+I96
+I95
 #
-ICProject nor4 symbol
-I40
-I80
+ICProject_VDD or4 symbol
+I126
+I118
+I94
 #
-ICProject or4 symbol
-I28
-I32
-I47
+ICProject_VDD or3 symbol
+I127
+I120
+I119
+I93
+I92
+I91
+I90
 #
-ICProject or2 symbol
-I75
-I64
-I46
-I26
-I44
-I29
-I38
-I41
+ICProject_VDD or2 symbol
+I125
+I124
+I123
+I109
+I88
+I89
+I86
+I87
 #ISCELL
 basic opin symbol
 PIN17
@@ -77,3 +77,7 @@ PIN15
 PIN14
 PIN13
 PIN12
+#ISCELL
+basic iopin symbolr
+PIN2
+PIN0

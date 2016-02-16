@@ -1,10 +1,10 @@
 #
-ICProject 4to1_mux symbol
-I768
-I769
-I772
-I770
-I771
+ICProject_VDD 4to1_mux symbol
+I953
+I952
+I951
+I950
+I949
 #ISCELL
 basic ipin symbol
 PIN13

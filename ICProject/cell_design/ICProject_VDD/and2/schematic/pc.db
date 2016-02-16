@@ -1,9 +1,9 @@
 #
-ICProject nand2 symbol
-I5
+ICProject_VDD inverter_50ps symbol
+I8
 #
-ICProject inverter_50ps symbol
-I2
+ICProject_VDD nand2 symbol
+I7
 #ISCELL
 basic ipin symbol
 PIN1

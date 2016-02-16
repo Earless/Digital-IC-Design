@@ -1,24 +1,24 @@
 #
-ICProject d_ff_reset symbol
-I952
-I950
-I951
-I949
+ICProject_VDD d_ff_reset symbol
+I965
+I964
+I963
+I962
 #
-ICProject 2_input_xor_60ps symbol
-I52
+ICProject_VDD inverter_70ps symbol
+I961
+I960
+I959
 #
-ICProject inverter_10ps symbol
-I391
-I393
-I44
-I45
-I51
+ICProject_VDD inverter_10ps symbol
+I958
+I957
+I956
+I955
+I954
 #
-ICProject inverter_70ps symbol
-I394
-I392
-I46
+ICProject_VDD 2_input_xor_60ps symbol
+I953
 #ISCELL
 basic ipin symbol
 PIN1

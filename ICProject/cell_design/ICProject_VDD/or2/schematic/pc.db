@@ -1,9 +1,9 @@
 #
-ICProject inverter_50ps symbol
-I4
+ICProject_VDD inverter_50ps symbol
+I6
 #
-ICProject nor2 symbol
-I3
+ICProject_VDD nor2 symbol
+I5
 #ISCELL
 basic ipin symbol
 PIN1
@@ -13,5 +13,5 @@ basic opin symbol
 PIN4
 #ISCELL
 basic iopin symbolr
-PIN3
 PIN2
+PIN3

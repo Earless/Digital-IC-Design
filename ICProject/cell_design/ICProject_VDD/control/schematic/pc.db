@@ -1,9 +1,9 @@
 #
-ICProject new_circuit_y2 symbol
-I3
+ICProject_VDD new_circuit_y2 symbol
+I5
 #
-ICProject new_circuit_y1 symbol
-I2
+ICProject_VDD new_circuit_y1 symbol
+I4
 #ISCELL
 basic ipin symbol
 PIN3
@@ -16,5 +16,5 @@ PIN5
 PIN4
 #ISCELL
 basic iopin symbolr
-PIN6
 PIN7
+PIN6

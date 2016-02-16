@@ -1,15 +1,15 @@
 #
-ICProject or2 symbol
-I7
+ICProject_VDD or2 symbol
+I13
 #
-ICProject inverter_40ps symbol
-I2
-I5
-I3
+ICProject_VDD nor3 symbol
+I11
+I12
 #
-ICProject nor3 symbol
-I0
-I4
+ICProject_VDD inverter_40ps symbol
+I10
+I9
+I8
 #ISCELL
 basic ipin symbol
 PIN3

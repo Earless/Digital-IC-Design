@@ -1,82 +1,82 @@
 #
-ICProject d_ff_reset symbol
-I955
-I958
-I963
-I961
-I965
-I950
-I951
-I954
-I964
-I949
-I960
-I956
-I959
-I957
-I962
+ICProject_VDD d_ff_reset symbol
+I1005
+I1010
+I1009
+I1008
+I1007
+I1006
+I1004
+I1003
+I1002
+I1001
+I1000
+I999
+I998
+I997
+I996
 #
-ICProject interpolator_2nd_155ps symbol
-I481
+ICProject_VDD interpolator_2nd_155ps symbol
+I995
 #
-ICProject interpolator_2nd_150ps symbol
-I479
+ICProject_VDD interpolator_2nd_150ps symbol
+I994
 #
-ICProject interpolator_2nd_145ps symbol
-I478
+ICProject_VDD interpolator_2nd_145ps symbol
+I993
 #
-ICProject interpolator_2nd_140ps symbol
-I477
+ICProject_VDD interpolator_2nd_140ps symbol
+I992
 #
-ICProject interpolator_2nd_135ps symbol
-I476
+ICProject_VDD interpolator_2nd_135ps symbol
+I991
 #
-ICProject interpolator_2nd_130ps symbol
-I475
+ICProject_VDD interpolator_2nd_130ps symbol
+I990
 #
-ICProject interpolator_2nd_125ps symbol
-I474
+ICProject_VDD interpolator_2nd_125ps symbol
+I989
 #
-ICProject interpolator_2nd_120ps symbol
-I473
+ICProject_VDD interpolator_2nd_120ps symbol
+I988
 #
-ICProject interpolator_2nd_115ps symbol
-I472
+ICProject_VDD interpolator_2nd_115ps symbol
+I987
 #
-ICProject interpolator_2nd_110ps symbol
-I471
+ICProject_VDD interpolator_2nd_110ps symbol
+I986
 #
-ICProject interpolator_2nd_105ps symbol
-I470
+ICProject_VDD interpolator_2nd_105ps symbol
+I985
 #
-ICProject interpolator_2nd_100ps symbol
-I469
+ICProject_VDD interpolator_2nd_100ps symbol
+I984
 #
-ICProject interpolator_2nd_95ps symbol
-I468
+ICProject_VDD interpolator_2nd_95ps symbol
+I983
 #
-ICProject interpolator_2nd_90ps symbol
-I467
+ICProject_VDD interpolator_2nd_90ps symbol
+I982
 #
-ICProject interpolator_2nd_85ps symbol
-I466
+ICProject_VDD interpolator_2nd_85ps symbol
+I981
 #
-ICProject interpolator_1st_stage symbol
-I480
-I402
-I403
-I404
-I405
-I406
-I407
-I408
-I409
-I412
-I413
-I414
-I415
-I416
-I417
+ICProject_VDD interpolator_1st_stage symbol
+I980
+I979
+I978
+I977
+I976
+I975
+I974
+I973
+I972
+I971
+I970
+I969
+I968
+I967
+I966
 #ISCELL
 basic ipin symbol
 PIN0

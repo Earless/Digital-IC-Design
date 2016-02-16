@@ -1,20 +1,20 @@
 #
-ICProject inverter_30ps symbol
-I9
-I7
-I15
-I19
+ICProject_VDD or2 symbol
+I31
+I30
 #
-ICProject or2 symbol
-I13
-I20
+ICProject_VDD and2 symbol
+I32
+I29
+I28
+I27
+I26
 #
-ICProject and2 symbol
-I17
-I18
-I8
-I21
-I14
+ICProject_VDD inverter_30ps symbol
+I25
+I24
+I23
+I22
 #ISCELL
 basic ipin symbol
 PIN3
@@ -26,5 +26,5 @@ basic opin symbol
 PIN4
 #ISCELL
 basic iopin symbolr
-PIN5
 PIN6
+PIN5

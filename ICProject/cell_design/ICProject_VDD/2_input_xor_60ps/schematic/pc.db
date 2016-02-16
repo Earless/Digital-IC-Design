@@ -1,7 +1,7 @@
 #
-ICProject inverter_15ps symbol
-I3
-I4
+ICProject_VDD inverter_15ps symbol
+I5
+I6
 #
 umc90nm P_10_SP symbol
 PM3
