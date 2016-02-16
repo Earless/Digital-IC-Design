@@ -1,0 +1,21 @@
+#
+ICProject t_ff symbol
+I11
+#
+analogLib vpulse symbol
+V3
+V1
+V2
+#
+analogLib vdc symbol
+V0
+#
+analogLib cap symbol
+C0
+C1
+#ISCELL
+analogLib vdd symbol
+I1
+#ISCELL
+analogLib gnd symbol
+I2

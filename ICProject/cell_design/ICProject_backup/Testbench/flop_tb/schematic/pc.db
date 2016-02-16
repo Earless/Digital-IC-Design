@@ -1,0 +1,26 @@
+#
+analogLib vdc symbol
+V3
+#
+analogLib cap symbol
+C1
+C0
+#
+analogLib vpwl symbol
+V0
+V2
+V1
+#
+tdc flop symbol
+I0
+#ISCELL
+analogLib gnd symbol
+I7
+I5
+I4
+I3
+I1
+I2
+#ISCELL
+analogLib vdd symbol
+I6

@@ -1,0 +1,19 @@
+#
+ICProject xor2 symbol
+I4
+#
+analogLib vpulse symbol
+V2
+V1
+#
+analogLib vdc symbol
+V0
+#
+analogLib cap symbol
+C0
+#ISCELL
+analogLib vdd symbol
+I1
+#ISCELL
+analogLib gnd symbol
+I2

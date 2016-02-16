@@ -1,0 +1,44 @@
+#
+ICProject 15to4_encoder symbol
+I805
+#
+ICProject 2_input_xor_60ps symbol
+I789
+I790
+I791
+I792
+I793
+I794
+I795
+I796
+I798
+I799
+I800
+I801
+I802
+I803
+I804
+#ISCELL
+basic ipin symbol
+PIN0
+PIN1
+PIN2
+PIN3
+PIN4
+PIN5
+PIN6
+PIN7
+PIN8
+PIN9
+PIN10
+PIN11
+PIN12
+PIN13
+PIN14
+PIN15
+#ISCELL
+basic opin symbol
+PIN18
+PIN16
+PIN17
+PIN19

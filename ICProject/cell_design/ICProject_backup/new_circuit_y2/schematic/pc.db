@@ -1,0 +1,20 @@
+#
+ICProject or2 symbol
+I6
+#
+ICProject inverter_40ps symbol
+I5
+I2
+I3
+#
+ICProject nor3 symbol
+I0
+I4
+#ISCELL
+basic ipin symbol
+PIN3
+PIN1
+PIN0
+#ISCELL
+basic opin symbol
+PIN2

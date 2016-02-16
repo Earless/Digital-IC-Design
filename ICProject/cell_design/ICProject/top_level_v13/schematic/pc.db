@@ -1,0 +1,74 @@
+#
+ICProject inverter_15ps symbol
+I967
+#
+ICProject encoding_xor symbol
+I958
+#
+ICProject control symbol
+I956
+#
+ICProject encoding_mux symbol
+I953
+I955
+I954
+#
+ICProject interpolator symbol
+I949
+I951
+I952
+I950
+#
+analogLib cap symbol
+C4
+C6
+C1
+C3
+C2
+C5
+C7
+C8
+#
+ICProject counter_async_5bit symbol
+I947
+#
+ICProject d_ff_reset symbol
+I965
+I966
+I940
+I939
+I941
+I942
+I964
+#
+ICProject 2_input_xor_60ps symbol
+I52
+#
+ICProject inverter_10ps symbol
+I391
+I393
+I44
+I45
+I51
+#
+ICProject inverter_70ps symbol
+I394
+I959
+I392
+I46
+#
+analogLib vpulse symbol
+V5
+V4
+V2
+#
+analogLib vdc symbol
+V0
+#ISCELL
+analogLib vdd symbol
+I1
+#ISCELL
+analogLib gnd symbol
+I960
+I948
+I2

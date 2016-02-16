@@ -1,0 +1,44 @@
+#
+ICProject d_ff_with_reset symbol
+I39
+I37
+I36
+I40
+I43
+I42
+I38
+I41
+#
+ICProject inverter_20ps symbol
+I25
+I26
+I27
+I22
+I21
+I20
+I23
+I24
+#
+analogLib cap symbol
+C8
+C7
+C6
+C5
+C4
+C3
+C1
+C2
+#
+analogLib vpulse symbol
+V5
+V6
+V1
+#
+analogLib vdc symbol
+V0
+#ISCELL
+analogLib vdd symbol
+I0
+#ISCELL
+analogLib gnd symbol
+I11
