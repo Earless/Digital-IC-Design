@@ -1,0 +1,32 @@
+#
+ICProject 15to4_encoder_new symbol
+I10
+#
+analogLib cap symbol
+C11
+C7
+C3
+C2
+#
+analogLib vpulse symbol
+V8
+V2
+V9
+V10
+V11
+V12
+V13
+V14
+V15
+V3
+V6
+V7
+V4
+V5
+V1
+#
+analogLib vdc symbol
+V0
+#ISCELL
+analogLib gnd symbol
+I2

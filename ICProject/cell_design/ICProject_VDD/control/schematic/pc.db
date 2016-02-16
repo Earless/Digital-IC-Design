@@ -1,0 +1,20 @@
+#
+ICProject new_circuit_y2 symbol
+I3
+#
+ICProject new_circuit_y1 symbol
+I2
+#ISCELL
+basic ipin symbol
+PIN3
+PIN2
+PIN1
+PIN0
+#ISCELL
+basic opin symbol
+PIN5
+PIN4
+#ISCELL
+basic iopin symbolr
+PIN6
+PIN7

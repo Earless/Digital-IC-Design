@@ -1,0 +1,16 @@
+#
+ICProject nand2 symbol
+I5
+#
+analogLib vpulse symbol
+V2
+V1
+#
+analogLib vdc symbol
+V0
+#
+analogLib cap symbol
+C0
+#ISCELL
+analogLib gnd symbol
+I2

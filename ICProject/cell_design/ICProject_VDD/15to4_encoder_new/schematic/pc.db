@@ -1,0 +1,83 @@
+#
+ICProject inverter_50ps symbol
+I81
+I76
+I73
+I67
+#
+ICProject or3 symbol
+I79
+I71
+I62
+I58
+I59
+I72
+I63
+#
+ICProject nor2 symbol
+I68
+I57
+I43
+I54
+I51
+I60
+#
+ICProject and2 symbol
+I74
+I78
+I77
+I69
+I66
+I55
+I52
+I45
+I42
+I65
+I39
+I33
+#
+ICProject nor4 symbol
+I40
+I80
+#
+ICProject or4 symbol
+I28
+I32
+I47
+#
+ICProject or2 symbol
+I75
+I82
+I46
+I26
+I85
+I29
+I83
+I84
+#ISCELL
+basic opin symbol
+PIN17
+PIN11
+PIN10
+PIN9
+#ISCELL
+basic ipin symbol
+PIN18
+PIN19
+PIN20
+PIN21
+PIN22
+PIN23
+PIN24
+PIN25
+PIN8
+PIN1
+PIN16
+PIN15
+PIN14
+PIN13
+PIN12
+#ISCELL
+basic iopin symbolr
+PIN2
+PIN0

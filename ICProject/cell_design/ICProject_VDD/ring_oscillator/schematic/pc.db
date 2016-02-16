@@ -1,0 +1,40 @@
+#
+ICProject d_ff_reset symbol
+I952
+I950
+I951
+I949
+#
+ICProject 2_input_xor_60ps symbol
+I52
+#
+ICProject inverter_10ps symbol
+I391
+I393
+I44
+I45
+I51
+#
+ICProject inverter_70ps symbol
+I394
+I392
+I46
+#ISCELL
+basic ipin symbol
+PIN1
+PIN2
+PIN0
+#ISCELL
+basic opin symbol
+PIN5
+PIN6
+PIN7
+PIN8
+PIN9
+PIN10
+PIN3
+PIN4
+#ISCELL
+basic iopin symbolr
+PIN12
+PIN11
