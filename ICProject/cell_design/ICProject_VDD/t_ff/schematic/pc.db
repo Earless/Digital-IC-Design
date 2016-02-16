@@ -1,9 +1,9 @@
 #
-ICProject d_ff_for_counter symbol
-I4
+ICProject_VDD d_ff_for_counter symbol
+I7
 #
-ICProject xor2 symbol
-I1
+ICProject_VDD xor2 symbol
+I5
 #ISCELL
 basic ipin symbol
 PIN2
@@ -13,3 +13,7 @@ PIN0
 basic opin symbol
 PIN3
 PIN4
+#ISCELL
+basic iopin symbolr
+PIN5
+PIN6

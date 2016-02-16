@@ -1,7 +1,7 @@
 #
-ICProject inverter_15ps symbol
-I3
-I4
+ICProject_VDD inverter_15ps symbol
+I6
+I5
 #
 umc90nm P_10_SP symbol
 PM3
@@ -22,8 +22,6 @@ PIN0
 basic opin symbol
 PIN4
 #ISCELL
-analogLib gnd symbol
-I0
-#ISCELL
-analogLib vdd symbol
-I2
+basic iopin symbolr
+PIN3
+PIN2

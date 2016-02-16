@@ -1,13 +1,13 @@
 #
-ICProject nand3 symbol
-I17
-I19
-I18
+ICProject_VDD nand3 symbol
+I26
+I25
+I23
+I24
 #
-ICProject nand2 symbol
-I13
-I12
-I14
+ICProject_VDD nand2 symbol
+I22
+I20
 #ISCELL
 basic ipin symbol
 PIN8
@@ -17,3 +17,7 @@ PIN0
 basic opin symbol
 PIN9
 PIN4
+#ISCELL
+basic iopin symbolr
+PIN2
+PIN3

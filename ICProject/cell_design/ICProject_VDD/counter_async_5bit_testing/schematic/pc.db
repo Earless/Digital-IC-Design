@@ -1,13 +1,13 @@
 #
+ICProject_VDD inverter_15ps symbol
+I42
+#
 ICProject_VDD t_ff symbol
 I34
 I33
 I37
 I35
 I36
-#
-ICProject_VDD inverter_15ps symbol
-I32
 #
 analogLib cap symbol
 C0
