@@ -1,6 +1,6 @@
 #
-ICProject_VDD d_ff_reset_interpolator symbol
-I12
+ICProject d_ff_reset_for_interpolator symbol
+I11
 #
 analogLib vpulse symbol
 V2

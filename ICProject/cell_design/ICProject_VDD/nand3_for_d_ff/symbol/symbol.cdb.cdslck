@@ -12,5 +12,5 @@ ProcessCreationTime_Readable   Wed Feb 17 13:32:24 2016 CET
 AppIdentifier                  /data/cad/Cadence/IC5/5.1.41HF143/tools/dfII/bin/icfb.exe
 OSType                         lnx86
 ReasonForPlacingEditLock       XXsave write lock
-FilePathUsedToEditLock         /home/rcanggaputra/ICProject/cell_design/ICProject/d_ff_interpolator_test/schematic/sch.cdb
-TimeEditLocked                 Wed Feb 17 14:01:37 2016 CET
+FilePathUsedToEditLock         /home/rcanggaputra/ICProject/cell_design/ICProject_VDD/nand3_for_d_ff/symbol/symbol.cdb
+TimeEditLocked                 Wed Feb 17 13:46:35 2016 CET
