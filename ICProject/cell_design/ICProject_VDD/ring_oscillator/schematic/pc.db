@@ -1,14 +1,21 @@
 #
-ICProject_VDD d_ff_reset symbol
-I965
-I964
-I963
-I962
+ICProject_VDD d_ff_reset_ringoscillator symbol
+I976
+I975
+I974
+I973
 #
-ICProject_VDD inverter_70ps symbol
-I961
-I960
-I959
+ICProject_VDD ringoscillator_4th_stage symbol
+I972
+#
+ICProject_VDD ringoscillator_3rd_stage symbol
+I971
+#
+ICProject_VDD ringoscillator_2nd_stage symbol
+I970
+#
+ICProject_VDD ringoscillator_1st_stage symbol
+I966
 #
 ICProject_VDD inverter_10ps symbol
 I958
@@ -16,9 +23,6 @@ I957
 I956
 I955
 I954
-#
-ICProject_VDD 2_input_xor_60ps symbol
-I953
 #ISCELL
 basic ipin symbol
 PIN1
@@ -26,12 +30,12 @@ PIN2
 PIN0
 #ISCELL
 basic opin symbol
+PIN10
+PIN8
+PIN7
+PIN9
 PIN5
 PIN6
-PIN7
-PIN8
-PIN9
-PIN10
 PIN3
 PIN4
 #ISCELL
