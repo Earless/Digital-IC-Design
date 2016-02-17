@@ -1,0 +1,22 @@
+#
+ICProject_VDD nand3 symbol
+I25
+I26
+I23
+I24
+#
+ICProject_VDD nand2 symbol
+I22
+I20
+#ISCELL
+basic ipin symbol
+PIN8
+PIN0
+PIN1
+#ISCELL
+basic opin symbol
+PIN4
+#ISCELL
+basic iopin symbolr
+PIN2
+PIN3

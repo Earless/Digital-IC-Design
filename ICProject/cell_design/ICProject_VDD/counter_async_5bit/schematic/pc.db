@@ -1,13 +1,11 @@
 #
+ICProject_VDD inverter_15ps symbol
+I38
+#
 ICProject_VDD t_ff symbol
 I34
 I33
-I37
 I35
-I36
-#
-ICProject_VDD inverter_15ps symbol
-I32
 #
 analogLib cap symbol
 C0
@@ -17,14 +15,9 @@ PIN1
 PIN2
 #ISCELL
 basic opin symbol
-PIN16
-PIN8
 PIN7
 PIN6
 PIN5
-#ISCELL
-analogLib gnd symbol
-I29
 #ISCELL
 basic iopin symbolr
 PIN3

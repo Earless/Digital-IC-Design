@@ -1,0 +1,23 @@
+#
+ICProject_VDD sr_latch symbol
+I10
+#
+analogLib vpulse symbol
+V5
+V2
+V1
+#
+analogLib vdc symbol
+V4
+V3
+V0
+#
+analogLib cap symbol
+C0
+#ISCELL
+analogLib gnd symbol
+I2
+#ISCELL
+basic iopin symbolr
+PIN1
+PIN0
