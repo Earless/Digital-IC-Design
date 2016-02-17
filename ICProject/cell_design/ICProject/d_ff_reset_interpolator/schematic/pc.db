@@ -1,22 +1,20 @@
 #
-umc90nm P_10_SP symbol
-PM2
-PM1
-PM0
-#
-umc90nm N_10_SP symbol
-NM2
-NM1
-NM0
+ICProject_VDD nand3_for_d_ff symbol
+I27
+I26
+I25
+I24
+I23
+I22
 #ISCELL
 basic ipin symbol
-PIN2
+PIN8
 PIN1
 PIN0
 #ISCELL
 basic opin symbol
-PIN3
+PIN4
 #ISCELL
 basic iopin symbolr
-PIN4
-PIN5
+PIN2
+PIN3
