@@ -1,10 +1,4 @@
 #
-ICProject interpolator_v2 symbol
-I980
-I979
-I978
-I977
-#
 ICProject delay_chain_stage_4 symbol
 I972
 #
@@ -17,42 +11,36 @@ I970
 ICProject delay_chain_stage_1 symbol
 I969
 #
-ICProject inverter_15ps symbol
-I967
-#
-ICProject encoding_xor symbol
-I958
-#
 ICProject control symbol
 I956
 #
-ICProject encoding_mux symbol
-I953
-I955
-I954
+ICProject interpolator symbol
+I950
 #
 analogLib cap symbol
-C4
-C6
-C10
-C1
+C18
+C22
+C11
+C23
+C24
+C25
+C12
+C17
+C13
+C14
+C19
+C20
+C15
+C21
 C3
 C2
-C5
-C7
-C8
-#
-ICProject counter_async_5bit symbol
-I947
+C16
 #
 ICProject d_ff_reset symbol
-I965
-I966
 I940
 I939
 I941
 I942
-I964
 #
 ICProject inverter_10ps symbol
 I968
@@ -60,11 +48,6 @@ I391
 I393
 I45
 I51
-#
-ICProject inverter_70ps symbol
-I975
-I974
-I959
 #
 analogLib vpulse symbol
 V5
@@ -78,7 +61,6 @@ analogLib vdd symbol
 I1
 #ISCELL
 analogLib gnd symbol
-I960
 I948
-I973
+I976
 I2

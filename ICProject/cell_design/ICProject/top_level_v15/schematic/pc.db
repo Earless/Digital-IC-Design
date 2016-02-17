@@ -1,10 +1,4 @@
 #
-ICProject interpolator_v2 symbol
-I980
-I979
-I978
-I977
-#
 ICProject delay_chain_stage_4 symbol
 I972
 #
@@ -30,6 +24,12 @@ ICProject encoding_mux symbol
 I953
 I955
 I954
+#
+ICProject interpolator symbol
+I949
+I951
+I952
+I950
 #
 analogLib cap symbol
 C4

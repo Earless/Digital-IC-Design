@@ -1,0 +1,101 @@
+#
+ICProject d_ff_reset_for_interpolator symbol
+I949
+I959
+I960
+I961
+I962
+I963
+I953
+I951
+I950
+I954
+I956
+I955
+I952
+I958
+I957
+#
+ICProject interpolator_2nd_155ps symbol
+I481
+#
+ICProject interpolator_2nd_150ps symbol
+I479
+#
+ICProject interpolator_2nd_145ps symbol
+I478
+#
+ICProject interpolator_2nd_140ps symbol
+I477
+#
+ICProject interpolator_2nd_135ps symbol
+I476
+#
+ICProject interpolator_2nd_130ps symbol
+I475
+#
+ICProject interpolator_2nd_125ps symbol
+I474
+#
+ICProject interpolator_2nd_120ps symbol
+I473
+#
+ICProject interpolator_2nd_115ps symbol
+I472
+#
+ICProject interpolator_2nd_110ps symbol
+I471
+#
+ICProject interpolator_2nd_105ps symbol
+I470
+#
+ICProject interpolator_2nd_100ps symbol
+I469
+#
+ICProject interpolator_2nd_95ps symbol
+I468
+#
+ICProject interpolator_2nd_90ps symbol
+I467
+#
+ICProject interpolator_2nd_85ps symbol
+I466
+#
+ICProject interpolator_1st_stage symbol
+I480
+I402
+I403
+I404
+I405
+I406
+I407
+I408
+I409
+I412
+I413
+I414
+I415
+I416
+I417
+#ISCELL
+basic ipin symbol
+PIN0
+PIN2
+PIN1
+#ISCELL
+basic opin symbol
+PIN3
+PIN4
+PIN5
+PIN6
+PIN7
+PIN8
+PIN9
+PIN10
+PIN11
+PIN12
+PIN13
+PIN14
+PIN15
+PIN16
+PIN17

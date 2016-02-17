@@ -1,0 +1,19 @@
+#
+ICProject nand3_for_d_ff symbol
+I29
+I28
+I27
+I26
+I25
+I24
+#ISCELL
+basic ipin symbol
+PIN8
+PIN1
+PIN0
+#ISCELL
+basic opin symbol
+PIN4
+#ISCELL
+analogLib vdd symbol
+I23
