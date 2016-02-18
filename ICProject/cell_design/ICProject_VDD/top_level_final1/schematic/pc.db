@@ -1,5 +1,6 @@
 #
 ICProject_VDD inverter_70ps symbol
+I998
 I994
 #
 ICProject_VDD interpolator symbol
@@ -60,3 +61,6 @@ PIN10
 PIN9
 PIN11
 PIN12
+#ISCELL
+analogLib gnd symbol
+I997

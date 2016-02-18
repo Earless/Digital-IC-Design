@@ -1,0 +1,69 @@
+#
+ICProject_VDD stop_buffer symbol
+I999
+#
+ICProject_VDD inverter_70ps symbol
+I998
+I994
+#
+ICProject_VDD interpolator symbol
+I990
+I991
+I992
+I993
+#
+ICProject_VDD counter_async_5bit symbol
+I989
+#
+ICProject_VDD encoding_mux symbol
+I988
+I986
+I987
+#
+ICProject_VDD sr_latch symbol
+I985
+#
+ICProject_VDD encoding_xor symbol
+I984
+#
+ICProject_VDD control symbol
+I982
+#
+ICProject_VDD ring_oscillator symbol
+I981
+#
+analogLib cap symbol
+C4
+C10
+C1
+C3
+C2
+#
+analogLib vpulse symbol
+V5
+V4
+V2
+#
+analogLib vdc symbol
+V1
+V3
+V0
+#ISCELL
+basic iopin symbolr
+PIN0
+PIN2
+#ISCELL
+basic opin symbol
+PIN1
+PIN3
+PIN4
+PIN5
+PIN6
+PIN7
+PIN10
+PIN9
+PIN11
+PIN12
+#ISCELL
+analogLib gnd symbol
+I997
