@@ -5,6 +5,8 @@ I1016
 #
 ICProject_VDD stop_buffer symbol
 I1019
+I1020
+I1021
 I1018
 I1010
 I1009
@@ -45,16 +47,6 @@ C10
 C1
 C3
 C2
-#
-analogLib vpulse symbol
-V5
-V4
-V2
-#
-analogLib vdc symbol
-V1
-V3
-V0
 #ISCELL
 basic iopin symbolr
 PIN0
@@ -72,5 +64,7 @@ PIN9
 PIN11
 PIN12
 #ISCELL
-analogLib gnd symbol
-I997
+basic ipin symbol
+PIN14
+PIN8
+PIN13
