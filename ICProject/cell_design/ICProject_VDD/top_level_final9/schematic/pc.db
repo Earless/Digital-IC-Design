@@ -1,6 +1,9 @@
 #
 ICProject_VDD inverter_30ps symbol
-I1044
+I1052
+#
+ICProject_VDD sr_latch_bar symbol
+I1048
 #
 ICProject_VDD reset_buffer_counter symbol
 I1042
@@ -43,9 +46,6 @@ ICProject_VDD encoding_mux symbol
 I988
 I986
 I987
-#
-ICProject_VDD sr_latch symbol
-I985
 #
 ICProject_VDD encoding_xor symbol
 I984

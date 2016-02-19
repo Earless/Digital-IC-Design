@@ -1,0 +1,21 @@
+#
+ICProject_VDD nand2_for_sr symbol
+I11
+I10
+I8
+I9
+#
+ICProject_VDD inverter_15ps symbol
+I6
+#ISCELL
+basic ipin symbol
+PIN6
+PIN1
+PIN0
+#ISCELL
+basic opin symbol
+PIN2
+#ISCELL
+basic iopin symbolr
+PIN4
+PIN5
