@@ -1,0 +1,19 @@
+#
+ICProject_VDD inverter_minimum symbol
+I13
+I12
+#
+ICProject_VDD nand2_minimum symbol
+I9
+I8
+#ISCELL
+basic ipin symbol
+PIN1
+PIN0
+#ISCELL
+basic opin symbol
+PIN2
+#ISCELL
+basic iopin symbolr
+PIN4
+PIN5

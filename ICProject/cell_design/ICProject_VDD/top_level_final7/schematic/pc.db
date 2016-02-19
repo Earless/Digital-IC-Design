@@ -1,0 +1,76 @@
+#
+ICProject_VDD inverter_minimum symbol
+I1038
+I1037
+I1032
+I1034
+I1031
+I1035
+I1033
+I1036
+#
+ICProject_VDD sr_latch_reset symbol
+I1030
+#
+ICProject_VDD before_stop_buffer symbol
+I1015
+I1016
+#
+ICProject_VDD stop_buffer symbol
+I1019
+I1020
+I1021
+I1018
+I1010
+I1009
+#
+ICProject_VDD inverter_70ps symbol
+I998
+I994
+#
+ICProject_VDD interpolator symbol
+I990
+I991
+I992
+I993
+#
+ICProject_VDD counter_async_5bit symbol
+I989
+#
+ICProject_VDD encoding_mux symbol
+I988
+I986
+I987
+#
+ICProject_VDD sr_latch symbol
+I985
+#
+ICProject_VDD encoding_xor symbol
+I984
+#
+ICProject_VDD control symbol
+I982
+#
+ICProject_VDD ring_oscillator symbol
+I981
+#ISCELL
+basic iopin symbolr
+PIN0
+PIN2
+#ISCELL
+basic opin symbol
+PIN1
+PIN3
+PIN4
+PIN5
+PIN6
+PIN7
+PIN10
+PIN9
+PIN11
+PIN12
+#ISCELL
+basic ipin symbol
+PIN14
+PIN8
+PIN13

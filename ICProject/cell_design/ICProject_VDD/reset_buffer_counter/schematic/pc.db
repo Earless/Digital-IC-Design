@@ -1,0 +1,14 @@
+#
+ICProject_VDD reset_inverter symbol
+I3
+I2
+#ISCELL
+basic iopin symbolr
+PIN0
+PIN1
+#ISCELL
+basic ipin symbol
+PIN2
+#ISCELL
+basic opin symbol
+PIN3
