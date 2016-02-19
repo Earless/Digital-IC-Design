@@ -1,0 +1,16 @@
+#
+# Edit Lock-Stake file. CAUTION: Please do not change.
+#
+# Information about current Edit Lock Owner.
+#
+LockStakeVersion               1.1
+LoginName                      acarimatto
+HostName                       tud208316.ws.tudelft.net
+ProcessIdentifier              5277
+ProcessCreationTime_UTC        1453372490
+ProcessCreationTime_Readable   Thu Jan 21 11:34:50 2016 CET
+AppIdentifier                  /data/cad/Cadence/IC5/5.1.41HF143/tools/dfII/bin/icfb.exe
+OSType                         lnx86
+ReasonForPlacingEditLock       XXopen upgrade lock
+FilePathUsedToEditLock         /home/acarimatto/Documents/IC4293/Testbench/Inv/schematic/sch.cdb
+TimeEditLocked                 Thu Jan 21 11:35:18 2016 CET

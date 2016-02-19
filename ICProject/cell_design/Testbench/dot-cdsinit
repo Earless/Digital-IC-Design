@@ -1,0 +1,275 @@
+/* 
+   filepath:        <cds_install_dir>/cdsuser/.cdsinit
+   dfII version:    4.4
+   
+   This file can be copied into a users home or project directory
+   and customized.
+
+   The site initialization file in <cds_install_dir>/local/.cdsinit should
+   set all the defaults for the site.
+
+   For more information on site initialization look at the files
+
+      <cds_install_dir>/samples/local/
+                                    cdsinit
+                                    aaConfig.il
+                                    dciConfig.il
+                                    metConfig.il
+                                    sysConfig.il
+                                    uiConfig.il
+                             
+      
+
+   The sample site initialization file supplied is
+
+      <cds_install_dir>/samples/local/cdsinit
+
+   The site administrator should have moved this to
+
+      <cds_install_dir>/local/.cdsinit
+
+   and customized it.
+
+###################################################################
+   Please read the entire file and the comments before you start
+   customizing the file.
+
+   There are bind key definition files supplied for different 
+   applications. The relevant bind key definitions files must
+   be loaded if you want bind keys defined for that application.
+   See section LOAD APPLICATION BIND KEY DEFINITIONS.
+###################################################################
+
+   The user may copy portions from the above files into the
+   home or project customization file and modify the defaults.
+
+
+   It is recommended that the user copy only portions as opposed
+   to copying the whole files.
+
+   Appropriate items for the user's customization file are
+
+   1. Library search path
+   2. Specific bind keys
+   3. Custom SKILL procedures
+   4. User preference options             - examples in uiConfig.il
+   5. Form placements                     - examples in uiConfig.il
+
+   In order for any window placements to work correctly the following 
+   X resource must be set in the .Xdefaults or .xresources file
+   pertaining to your hardware platform.
+
+	Mwm*clientAutoPlace:             False
+
+   After setting the resource read in the resource file with the command
+
+	xrdb <resource_filename>
+   
+   and restart the Motif window manager.
+
+   The function 
+             prependInstallPath("string")
+   adds the installation path to the string argument
+   For this reason there should NOT be a space at the beginning of the
+   string.
+   There SHOULD be a space at the end of the string if more paths are to
+   follow.
+   This function is used to make path specification in this file
+   independant of the exact installation path.
+
+   The function let() creates local variables ( example: libPath ). 
+   This makes sure that any global variables are not accidentally modified.
+
+*/
+;
+;################################################
+;#
+;# SETTINGS FOR SKILL PATH and SKILL PROGRAMMING
+;#
+;################################################
+;
+;  The function sstatus() sets the status of variables
+;  The variable writeProtect controls if a SKILL function can be
+;  redefined or not;
+;
+;  Any functions defined after writeProtect = t CANNOT be redefined
+;  Any functions defined after writeProtect = nil CAN be redefined
+;  If you are going to create SKILL programs and define functions set the
+;  status of writeProtect to nil at the beginning of your session.
+;
+;  Set skill search path. The SKILL search path contains directories
+;  to be searched to locate SKILL programs when program names are
+;  specified without full path names.
+;  The operation could be reading, writing or loading a SKILL program.
+;
+;  Source technology files are considered SKILL files and when loading 
+;  or dumping the technology file SKILL search path will be used.
+;
+;
+
+sstatus(writeProtect nil)
+
+let((skillPath)
+   skillPath= strcat(
+    ". ~ "                                          ; Current & home directory
+    prependInstallPath("samples/techfile ")         ; sample source technology files
+   )
+   setSkillPath(skillPath)
+)
+;
+;
+;################################################
+;#                                           
+;# LOAD APPLICATION BIND KEY DEFINITIONS
+;#
+;################################################
+;
+;  The bind keys supplied with the Cadence software should have
+;  been loaded by the site .cdsinit file.
+;  This file also loads them in case they were not loaded by the
+;  site customization file.
+;
+;  In case they are loaded by the site .cdsinit prevent reloading by
+;  adding the comment ; to the beginning of the line containing the
+;  specific file name in the list bindKeyFileList below.
+;
+;  If you load the bind key definition file but the application is not
+;  registered ( product not licensed or checked out ) then you might get
+;  a warning that looks like
+;
+;   *WARNING* "Schematics is not registered yet"
+;
+;  This warning can be ignored if you know that the product is not
+;  licensed or checked out.
+;
+; 
+let( (bindKeyFileList file path saveSkillPath)
+    bindKeyFileList = '(
+                 "leBindKeys.il" 
+                 "schBindKeys.il"
+                    )
+    
+;  this is the path that is searched for the files
+    path = strcat(
+              ".   ~   "
+              prependInstallPath("local ")
+              prependInstallPath("samples/local")
+             )
+    saveSkillPath=getSkillPath()
+    setSkillPath(path)
+;
+;
+ 
+   foreach(file bindKeyFileList
+       if(isFile(file) then
+          loadi(file)
+         )
+    )
+ 
+    setSkillPath(saveSkillPath)
+)
+
+;
+;
+;  An individual user may wish to add some bindkeys of his/her own or
+;  over ride some default loaded bindkeys.  For more information about
+;  bindkeys see the manual "SKILL Reference Manual, Language Fundamentals", 
+;  Chapter 4.
+;
+;  Here is an example of setting one bindkey on "F2" than prints 
+;  "Hello world" to the CIW when pressed in the CIW.
+;hiSetBindKey("Command Interpreter" "<Key>F2" "printf(\"Hello World\")") 
+;
+;  Here is an example of setting keys for more than one application
+;
+;let( (app appList)
+;  appList = '( 
+;             "Command Interpreter"
+;             "Schematics"
+;             "Symbol"
+;   
+;    Add other applications here 
+;
+;    )
+;  foreach(app appList
+;    hiSetBindKey(app "<Key>F4" "printf(\"Hello \")") 
+;    hiSetBindKey(app "<Key>F5" "printf(\"World\")") 
+;
+;    Add more bind keys here
+;
+;
+;  )
+;)
+;
+;
+;################################################
+;#
+;# MISCELLANEOUS
+;#
+;################################################
+;
+;
+; Set your own prompt in the CIW. The first argument is the prompt.
+; The second argument is not used yet.
+;
+; The variable editor defines the text editor to be used when any of
+; the applications invoke an editor. For example technology dump and edit
+; operation opens an editor window. 
+;
+; The editor may also be set by 
+;               
+;         unix environment variable EDITOR
+;
+;             setenv EDITOR 'xedit'
+;
+;
+; When Design Framework is invoked the SKILL variable editor is set to the
+; value of the unix variable EDITOR.
+;  
+; If EDITOR is not defined the SKILL variable
+; editor is set to "vi"
+;
+; You may also set the variable to execute a UNIX command
+; that invokes an xterm window of given size and location
+; and starts an editor program.
+; Example:
+;
+;    editor = "xterm -geometry 80x40 -e emacs"
+;
+; Size of xterm in the above example is 80 characters by 40 lines.
+; With some editors on certain platforms the variable editor must
+; be defined as shown above.
+;
+; Some application which require a text editor may be using the UNIX
+; variable EDITOR instead of the SKILL variable editor. It is a good
+; idea to set the UNIX variable EDITOR to the text editor of your
+; choice which will automatically set the SKILL variable editor.
+; 
+;
+;setPrompts("Ready >" "")
+;editor = "xterm -geometry 85x50 -e vi";
+;
+;
+;  ENVIRONMENT VARIABLES
+;  Schematic, Layout and Graphic environment variable defaults are now found in
+;  <cds_install_dir>/etc/tools/
+;				layout/.cdsenv
+;				schematic/.cdsenv
+;				graphic/.cdsenv
+;
+;  These can be customized in the user's ./cdsenv and ~/.cdsenv files.
+;  A .cdsenv file can be created by using CIW->options->save defaults.
+;
+hiSetBindKey("Layout" "<Key>n" "(if (getCurrentWindow)->segSnapMode != \"anyAngle\" then (getCurrentWindow)->segSnapMode = \"anyAngle\" else (getCurrentWindow)->segSnapMode = \"diagonal\") ")
+
+hiSetBindKey("Schematics" "<Key>n" "(if (getCurrentWindow)->segSnapMode != \"anyAngle\" then (getCurrentWindow)->segSnapMode = \"anyAngle\" else (getCurrentWindow)->segSnapMode = \"diagonal\")")
+;
+mgc_home=getShellEnvVar("MGC_HOME")
+;
+if mgc_home!=nil && isDir(mgc_home) && isReadable(mgc_home) then load(strcat(mgc_home "/lib/calibre.skl")) else printf("// Calibre Error: environment variable\n")
+;
+printf("END OF USER CUSTOMIZATION\n")
+
+;
+;END OF USER CUSTOMIZATION
+

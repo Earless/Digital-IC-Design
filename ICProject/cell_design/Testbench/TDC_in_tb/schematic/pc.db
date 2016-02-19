@@ -1,0 +1,29 @@
+#
+analogLib vpulse symbol
+V0
+#
+Testbench Inv_3x symbol
+I6
+I7
+I12
+I10
+I11
+I13
+#
+analogLib vpwl symbol
+V2
+V1
+#ISCELL
+analogLib gnd symbol
+I14
+I5
+I4
+#ISCELL
+basic opin symbol
+PIN8
+PIN1
+PIN0
+#ISCELL
+basic iopin symbolr
+PIN5
+PIN6
